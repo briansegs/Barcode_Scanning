@@ -3,32 +3,37 @@ import time
 import cv2 as cv
 from pyzbar.pyzbar import decode
 
+class Scanner:
+    """Scans Barcodes and QR codes"""
+    def __init__(self):
+        self.data = dict()
 
-cam = cv.VideoCapture(0)
+    def printData(self):
+        """prints stored data"""
+        print('Scanned information:')
+        for key, value in self.data.items():
+            print(f'Data: {key}, Type: {value}')
 
-data = dict()
+    def startScanner(self):
+        """Starts the scanner"""
+        cam = cv.VideoCapture(0)
 
-camera = True
-while camera is True:
-    ret, frame = cam.read()
+        while True:
+            ret, frame = cam.read()
 
-    cv.imshow('frame', frame)
+            cv.imshow('frame', frame)
 
-    if cv.waitKey(1) == ord('q'):
-        break
+            if cv.waitKey(1) == ord('q'):
+                break
 
-    for code in decode(frame):
-        if code.data.decode('utf-8') not in data:
-            data[code.data.decode('utf-8')] = code.type
-            print(code.data.decode('utf-8'), code.type)
-            time.sleep(5)
-        else:
-            print(code.data.decode('utf-8'), code.type)
-            time.sleep(5)
+            for code in decode(frame):
+                if code.data.decode('utf-8') not in self.data:
+                    self.data[code.data.decode('utf-8')] = code.type
+                    print(code.data.decode('utf-8'), code.type)
+                    time.sleep(5)
+                else:
+                    print(code.data.decode('utf-8'), code.type)
+                    time.sleep(5)
+        cam.release()
 
-
-
-cam.release()
-
-cv.destroyAllWindows()
-    
+        cv.destroyAllWindows()
