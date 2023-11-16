@@ -1,4 +1,4 @@
-"""Setup camera"""
+"""camera"""
 import cv2 as cv
 
 class WebCam:
