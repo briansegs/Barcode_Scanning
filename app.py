@@ -18,6 +18,6 @@ while location not in states:
     if location in states:
         location = states[location]
         break
-
+    print('Not a state \nStates: ny, nj, pa, fl \nPlease pick one from the list')
 print(location)
         
