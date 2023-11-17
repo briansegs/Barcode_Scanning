@@ -5,8 +5,9 @@ from pyzbar.pyzbar import decode
 
 class Scanner:
     """Scans Barcodes and QR codes"""
-    def __init__(self):
+    def __init__(self, location):
         self.data = dict()
+        self.local = location
 
     def printData(self):
         """prints stored data"""
@@ -28,7 +29,7 @@ class Scanner:
 
             for code in decode(frame):
                 if code.data.decode('utf-8') not in self.data:
-                    self.data[code.data.decode('utf-8')] = code.type
+                    self.data[code.data.decode('utf-8')] = code.type, self.local
                     print(code.data.decode('utf-8'), code.type)
                     time.sleep(5)
                 else:
