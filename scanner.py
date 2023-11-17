@@ -33,6 +33,7 @@ class Scanner:
             for code in decode(frame):
                 # TODO: put "code.data.decode('utf-8')" into a variable
                 # TODO: Structure data (plan first)
+                # TODO: add date and time to data{}
                 if code.data.decode('utf-8') not in self.data:
                     self.data[code.data.decode('utf-8')] = code.type, self.local
                     print(code.data.decode('utf-8'), code.type)
