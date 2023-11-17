@@ -35,5 +35,6 @@ class Scanner:
                     print(code.data.decode('utf-8'), code.type)
                     time.sleep(5)
         cam.release()
-
         cv.destroyAllWindows()
+
+        return self.data
