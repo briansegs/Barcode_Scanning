@@ -5,11 +5,14 @@ from pyzbar.pyzbar import decode
 
 class Scanner:
     """Scans Barcodes and QR codes"""
+    # TODO: Add quitKey feature to edit key that quits scanning
+    # TODO: Add showKey to show the current quitKey
     def __init__(self, location):
         self.data = dict()
         self.local = location
 
     def printData(self):
+        # TODO: Change to getData where data is returned
         """prints stored data"""
         print('Scanned information:')
         for key, value in self.data.items():
@@ -28,6 +31,8 @@ class Scanner:
                 break
 
             for code in decode(frame):
+                # TODO: put "code.data.decode('utf-8')" into a variable
+                # TODO: Structure data (plan first)
                 if code.data.decode('utf-8') not in self.data:
                     self.data[code.data.decode('utf-8')] = code.type, self.local
                     print(code.data.decode('utf-8'), code.type)
@@ -38,4 +43,5 @@ class Scanner:
         cam.release()
         cv.destroyAllWindows()
 
+        # TODO: Id rather make a retun function and remove this return
         return self.data
