@@ -1,16 +1,10 @@
 """App"""
 from datetime import datetime
+from data import states
 
 now = datetime.now()
 date = now.strftime("%m/%d/%Y")
 time = now.strftime("%H:%M:%S")
-
-states = {
-    'ny' : 'New York',
-    'nj' : 'New Jersey',
-    'pa' : 'Pennsylvinia',
-    'fl' : 'Florida'
-}
 
 location = ''
 while location not in states:
