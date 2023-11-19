@@ -5,8 +5,6 @@ from pyzbar.pyzbar import decode
 
 class Scanner:
     """Scans Barcodes and QR codes"""
-    # TODO: Add quitKey feature to edit key that quits scanning
-    # TODO: Add showKey to show the current quitKey
     def __init__(self, location):
         self.closeKey = 'q'
         self.data = dict()
