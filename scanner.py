@@ -8,8 +8,17 @@ class Scanner:
     # TODO: Add quitKey feature to edit key that quits scanning
     # TODO: Add showKey to show the current quitKey
     def __init__(self, location):
+        self.closeKey = 'q'
         self.data = dict()
         self.local = location
+
+    def showCloseKey(self):
+        """prints the key that closes the camera to the terminal"""
+        print(self.closeKey)
+
+    def setCloseKey(self, newKey):
+        """sets the key that closes the webcam"""
+        self.closeKey = newKey
 
     def printData(self):
         # TODO: Change to getData where data is returned
@@ -27,7 +36,7 @@ class Scanner:
 
             cv.imshow('frame', frame)
 
-            if cv.waitKey(1) == ord('q'):
+            if cv.waitKey(1) == ord(self.closeKey):
                 break
 
             for code in decode(frame):
