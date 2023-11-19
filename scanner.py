@@ -7,7 +7,7 @@ class Scanner:
     """Scans Barcodes and QR codes"""
     def __init__(self, location):
         self.closeKey = 'q'
-        self.data = dict()
+        self.data = {}
         self.local = location
 
     def showCloseKey(self):
