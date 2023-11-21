@@ -1,5 +1,6 @@
 """Scanner"""
-import time
+import time as t
+from datetime import datetime
 import cv2 as cv
 from pyzbar.pyzbar import decode
 
@@ -24,6 +25,10 @@ class Scanner:
 
     def startScanner(self):
         """Starts the scanner"""
+        now = datetime.now()
+        date = now.strftime("%m/%d/%Y")
+        time = now.strftime("%H:%M:%S")
+
         cam = cv.VideoCapture(0)
 
         while True:
@@ -36,18 +41,18 @@ class Scanner:
 
             for code in decode(frame):
                 bCode = code.data.decode('utf-8')
-                # TODO: Structure data (plan first)
-                # TODO: add date and time to data{}
                 if bCode not in self.data:
                     self.data[bCode] = {
                         "Barcode" : bCode,
                         "Type" : code.type, 
-                        "Location" : self.local
+                        "Location" : self.local,
+                        "Date" : date,
+                        "Time" : time
                         }
                     print(bCode)
-                    time.sleep(5)
+                    t.sleep(5)
                 else:
-                    print(bCode, code.type)
-                    time.sleep(5)
+                    print(bCode)
+                    t.sleep(5)
         cam.release()
         cv.destroyAllWindows()
