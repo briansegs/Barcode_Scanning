@@ -11,4 +11,6 @@ scan = Scanner(getLocation())
 
 scan.startScanner()
 
-print(scan.getData())
+for value in scan.getData().values():
+    for k, v in value.items():
+        print(k, v)

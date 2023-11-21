@@ -39,13 +39,15 @@ class Scanner:
                 # TODO: Structure data (plan first)
                 # TODO: add date and time to data{}
                 if bCode not in self.data:
-                    self.data[bCode] = code.type, self.local
-                    print(bCode, code.type)
-                    print(bCode not in self.data)
+                    self.data[bCode] = {
+                        "Barcode" : bCode,
+                        "Type" : code.type, 
+                        "Location" : self.local
+                        }
+                    print(bCode)
                     time.sleep(5)
                 else:
                     print(bCode, code.type)
-                    print("else:")
                     time.sleep(5)
         cam.release()
         cv.destroyAllWindows()
