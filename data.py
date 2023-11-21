@@ -6,6 +6,9 @@ states = {
     'fl' : 'Florida'
 }
 
+# TODO: add agent{} that has {barcode : name}
+# TODO: add getAgent()
+
 def getLocation():
     """Retuns location from input statment"""
     location = ''

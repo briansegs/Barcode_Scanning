@@ -6,11 +6,14 @@ from pyzbar.pyzbar import decode
 
 class Scanner:
     """Scans Barcodes and QR codes"""
+    # TODO: add agent
     def __init__(self, location):
         self.closeKey = 'q'
         self.data = {}
         self.local = location
 
+    # TODO: add getAgent to return the current agent
+    # TODO: change showCloseKey to getCloseKey and return closeKey
     def showCloseKey(self):
         """prints the key that closes the camera to the terminal"""
         print(self.closeKey)
@@ -25,6 +28,7 @@ class Scanner:
 
     def startScanner(self):
         """Starts the scanner"""
+        # TODO: turn date/time into a function and import it 
         now = datetime.now()
         date = now.strftime("%m/%d/%Y")
         time = now.strftime("%H:%M:%S")
@@ -43,10 +47,16 @@ class Scanner:
                 bCode = code.data.decode('utf-8')
                 if bCode not in self.data:
                     self.data[bCode] = {
+                        # TODO: change keys to lowercase
+                        # TODO: add agent to data. This can start with a 
+                        # name but should eventually be a barcode
                         "Barcode" : bCode,
-                        "Type" : code.type, 
+                        "Type" : code.type,
+                        # TODO: change "Location" to "pickup location" 
                         "Location" : self.local,
+                        # TODO: change "Date" to "pickup date" 
                         "Date" : date,
+                        # TODO: change "Time" to "pickup time" 
                         "Time" : time
                         }
                     print(bCode)

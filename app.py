@@ -2,6 +2,10 @@
 from data import getLocation
 from scanner import Scanner
 
+# TODO: get mock data from database {invetory}
+# TODO: check if scanned data is in inventory
+# TODO: add scanned data to database
+
 scan = Scanner(getLocation())
 
 scan.startScanner()
