@@ -18,12 +18,9 @@ class Scanner:
         """sets the key that closes the webcam"""
         self.closeKey = newKey
 
-    def printData(self):
-        # TODO: Change to getData where data is returned
-        """prints stored data"""
-        print('Scanned information:')
-        for key, value in self.data.items():
-            print(f'Data: {key}, Type: {value}')
+    def getData(self):
+        """returns stored data"""
+        return self.data
 
     def startScanner(self):
         """Starts the scanner"""
@@ -44,12 +41,11 @@ class Scanner:
                 if bCode not in self.data:
                     self.data[bCode] = code.type, self.local
                     print(bCode, code.type)
+                    print(bCode not in self.data)
                     time.sleep(5)
                 else:
                     print(bCode, code.type)
+                    print("else:")
                     time.sleep(5)
         cam.release()
         cv.destroyAllWindows()
-
-        # TODO: Id rather make a retun function and remove this return
-        return self.data

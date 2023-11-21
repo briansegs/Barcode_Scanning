@@ -9,4 +9,6 @@ time = now.strftime("%H:%M:%S")
 
 scan = Scanner(getLocation())
 
-print(f'Data: {scan.startScanner()}')
+scan.startScanner()
+
+print(scan.getData())
