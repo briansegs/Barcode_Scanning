@@ -2,7 +2,7 @@
 import time as t
 import cv2 as cv
 from pyzbar.pyzbar import decode
-from functions import getLocation, getDate, getTime
+from functions import getLocation, getAgent, getDate, getTime
 
 class Scanner:
     """Scans Barcodes and QR codes"""
@@ -27,6 +27,7 @@ class Scanner:
     def startScanner(self):
         "Starts the scanner"
         location = getLocation()
+        agent = getAgent()
 
         cam = cv.VideoCapture(0)
 
@@ -42,10 +43,9 @@ class Scanner:
                 bCode = code.data.decode('utf-8')
                 if bCode not in self.data:
                     self.data[bCode] = {
-                        # TODO: add agent to data. This can start with a 
-                        # name but should eventually be a barcode
                         "Barcode" : bCode,
                         "Type" : code.type,
+                        "agent" : agent,
                         "pickup location" : location,
                         "pickup date" : getDate(),
                         "pickup time" : getTime()
