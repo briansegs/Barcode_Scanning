@@ -37,7 +37,7 @@ class Scanner:
             if cv.waitKey(1) == ord(self.closeKey):
                 break
 
-            # TODO: seperate out to make scanner generic 
+            # TODO: seperate out to make scanner generic
             # look into class inheritance
             for code in decode(frame):
                 bCode = code.data.decode('utf-8')
