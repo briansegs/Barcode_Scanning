@@ -8,15 +8,20 @@ states = {
     'fl' : 'Florida'
 }
 
-# TODO: add agent{} that has {barcode : name}
-# TODO: add getAgent()
+# TODO: change to {barcode : name} when I can generate barcodes
+agents = {
+    '1' : 'Brian',
+    '2' : 'Tom',
+    '3' : 'Ron',
+    '4' : 'Barb'
+}
 
 def getLocation():
     "Retuns location from input statment"
     location = ''
     while location not in states:
         location = input('Enter state: ')
-        
+
         # To speed up testing (remove for production version)
         if location == '':
             location = 'ny'
@@ -26,6 +31,23 @@ def getLocation():
             break
         print('Not a state \nStates: ny, nj, pa, fl \nPlease pick one from the list')
     return location
+
+def getAgent():
+    "Retuns agent from input statment"
+    # TODO: Scan a barcode to find agent name
+    agent = ''
+    while agent not in agents:
+        agent = input('Enter your agent code: ')
+
+        # To speed up testing (remove for production version)
+        if agent == '':
+            agent = '1'
+
+        if agent in agents:
+            agent = agents[agent]
+            break
+        print('Agent not found')
+    return agent
 
 def getDate():
     "returns current date"
