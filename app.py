@@ -4,16 +4,6 @@ from scanner import Scanner
 
 # TODO: get mock data from database {invetory}
 # TODO: check if scanned data is in inventory
-# TODO: add scanned data to database
-
-scan = Scanner()
-
-scan.startScanner()
-
-for value in scan.getData().values():
-    print("----    ----")
-    for k, v in value.items():
-        print(f'{k}: {v}')
 
 conn = sqlite3.connect('testDb.sqlite')
 cur = conn.cursor()
@@ -23,10 +13,32 @@ cur.executescript('''
     
     CREATE TABLE Items (
         "barcode" INTEGER,
-        "bar type" TEXT,
-        "scan agent" TEXT,
-        "scan location" TEXT,
-        "scan date" NUMERIC,
-        "scan time" NUMERIC
+        "bar_type" TEXT,
+        "scan_agent" TEXT,
+        "scan_location" TEXT,
+        "scan_date" NUMERIC,
+        "scan_time" NUMERIC
     );
 ''')
+
+scan = Scanner()
+
+scan.startScanner()
+
+data = scan.getData()
+
+for v in data.values():
+    barcode = v["barcode"]
+    barType = v["bar type"]
+    scanAgent = v["scan agent"]
+    scanLocation = v["scan location"]
+    scanDate = v["scan date"]
+    scanTime = v["scan time"]
+
+    cur.execute('''INSERT OR IGNORE INTO Items
+        (barcode, bar_type, scan_agent,
+        scan_location, scan_date, scan_time) VALUES
+        (?, ?, ?, ?, ?, ?)''',
+        (barcode, barType, scanAgent, scanLocation, scanDate, scanTime))
+
+conn.commit()

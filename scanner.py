@@ -43,7 +43,7 @@ class Scanner:
                 bCode = code.data.decode('utf-8')
                 if bCode not in self.data:
                     self.data[bCode] = {
-                        "Barcode" : bCode,
+                        "barcode" : bCode,
                         "bar type" : code.type,
                         "scan agent" : agent,
                         "scan location" : location,
