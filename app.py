@@ -9,7 +9,6 @@ from functions import createTables
 conn = sqlite3.connect('testDb.sqlite')
 cur = conn.cursor()
 
-# TODO: put SQL into variables and import them
 cur.executescript(createTables)
 
 scan = Scanner()

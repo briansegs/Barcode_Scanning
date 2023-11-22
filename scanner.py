@@ -5,8 +5,7 @@ from pyzbar.pyzbar import decode
 from functions import getLocation, getAgent, getDate, getTime
 
 class Scanner:
-    """Scans Barcodes and QR codes"""
-    # TODO: add agent
+    """Scans Barcodes"""
     def __init__(self):
         self.closeKey = 'q'
         self.data = {}
