@@ -39,6 +39,9 @@ class Scanner:
 
             # TODO: seperate out to make scanner generic
             # look into class inheritance
+            # look into storing the data the same way
+            # make what I do after what is different
+
             for code in decode(frame):
                 bCode = code.data.decode('utf-8')
                 if bCode not in self.data:
