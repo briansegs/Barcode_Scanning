@@ -5,6 +5,7 @@ from functions import createTables, storeData
 
 # TODO: get mock data from database {invetory}
 # TODO: check if scanned data is in inventory
+# TODO: add print statments to inform the user
 
 # Connects to database
 conn = sqlite3.connect('testDb.sqlite')
