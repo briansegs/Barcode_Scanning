@@ -3,14 +3,14 @@ import time as t
 from datetime import datetime
 import cv2 as cv
 from pyzbar.pyzbar import decode
+from functions import getLocation
 
 class Scanner:
     """Scans Barcodes and QR codes"""
     # TODO: add agent
-    def __init__(self, location):
+    def __init__(self):
         self.closeKey = 'q'
         self.data = {}
-        self.local = location
 
     # TODO: add getAgent to return the current agent
     # TODO: change showCloseKey to getCloseKey and return closeKey
@@ -28,6 +28,8 @@ class Scanner:
 
     def startScanner(self):
         """Starts the scanner"""
+        location = getLocation()
+
         # TODO: turn date/time into a function and import it 
         now = datetime.now()
         date = now.strftime("%m/%d/%Y")
@@ -53,7 +55,7 @@ class Scanner:
                         "Barcode" : bCode,
                         "Type" : code.type,
                         # TODO: change "Location" to "pickup location" 
-                        "Location" : self.local,
+                        "Location" : location,
                         # TODO: change "Date" to "pickup date" 
                         "Date" : date,
                         # TODO: change "Time" to "pickup time" 
