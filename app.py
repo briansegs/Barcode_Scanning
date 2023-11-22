@@ -6,17 +6,19 @@ from functions import createTables
 # TODO: get mock data from database {invetory}
 # TODO: check if scanned data is in inventory
 
+# Connects to database
 conn = sqlite3.connect('testDb.sqlite')
 cur = conn.cursor()
 
+# Drops and then creates tables in database
 cur.executescript(createTables)
 
+# Scans barcodes and stores in data{}
 scan = Scanner()
-
 scan.startScanner()
-
 data = scan.getData()
 
+# Stores scanned data into database
 # TODO: turn into a function that can be imported
 for v in data.values():
     barcode = v["barcode"]
