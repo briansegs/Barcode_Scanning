@@ -24,8 +24,9 @@ cur.executescript('''
     CREATE TABLE Items (
         "barcode" INTEGER,
         "bar type" TEXT,
-        "pickup location" TEXT,
-        "pickup date" NUMERIC,
-        "pickup time" NUMERIC
+        "scan agent" TEXT,
+        "scan location" TEXT,
+        "scan date" NUMERIC,
+        "scan time" NUMERIC
     );
 ''')

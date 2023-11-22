@@ -44,11 +44,11 @@ class Scanner:
                 if bCode not in self.data:
                     self.data[bCode] = {
                         "Barcode" : bCode,
-                        "Type" : code.type,
-                        "agent" : agent,
-                        "pickup location" : location,
-                        "pickup date" : getDate(),
-                        "pickup time" : getTime()
+                        "bar type" : code.type,
+                        "scan agent" : agent,
+                        "scan location" : location,
+                        "scan date" : getDate(),
+                        "scan time" : getTime()
                         }
                     print(bCode)
                     t.sleep(5)
