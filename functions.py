@@ -16,6 +16,11 @@ def getLocation():
     location = ''
     while location not in states:
         location = input('Enter state: ')
+        
+        # To speed up testing (remove for production version)
+        if location == '':
+            location = 'ny'
+
         if location in states:
             location = states[location]
             break
