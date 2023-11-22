@@ -1,6 +1,7 @@
 """App"""
 import sqlite3
 from scanner import Scanner
+from functions import createTables
 
 # TODO: get mock data from database {invetory}
 # TODO: check if scanned data is in inventory
@@ -8,18 +9,8 @@ from scanner import Scanner
 conn = sqlite3.connect('testDb.sqlite')
 cur = conn.cursor()
 
-cur.executescript('''
-    DROP TABLE IF EXISTS Items;
-    
-    CREATE TABLE Items (
-        "barcode" INTEGER,
-        "bar_type" TEXT,
-        "scan_agent" TEXT,
-        "scan_location" TEXT,
-        "scan_date" NUMERIC,
-        "scan_time" NUMERIC
-    );
-''')
+# TODO: put SQL into variables and import them
+cur.executescript(createTables)
 
 scan = Scanner()
 
@@ -27,6 +18,7 @@ scan.startScanner()
 
 data = scan.getData()
 
+# TODO: turn into a function that can be imported
 for v in data.values():
     barcode = v["barcode"]
     barType = v["bar_type"]

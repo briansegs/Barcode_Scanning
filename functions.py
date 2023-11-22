@@ -16,6 +16,19 @@ agents = {
     '4' : 'Barb'
 }
 
+# TODO: split up tables. plan and structure table relationships
+createTables = '''
+    DROP TABLE IF EXISTS Items;
+    
+    CREATE TABLE Items (
+        "barcode" INTEGER,
+        "bar_type" TEXT,
+        "scan_agent" TEXT,
+        "scan_location" TEXT,
+        "scan_date" NUMERIC,
+        "scan_time" NUMERIC
+    )'''
+
 def getLocation():
     "Retuns location from input statment"
     location = ''

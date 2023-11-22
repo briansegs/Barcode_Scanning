@@ -11,7 +11,6 @@ class Scanner:
         self.closeKey = 'q'
         self.data = {}
 
-    # TODO: add getAgent to return the current agent
     def getCloseKey(self):
         "returns the key that closes the camera"
         return self.closeKey
