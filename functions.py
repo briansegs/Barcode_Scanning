@@ -12,7 +12,7 @@ states = {
 # TODO: add getAgent()
 
 def getLocation():
-    """Retuns location from input statment"""
+    "Retuns location from input statment"
     location = ''
     while location not in states:
         location = input('Enter state: ')
@@ -23,13 +23,13 @@ def getLocation():
     return location
 
 def getDate():
-    'returns current date'
+    "returns current date"
     now = datetime.now()
     date = now.strftime("%m/%d/%Y")
     return date
 
 def getTime():
-    'return current Time'
+    "return current Time"
     now = datetime.now()
     time = now.strftime("%H:%M:%S")
     return time
