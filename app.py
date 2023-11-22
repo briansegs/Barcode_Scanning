@@ -29,11 +29,11 @@ data = scan.getData()
 
 for v in data.values():
     barcode = v["barcode"]
-    barType = v["bar type"]
-    scanAgent = v["scan agent"]
-    scanLocation = v["scan location"]
-    scanDate = v["scan date"]
-    scanTime = v["scan time"]
+    barType = v["bar_type"]
+    scanAgent = v["scan_agent"]
+    scanLocation = v["scan_location"]
+    scanDate = v["scan_date"]
+    scanTime = v["scan_time"]
 
     cur.execute('''INSERT OR IGNORE INTO Items
         (barcode, bar_type, scan_agent,
