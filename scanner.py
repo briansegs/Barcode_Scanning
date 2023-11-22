@@ -48,12 +48,9 @@ class Scanner:
                         # name but should eventually be a barcode
                         "Barcode" : bCode,
                         "Type" : code.type,
-                        # TODO: change "Location" to "pickup location" 
-                        "Location" : location,
-                        # TODO: change "Date" to "pickup date" 
-                        "Date" : getDate(),
-                        # TODO: change "Time" to "pickup time" 
-                        "Time" : getTime()
+                        "pickup location" : location,
+                        "pickup date" : getDate(),
+                        "pickup time" : getTime()
                         }
                     print(bCode)
                     t.sleep(5)
