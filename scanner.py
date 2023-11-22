@@ -1,9 +1,8 @@
 """Scanner"""
 import time as t
-from datetime import datetime
 import cv2 as cv
 from pyzbar.pyzbar import decode
-from functions import getLocation
+from functions import getLocation, getDate, getTime
 
 class Scanner:
     """Scans Barcodes and QR codes"""
@@ -30,11 +29,6 @@ class Scanner:
         """Starts the scanner"""
         location = getLocation()
 
-        # TODO: turn date/time into a function and import it 
-        now = datetime.now()
-        date = now.strftime("%m/%d/%Y")
-        time = now.strftime("%H:%M:%S")
-
         cam = cv.VideoCapture(0)
 
         while True:
@@ -57,9 +51,9 @@ class Scanner:
                         # TODO: change "Location" to "pickup location" 
                         "Location" : location,
                         # TODO: change "Date" to "pickup date" 
-                        "Date" : date,
+                        "Date" : getDate(),
                         # TODO: change "Time" to "pickup time" 
-                        "Time" : time
+                        "Time" : getTime()
                         }
                     print(bCode)
                     t.sleep(5)

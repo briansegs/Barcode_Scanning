@@ -1,4 +1,6 @@
-"""data for app"""
+"""data and functions for app"""
+from datetime import datetime
+
 states = {
     'ny' : 'New York',
     'nj' : 'New Jersey',
@@ -19,3 +21,15 @@ def getLocation():
             break
         print('Not a state \nStates: ny, nj, pa, fl \nPlease pick one from the list')
     return location
+
+def getDate():
+    'returns current date'
+    now = datetime.now()
+    date = now.strftime("%m/%d/%Y")
+    return date
+
+def getTime():
+    'return current Time'
+    now = datetime.now()
+    time = now.strftime("%H:%M:%S")
+    return time
