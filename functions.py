@@ -74,6 +74,8 @@ def getTime():
     time = now.strftime("%H:%M:%S")
     return time
 
+# TODO: pass in agent and location 
+# TODO: remove getting location and agent from data{}
 def storeData(data, cur):
     "Stores scanned data into database"
     for v in data.values():

@@ -20,10 +20,12 @@ print('Tables created')
 # Scans barcodes and stores in data{}
 scan = Scanner()
 print('Starting scanner')
+# TODO: add get location and agent here
 scan.startScanner()
 data = scan.getData()
 
 # Stores scanned data into database
+# TODO: pass location and agent into storeData
 storeData(data, cur)
 conn.commit()
 print('Data stored')

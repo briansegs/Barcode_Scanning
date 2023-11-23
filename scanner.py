@@ -4,6 +4,8 @@ import cv2 as cv
 from pyzbar.pyzbar import decode
 from functions import getLocation, getAgent, getDate, getTime
 
+# TODO: make parent scanner class 
+# TODO: children should be for scanning 1. items and 2. agent barcodes
 class Scanner:
     """Scans Barcodes"""
     def __init__(self):
@@ -22,8 +24,10 @@ class Scanner:
         "returns stored data"
         return self.data
 
+    # TODO: should be added to child class when created
     def startScanner(self):
         "Starts the scanner"
+        # TODO: put get Location and Agent into main app
         location = getLocation()
         agent = getAgent()
 
@@ -48,6 +52,7 @@ class Scanner:
             for code in decode(frame):
                 bCode = code.data.decode('utf-8')
                 if bCode not in self.data:
+                    # TODO: remove agent and location
                     self.data[bCode] = {
                         "barcode" : bCode,
                         "bar_type" : code.type,
