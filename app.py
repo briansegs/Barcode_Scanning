@@ -11,15 +11,19 @@ from functions import createTables, storeData
 # Connects to database
 conn = sqlite3.connect('testDb.sqlite')
 cur = conn.cursor()
+print('Connected to database')
 
 # Drops and then creates tables in database
 cur.executescript(createTables)
+print('Tables created')
 
 # Scans barcodes and stores in data{}
 scan = Scanner()
+print('Starting scanner')
 scan.startScanner()
 data = scan.getData()
 
 # Stores scanned data into database
 storeData(data, cur)
 conn.commit()
+print('Data stored')
