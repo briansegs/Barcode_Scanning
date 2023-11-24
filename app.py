@@ -1,5 +1,6 @@
 """App"""
 import sqlite3
+import time as t
 from scanner import Scanner
 from functions import createTables, storeData, getAgent, getLocation
 
@@ -10,15 +11,18 @@ from functions import createTables, storeData, getAgent, getLocation
 # Connects to database
 conn = sqlite3.connect('testDb.sqlite')
 cur = conn.cursor()
-print('Connected to database')
+print('*Connected to database*')
+t.sleep(1)
 
 # Drops and then creates tables in database
 cur.executescript(createTables)
-print('Tables created')
+print('*Tables created*')
+t.sleep(1)
 
 # Scans barcodes and stores in data{}
 scan = Scanner()
-print('Starting scanner')
+print('*Starting scanner*')
+t.sleep(1)
 location = getLocation()
 agent = getAgent()
 scan.startScanner()
@@ -27,4 +31,5 @@ data = scan.getData()
 # Stores scanned data into database
 storeData(data, cur, location, agent)
 conn.commit()
-print('Data stored')
+t.sleep(1)
+print('*Data stored*')
