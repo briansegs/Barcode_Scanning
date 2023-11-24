@@ -74,15 +74,13 @@ def getTime():
     time = now.strftime("%H:%M:%S")
     return time
 
-# TODO: pass in agent and location 
-# TODO: remove getting location and agent from data{}
-def storeData(data, cur):
+def storeData(data, cur, location, agent):
     "Stores scanned data into database"
     for v in data.values():
+        scanAgent = agent
+        scanLocation = location
         barcode = v["barcode"]
         barType = v["bar_type"]
-        scanAgent = v["scan_agent"]
-        scanLocation = v["scan_location"]
         scanDate = v["scan_date"]
         scanTime = v["scan_time"]
 

@@ -1,11 +1,10 @@
 """App"""
 import sqlite3
 from scanner import Scanner
-from functions import createTables, storeData
+from functions import createTables, storeData, getAgent, getLocation
 
 # TODO: get mock data from database {invetory}
 # TODO: check if scanned data is in inventory
-# TODO: add print statments to inform the user
 # TODO: rethink how to store data & make scanner more generic
 
 # Connects to database
@@ -20,12 +19,12 @@ print('Tables created')
 # Scans barcodes and stores in data{}
 scan = Scanner()
 print('Starting scanner')
-# TODO: add get location and agent here
+location = getLocation()
+agent = getAgent()
 scan.startScanner()
 data = scan.getData()
 
 # Stores scanned data into database
-# TODO: pass location and agent into storeData
-storeData(data, cur)
+storeData(data, cur, location, agent)
 conn.commit()
 print('Data stored')
