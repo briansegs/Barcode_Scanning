@@ -25,8 +25,16 @@ class Scanner:
         return self.data
 
     # TODO: should be added to child class when created
+    # TODO: seperate out to make scanner generic
     def startScanner(self):
         "Starts the scanner"
+
+        # look into class inheritance.
+        # look into storing the data the same way.
+        # make what I do after what is different.
+        # I want to be able to scan agent barcodes with -
+        # the same scanner. Not have two different scanners -
+        # that share 90% of the same code.
 
         cam = cv.VideoCapture(0)
 
@@ -37,14 +45,6 @@ class Scanner:
 
             if cv.waitKey(1) == ord(self.closeKey):
                 break
-
-            # TODO: seperate out to make scanner generic
-            # look into class inheritance.
-            # look into storing the data the same way.
-            # make what I do after what is different.
-            # I want to be able to scan agent barcodes with -
-            # the same scanner. Not have two different scanners -
-            # that share 90% of the same code.
 
             for code in decode(frame):
                 bCode = code.data.decode('utf-8')
