@@ -4,8 +4,9 @@ import cv2 as cv
 from pyzbar.pyzbar import decode
 from functions import getDate, getTime
 
-# TODO: make parent scanner class 
+# TODO: make parent scanner class in another file and import
 # TODO: children should be for scanning 1. items and 2. agent barcodes
+# TODO: children names ScanItems and ScanAgentId
 class Scanner:
     """Scans Barcodes"""
     def __init__(self):

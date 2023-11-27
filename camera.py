@@ -1,6 +1,9 @@
 """camera"""
 import cv2 as cv
 
+# TODO: Rename file to ...
+# TODO: Rename and make into parent class
+# TODO: parent name == Scanner
 class WebCam:
     """Webcam"""
     def __init__(self, closeKey='q'):
