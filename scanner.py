@@ -1,7 +1,5 @@
 """Scanner"""
 
-# TODO: Rename file to ...
-# TODO: Rename and make into parent class
 class Scanner:
     """Scans Barcodes"""
     def __init__(self):
