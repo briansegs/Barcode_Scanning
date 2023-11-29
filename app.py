@@ -2,7 +2,7 @@
 import sqlite3
 import time as t
 from items_scanner import ItemScanner
-from functions import storeData, getAgent, getLocation, getData, dataFile
+from functions import storeData, getAgent, getLocation, getData
 
 # TODO: get mock data from database {invetory}
 # TODO: check if scanned data is in inventory
@@ -15,7 +15,7 @@ print('*Connected to database*')
 t.sleep(1)
 
 # Drops and then creates tables in database
-data = getData(dataFile)
+data = getData()
 cur.executescript(data["createTables"])
 print('*Tables created*')
 t.sleep(1)
