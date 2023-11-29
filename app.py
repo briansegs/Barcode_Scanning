@@ -1,7 +1,7 @@
 """App"""
 import sqlite3
 import time as t
-from scanner import Scanner
+from items_scanner import ItemScanner
 from functions import createTables, storeData, getAgent, getLocation
 
 # TODO: get mock data from database {invetory}
@@ -20,12 +20,12 @@ print('*Tables created*')
 t.sleep(1)
 
 # Scans barcodes and stores in data{}
-scan = Scanner()
+scan = ItemScanner()
 print('*Starting scanner*')
 t.sleep(1)
 location = getLocation()
 agent = getAgent()
-scan.startScanner()
+scan.scanItems()
 data = scan.getData()
 
 # Stores scanned data into database
