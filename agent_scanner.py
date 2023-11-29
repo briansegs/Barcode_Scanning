@@ -1,4 +1,4 @@
-"""Item Scanner"""
+"""Agent Scanner"""
 import time as t
 import cv2 as cv
 from pyzbar.pyzbar import decode
