@@ -13,8 +13,8 @@ class ItemScanner(Scanner):
     "scans item barcodes"
     # TODO: should be added to child class when created
     # TODO: seperate out to make scanner generic
-    def startScanner(self):
-        "Starts the scanner"
+    def scanItems(self):
+        "Scans item barcodes and stores them"
 
         # look into class inheritance.
         # look into storing the data the same way.
