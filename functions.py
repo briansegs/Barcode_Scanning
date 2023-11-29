@@ -2,11 +2,18 @@
 import json
 from datetime import datetime
 
-with open("data.json", "r", encoding="utf-8") as f:
-    data = json.load(f)
+dataFile = "data.json"
+
+def getData(fname):
+    "gets data from local json file"
+    with open(fname, "r", encoding="utf-8") as f:
+        data = json.load(f)
+        f.close()
+    return data
 
 def getLocation():
     "Retuns location from input statment"
+    data = getData(dataFile)
     location = ''
     while location not in data["states"]:
         location = input('Enter state: ')
@@ -24,6 +31,7 @@ def getLocation():
 def getAgent():
     "Retuns agent from input statment"
     # TODO: Scan a barcode to find agent name
+    data = getData(dataFile)
     agent = ''
     while agent not in data["agents"]:
         agent = input('Enter your agent code: ')
