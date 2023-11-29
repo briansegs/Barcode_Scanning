@@ -1,6 +1,9 @@
 """data and functions for app"""
 from datetime import datetime
 
+# TODO: split out data to a different file.
+# Doesn't make sense in functions
+# maybe a json file named data.json
 states = {
     'ny' : 'New York',
     'nj' : 'New Jersey',
