@@ -14,6 +14,6 @@ class Scanner:
         "sets the key that closes the webcam"
         self.closeKey = newKey
 
-    def getItemData(self):
+    def getScanData(self):
         "returns stored data"
         return self.itemData

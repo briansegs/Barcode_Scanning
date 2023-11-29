@@ -27,7 +27,7 @@ t.sleep(1)
 location = getLocation()
 agent = getAgent()
 scan.scanItems()
-itemData = scan.getItemData()
+itemData = scan.getScanData()
 
 # Stores scanned data into database
 storeData(itemData, cur, location, agent)
