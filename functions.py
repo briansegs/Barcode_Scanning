@@ -1,37 +1,6 @@
 """data and functions for app"""
 from datetime import datetime
 
-# TODO: split out data to a different file.
-# Doesn't make sense in functions
-# maybe a json file named data.json
-states = {
-    'ny' : 'New York',
-    'nj' : 'New Jersey',
-    'pa' : 'Pennsylvinia',
-    'fl' : 'Florida'
-}
-
-# TODO: change to {barcode : name} when I can generate barcodes
-agents = {
-    '1' : 'Brian',
-    '2' : 'Tom',
-    '3' : 'Ron',
-    '4' : 'Barb'
-}
-
-# TODO: split up tables. plan and structure table relationships
-createTables = '''
-    DROP TABLE IF EXISTS Items;
-    
-    CREATE TABLE Items (
-        "barcode" INTEGER,
-        "bar_type" TEXT,
-        "scan_agent" TEXT,
-        "scan_location" TEXT,
-        "scan_date" NUMERIC,
-        "scan_time" NUMERIC
-    )'''
-
 def getLocation():
     "Retuns location from input statment"
     location = ''
