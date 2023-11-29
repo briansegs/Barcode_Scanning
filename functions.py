@@ -1,18 +1,22 @@
 """data and functions for app"""
+import json
 from datetime import datetime
+
+with open("data.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
 
 def getLocation():
     "Retuns location from input statment"
     location = ''
-    while location not in states:
+    while location not in data["states"]:
         location = input('Enter state: ')
 
         # To speed up testing (remove for production version)
         if location == '':
             location = 'ny'
 
-        if location in states:
-            location = states[location]
+        if location in data["states"]:
+            location = data["states"][location]
             break
         print('Not a state \nStates: ny, nj, pa, fl \nPlease pick one from the list')
     return location
@@ -21,15 +25,15 @@ def getAgent():
     "Retuns agent from input statment"
     # TODO: Scan a barcode to find agent name
     agent = ''
-    while agent not in agents:
+    while agent not in data["agents"]:
         agent = input('Enter your agent code: ')
 
         # To speed up testing (remove for production version)
         if agent == '':
             agent = '1'
 
-        if agent in agents:
-            agent = agents[agent]
+        if agent in data["agents"]:
+            agent = data["agents"][agent]
             break
         print('Agent not found')
     return agent
