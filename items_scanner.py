@@ -2,29 +2,15 @@
 import time as t
 import cv2 as cv
 from pyzbar.pyzbar import decode
+from scanner import Scanner
 from functions import getDate, getTime
+
 
 # TODO: make parent scanner class in another file and import
 # TODO: children should be for scanning 1. items and 2. agent barcodes
 # TODO: children names ScanItems and ScanAgentId
-class Scanner:
-    """Scans Barcodes"""
-    def __init__(self):
-        self.closeKey = 'q'
-        self.data = {}
-
-    def getCloseKey(self):
-        "returns the key that closes the camera"
-        return self.closeKey
-
-    def setCloseKey(self, newKey):
-        "sets the key that closes the webcam"
-        self.closeKey = newKey
-
-    def getData(self):
-        "returns stored data"
-        return self.data
-
+class ItemScanner(Scanner):
+    "scans item barcodes"
     # TODO: should be added to child class when created
     # TODO: seperate out to make scanner generic
     def startScanner(self):
