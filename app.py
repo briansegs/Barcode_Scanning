@@ -1,9 +1,8 @@
 """App"""
 import sqlite3
-import json
 import time as t
 from items_scanner import ItemScanner
-from functions import storeData, getAgent, getLocation
+from functions import storeData, getAgent, getLocation, getData, dataFile
 
 # TODO: get mock data from database {invetory}
 # TODO: check if scanned data is in inventory
@@ -16,9 +15,8 @@ print('*Connected to database*')
 t.sleep(1)
 
 # Drops and then creates tables in database
-with open("data.json", "r", encoding="utf-8") as f:
-    jdata = json.load(f)
-cur.executescript(jdata["createTables"])
+data = getData(dataFile)
+cur.executescript(data["createTables"])
 print('*Tables created*')
 t.sleep(1)
 
