@@ -5,24 +5,10 @@ from pyzbar.pyzbar import decode
 from scanner import Scanner
 from functions import getDate, getTime
 
-
-# TODO: make parent scanner class in another file and import
-# TODO: children should be for scanning 1. items and 2. agent barcodes
-# TODO: children names ScanItems and ScanAgentId
 class ItemScanner(Scanner):
     "scans item barcodes"
-    # TODO: should be added to child class when created
-    # TODO: seperate out to make scanner generic
     def scanItems(self):
         "Scans item barcodes and stores them"
-
-        # look into class inheritance.
-        # look into storing the data the same way.
-        # make what I do after what is different.
-        # I want to be able to scan agent barcodes with -
-        # the same scanner. Not have two different scanners -
-        # that share 90% of the same code.
-
         cam = cv.VideoCapture(0)
 
         while True:
