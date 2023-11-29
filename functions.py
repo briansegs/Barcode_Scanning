@@ -50,9 +50,9 @@ def getTime():
     time = now.strftime("%H:%M:%S")
     return time
 
-def storeData(data, cur, location, agent):
+def storeData(itemData, cur, location, agent):
     "Stores scanned data into database"
-    for v in data.values():
+    for v in itemData.values():
         scanAgent = agent
         scanLocation = location
         barcode = v["barcode"]

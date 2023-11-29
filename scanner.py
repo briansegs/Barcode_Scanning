@@ -4,7 +4,7 @@ class Scanner:
     """Scans Barcodes"""
     def __init__(self):
         self.closeKey = 'q'
-        self.data = {}
+        self.itemData = {}
 
     def getCloseKey(self):
         "returns the key that closes the camera"
@@ -14,6 +14,6 @@ class Scanner:
         "sets the key that closes the webcam"
         self.closeKey = newKey
 
-    def getData(self):
+    def getItemData(self):
         "returns stored data"
-        return self.data
+        return self.itemData

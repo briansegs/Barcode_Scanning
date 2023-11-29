@@ -21,8 +21,8 @@ class ItemScanner(Scanner):
 
             for code in decode(frame):
                 bCode = code.data.decode('utf-8')
-                if bCode not in self.data:
-                    self.data[bCode] = {
+                if bCode not in self.itemData:
+                    self.itemData[bCode] = {
                         "barcode" : bCode,
                         "bar_type" : code.type,
                         "scan_date" : getDate(),
