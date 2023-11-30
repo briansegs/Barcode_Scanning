@@ -57,7 +57,7 @@ def getTime():
     time = now.strftime("%H:%M:%S")
     return time
 
-def storeData(itemData, cur, location, agent):
+def storeData(data, itemData, cur, location, agent):
     "Stores scanned data into database"
     for v in itemData.values():
         scanAgent = agent
@@ -67,9 +67,5 @@ def storeData(itemData, cur, location, agent):
         scanDate = v["scan_date"]
         scanTime = v["scan_time"]
 
-        # TODO: see if I can add the sql to the data.json file
-        cur.execute('''INSERT OR IGNORE INTO Items
-            (barcode, bar_type, scan_agent,
-            scan_location, scan_date, scan_time) VALUES
-            (?, ?, ?, ?, ?, ?)''',
+        cur.execute(data["insertItems"],
             (barcode, barType, scanAgent, scanLocation, scanDate, scanTime))

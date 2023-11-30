@@ -30,7 +30,7 @@ scan.scanItems()
 itemData = scan.getScanData()
 
 # Stores scanned data into database
-storeData(itemData, cur, location, agent)
+storeData(data, itemData, cur, location, agent)
 conn.commit()
 t.sleep(1)
 print('*Data stored*')
