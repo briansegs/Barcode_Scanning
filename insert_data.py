@@ -19,8 +19,23 @@ createAgentTable = '''
     DROP TABLE IF EXISTS Agents;
     CREATE TABLE Agents (
         'id' INTEGER PRIMARY KEY AUTOINCREMENT,
-        'barcode' INTEGER,
-        'name' TEXT
+        'name' TEXT,
+        'barcode' INTEGER
         );
 '''
 cur.executescript(createAgentTable)
+
+for agent in data["agents"].values():
+    name = agent["name"]
+    barcode = agent["barcode"]
+
+    try:
+        cur.execute('''
+                INSERT OR IGNORE INTO Agents (name, barcode) 
+                VALUES (?, ?)''', (name, barcode))
+        print(name, barcode)
+
+    except sqlite3.Error as error:
+        print(error)
+
+conn.commit()
