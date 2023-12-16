@@ -40,7 +40,7 @@ def getAgent():
             agent = '1'
 
         if agent in data["agents"]:
-            agent = data["agents"][agent]
+            agent = data["agents"][agent]["name"]
             break
         print('Agent not found')
     return agent

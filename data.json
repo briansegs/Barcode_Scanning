@@ -6,10 +6,22 @@
         "fl" : "Florida"
     },
     "agents" : {
-        "1" : "Brian",
-        "2" : "Tom",
-        "3" : "Ron",
-        "4" : "Barb"
+        "1" : {
+            "barcode" : "1017574074152",
+            "name" : "Brian"
+        },
+        "2" : {
+            "barcode" : "1013447692447",
+            "name" : "Tom"
+        },
+        "3" : {
+            "barcode" : "1015241102962",
+            "name" : "Ron"
+        },
+        "4" : {
+            "barcode" : "1019148016353",
+            "name" : "Barb"
+        }
     },
     "createTables" : "DROP TABLE IF EXISTS Items; CREATE TABLE Items ('barcode' INTEGER, 'bar_type' TEXT, 'scan_agent' TEXT, 'scan_location' TEXT, 'scan_date' NUMERIC, 'scan_time' NUMERIC)",
     "insertItems" : "INSERT OR IGNORE INTO Items (barcode, bar_type, scan_agent, scan_location, scan_date, scan_time) VALUES (?, ?, ?, ?, ?, ?)"
