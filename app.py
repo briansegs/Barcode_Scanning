@@ -7,7 +7,6 @@ from functions import storeData, getLocation, getData
 
 # TODO: get mock data from database {invetory}
 # TODO: check if scanned data is in inventory
-# TODO: add if else statments 
 
 # Connects to database
 conn = sqlite3.connect('testDb.sqlite')
@@ -30,10 +29,22 @@ t.sleep(1)
 location = getLocation()
 print('Scan your user ID.')
 t.sleep(1)
-agent, agentCode = aScan.scanAgent()
+
+try:
+    agent, agentCode = aScan.scanAgent()
+
+except TypeError:
+    print('The program can not proceed without an agent.')
+    t.sleep(1)
+    print('Start the program over once you have an agent ID.')
+    t.sleep(1)
+    print('*Application shutting down...*')
+    t.sleep(1)
+    quit()
+
 print(f'Welcome {agent}. You are logged into the {location} location.')
 t.sleep(1)
-print('Starting scanner...')
+print('*Starting scanner...*')
 t.sleep(1)
 iScan.scanItems()
 itemData = iScan.getScanData()
