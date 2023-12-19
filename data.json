@@ -21,6 +21,10 @@
         {
             "barcode" : "1019148016353",
             "name" : "Barb"
+        },
+        {
+            "barcode" : "0050428327937",
+            "name" : "Test User"
         }
     ],
     "createTables" : "DROP TABLE IF EXISTS Items; CREATE TABLE Items ('barcode' INTEGER, 'bar_type' TEXT, 'scan_agent' TEXT, 'scan_location' TEXT, 'scan_date' NUMERIC, 'scan_time' NUMERIC)",
