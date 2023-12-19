@@ -18,24 +18,18 @@ data = getData()
 createAgentTable = '''
     DROP TABLE IF EXISTS Agents;
     CREATE TABLE Agents (
-        'id' INTEGER PRIMARY KEY AUTOINCREMENT,
-        'name' TEXT,
-        'barcode' INTEGER
+        'barcode' INTEGER,
+        'name' TEXT
         );
 '''
 cur.executescript(createAgentTable)
 
-for agent in data["agents"].values():
-    name = agent["name"]
-    barcode = agent["barcode"]
+insertAgents = "INSERT OR IGNORE INTO Agents VALUES(:barcode, :name)"
 
-    try:
-        cur.execute('''
-                INSERT OR IGNORE INTO Agents (name, barcode) 
-                VALUES (?, ?)''', (name, barcode))
-        print(name, barcode)
-
-    except sqlite3.Error as error:
-        print(error)
-
+cur.executemany(insertAgents, data["agents"])
 conn.commit()
+
+# code = (data["agents"][0]["barcode"],)
+
+# res = cur.execute("SELECT name, barcode FROM Agents WHERE barcode = ?", code)
+# print(res.fetchone())
