@@ -5,13 +5,6 @@ import cv2 as cv
 from pyzbar.pyzbar import decode
 from scanner import Scanner
 
-# TODO: import a dict of agent info including barcodes to use
-# TODO: Scanner should check if agent is in dict
-# TODO: Scanner should return a boolean plus agent info to app
-# TODO: Scanner should quit when it finds a match in dict
-# TODO: Idea - Scanner or app could send a check-in message -
-# with time and date
-
 class AgentScanner(Scanner):
     "scans agent's barcodes"
     def scanAgent(self):
@@ -42,7 +35,7 @@ class AgentScanner(Scanner):
                 if name is not None:
                     return name, agentCode
                 else:
-                    print("Agent not found")
+                    print("Agent not found.")
                     t.sleep(1)
         cam.release()
         cv.destroyAllWindows()
