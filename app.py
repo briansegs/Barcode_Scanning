@@ -49,6 +49,12 @@ t.sleep(1)
 iScan.scanItems()
 itemData = iScan.getScanData()
 
+if len(itemData) == 0:
+    print('No Items were scanned.')
+    t.sleep(1)
+    print('*Application shutting down...*')
+    quit()
+
 # Stores scanned data into database
 storeData(data, itemData, cur, location, agent, agentCode)
 conn.commit()
