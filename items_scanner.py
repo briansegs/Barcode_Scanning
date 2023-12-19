@@ -27,7 +27,6 @@ class ItemScanner(Scanner):
                 if bCode not in self.itemData:
                     self.itemData[bCode] = {
                         "barcode" : bCode,
-                        "bar_type" : code.type,
                         "scan_date" : getDate(),
                         "scan_time" : getTime()
                         }
