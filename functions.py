@@ -27,24 +27,6 @@ def getLocation():
         print('Not a state \nStates: ny, nj, pa, fl \nPlease pick one from the list')
     return location
 
-def getAgent():
-    "Retuns agent from input statment"
-    # TODO: Scan a barcode to find agent name
-    data = getData()
-    agent = ''
-    while agent not in data["agents"]:
-        agent = input('Enter your agent code: ')
-
-        # To speed up testing (remove for production version)
-        if agent == '':
-            agent = '1'
-
-        if agent in data["agents"]:
-            agent = data["agents"][agent]["name"]
-            break
-        print('Agent not found')
-    return agent
-
 def getDate():
     "returns current date"
     now = datetime.now()
