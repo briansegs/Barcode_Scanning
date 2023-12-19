@@ -18,13 +18,14 @@ data = getData()
 createAgentTable = '''
     DROP TABLE IF EXISTS Agents;
     CREATE TABLE Agents (
+        'id' INTEGER PRIMARY KEY AUTOINCREMENT,
         'barcode' TEXT,
         'name' TEXT
         );
 '''
 cur.executescript(createAgentTable)
 
-insertAgents = "INSERT OR IGNORE INTO Agents VALUES(:barcode, :name)"
+insertAgents = "INSERT OR IGNORE INTO Agents (barcode, name) VALUES (:barcode, :name)"
 
 cur.executemany(insertAgents, data["agents"])
 conn.commit()
