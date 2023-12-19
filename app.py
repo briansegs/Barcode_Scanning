@@ -22,7 +22,7 @@ print('*Tables created*')
 t.sleep(1)
 
 # Scans barcodes and stores in data{}
-scan = ItemScanner()
+iScan = ItemScanner()
 aScan = AgentScanner()
 
 print('Login to start scanning.')
@@ -35,8 +35,8 @@ print(f'Welcome {agent}. You are logged into the {location} location.')
 t.sleep(1)
 print('Starting scanner...')
 t.sleep(1)
-scan.scanItems()
-itemData = scan.getScanData()
+iScan.scanItems()
+itemData = iScan.getScanData()
 
 # Stores scanned data into database
 storeData(data, itemData, cur, location, agent)
