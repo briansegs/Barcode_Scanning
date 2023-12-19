@@ -1,9 +1,9 @@
 """Agent Scanner"""
 import time as t
+import sqlite3
 import cv2 as cv
 from pyzbar.pyzbar import decode
 from scanner import Scanner
-from functions import getDate, getTime
 
 # TODO: import a dict of agent info including barcodes to use
 # TODO: Scanner should check if agent is in dict
@@ -16,6 +16,11 @@ class AgentScanner(Scanner):
     "scans agent's barcodes"
     def scanAgent(self):
         "Scans Agent barcodes"
+        db = 'testDb.sqlite'
+        conn = sqlite3.connect(db)
+        cur = conn.cursor()
+        print(f'Hit the ({self.closeKey}) key to quit')
+
         cam = cv.VideoCapture(0)
 
         while True:
@@ -24,27 +29,17 @@ class AgentScanner(Scanner):
             cv.imshow('frame', frame)
 
             if cv.waitKey(1) == ord(self.closeKey):
-                # TODO: return False for app
                 break
 
             for code in decode(frame):
-                bCode = code.data.decode('utf-8')
-                # TODO: change "if statement" to check agent dict
-                if bCode not in self.data:
-                    # TODO: also add agent info to data{}
-                    self.data[bCode] = {
-                        "barcode" : bCode,
-                        "bar_type" : code.type,
-                        "scan_date" : getDate(),
-                        "scan_time" : getTime()
-                        }
-                    # TODO: return True plus data{}
-                    # TODO: remove print statment
-                    print(bCode)
-                    t.sleep(5)
+                bCode = str(code.data.decode('utf-8'))
+                print(bCode)
+                res = cur.execute("SELECT name, barcode FROM Agents WHERE barcode = ?", (bCode,))
+                name = res.fetchone()[0]
+                if name is not None:
+                    return name
                 else:
-                    # TODO: change to print that agent is not found
-                    print(bCode)
-                    t.sleep(5)
+                    print("Agent not found")
+                    t.sleep(2)
         cam.release()
         cv.destroyAllWindows()
