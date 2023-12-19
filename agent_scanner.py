@@ -19,7 +19,7 @@ class AgentScanner(Scanner):
         db = 'testDb.sqlite'
         conn = sqlite3.connect(db)
         cur = conn.cursor()
-        print(f'Hit the ({self.closeKey}) key to quit')
+        print(f'Hit the ({self.closeKey}) key to quit scanning.')
 
         cam = cv.VideoCapture(0)
 
