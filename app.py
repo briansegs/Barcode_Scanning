@@ -2,7 +2,8 @@
 import sqlite3
 import time as t
 from items_scanner import ItemScanner
-from functions import storeData, getAgent, getLocation, getData
+from agent_scanner import AgentScanner
+from functions import storeData, getLocation, getData
 
 # TODO: get mock data from database {invetory}
 # TODO: check if scanned data is in inventory
@@ -25,7 +26,8 @@ scan = ItemScanner()
 print('*Starting scanner*')
 t.sleep(1)
 location = getLocation()
-agent = getAgent()
+aScan = AgentScanner()
+agent = aScan.scanAgent()
 scan.scanItems()
 itemData = scan.getScanData()
 
