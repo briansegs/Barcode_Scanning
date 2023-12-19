@@ -18,7 +18,7 @@ data = getData()
 createAgentTable = '''
     DROP TABLE IF EXISTS Agents;
     CREATE TABLE Agents (
-        'barcode' INTEGER,
+        'barcode' TEXT,
         'name' TEXT
         );
 '''
