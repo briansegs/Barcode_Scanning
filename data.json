@@ -26,33 +26,27 @@
     "inventory" : [
         {
             "barcode" : "0052000135138",
-            "name" : "Gatorade Fruit Punch",
-            "quantity" : 0
+            "name" : "Gatorade Fruit Punch"
         },
         {
             "barcode" : "0049000079388",
-            "name" : "Power ADE Fruit Punch",
-            "quantity" : 0
+            "name" : "Power ADE Fruit Punch"
         },
         {
             "barcode" : "0012000811197",
-            "name" : "Pepsi Wild Cherry",
-            "quantity" : 0
+            "name" : "Pepsi Wild Cherry"
         },
         {
             "barcode" : "0050428327937",
-            "name" : "Caliber Composition Book",
-            "quantity" : 0
+            "name" : "Caliber Composition Book"
         },
         {
             "barcode" : "0012546011075",
-            "name" : "Trident Spearmint",
-            "quantity" : 0
+            "name" : "Trident Spearmint"
         },
         {
             "barcode" : "0070330000025",
-            "name" : "BIC Lighter Blk sm",
-            "quantity" : 0
+            "name" : "BIC Lighter Blk sm"
         }
     ],
     "createTables" : "DROP TABLE IF EXISTS Items; CREATE TABLE Items ('barcode' TEXT, 'scan_agent' TEXT, 'scan_agent_code' TEXT, 'scan_location' TEXT, 'scan_date' NUMERIC, 'scan_time' NUMERIC)",
