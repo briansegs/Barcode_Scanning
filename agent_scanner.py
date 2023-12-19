@@ -30,6 +30,7 @@ class AgentScanner(Scanner):
                 print(bCode)
                 res = cur.execute("SELECT name, barcode FROM Agents WHERE barcode = ?", (bCode,))
                 agentData = res.fetchone()
+
                 if agentData is None:
                     print("Agent not found.")
                     t.sleep(1)
