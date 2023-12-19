@@ -9,6 +9,8 @@ class ItemScanner(Scanner):
     "scans item barcodes"
     def scanItems(self):
         "Scans item barcodes and stores them"
+        print(f'Hit the ({self.closeKey}) key to quit')
+
         cam = cv.VideoCapture(0)
 
         while True:
