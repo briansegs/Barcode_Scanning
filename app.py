@@ -23,12 +23,18 @@ t.sleep(1)
 
 # Scans barcodes and stores in data{}
 scan = ItemScanner()
-print('*Starting scanner*')
+aScan = AgentScanner()
+
+print('Login to start scanning.')
 t.sleep(1)
 location = getLocation()
-aScan = AgentScanner()
+print('Scan your user ID.')
+t.sleep(1)
 agent, agentCode = aScan.scanAgent()
-print(f'Welcome {agent}')
+print(f'Welcome {agent}. You are logged into the {location} location.')
+t.sleep(1)
+print('Starting scanner...')
+t.sleep(1)
 scan.scanItems()
 itemData = scan.getScanData()
 
