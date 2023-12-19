@@ -30,12 +30,13 @@ class AgentScanner(Scanner):
                 print(bCode)
                 res = cur.execute("SELECT name, barcode FROM Agents WHERE barcode = ?", (bCode,))
                 agentData = res.fetchone()
-                name = agentData[0]
-                agentCode = agentData[1]
-                if name is not None:
-                    return name, agentCode
-                else:
+                if agentData is None:
                     print("Agent not found.")
                     t.sleep(1)
+                else:
+                    name = agentData[0]
+                    agentCode = agentData[1]
+                    return name, agentCode
+
         cam.release()
         cv.destroyAllWindows()
