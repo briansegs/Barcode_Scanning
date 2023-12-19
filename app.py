@@ -7,7 +7,7 @@ from functions import storeData, getLocation, getData
 
 # TODO: get mock data from database {invetory}
 # TODO: check if scanned data is in inventory
-# TODO: rethink how to store data & make scanner more generic
+# TODO: add if else statments 
 
 # Connects to database
 conn = sqlite3.connect('testDb.sqlite')
