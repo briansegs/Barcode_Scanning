@@ -20,6 +20,7 @@ class AgentScanner(Scanner):
         conn = sqlite3.connect(db)
         cur = conn.cursor()
         print(f'Hit the ({self.closeKey}) key to quit scanning.')
+        t.sleep(1)
 
         cam = cv.VideoCapture(0)
 
@@ -42,6 +43,6 @@ class AgentScanner(Scanner):
                     return name, agentCode
                 else:
                     print("Agent not found")
-                    t.sleep(2)
+                    t.sleep(1)
         cam.release()
         cv.destroyAllWindows()

@@ -10,6 +10,7 @@ class ItemScanner(Scanner):
     def scanItems(self):
         "Scans item barcodes and stores them"
         print(f'Hit the ({self.closeKey}) key to quit scanning.')
+        t.sleep(1)
 
         cam = cv.VideoCapture(0)
 
@@ -31,9 +32,9 @@ class ItemScanner(Scanner):
                         "scan_time" : getTime()
                         }
                     print(bCode)
-                    t.sleep(5)
+                    t.sleep(2)
                 else:
                     print(bCode)
-                    t.sleep(5)
+                    t.sleep(2)
         cam.release()
         cv.destroyAllWindows()
