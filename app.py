@@ -39,7 +39,7 @@ iScan.scanItems()
 itemData = iScan.getScanData()
 
 # Stores scanned data into database
-storeData(data, itemData, cur, location, agent)
+storeData(data, itemData, cur, location, agent, agentCode)
 conn.commit()
 t.sleep(1)
 print('*Data stored*')

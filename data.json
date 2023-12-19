@@ -27,6 +27,6 @@
             "name" : "Test User"
         }
     ],
-    "createTables" : "DROP TABLE IF EXISTS Items; CREATE TABLE Items ('barcode' INTEGER, 'bar_type' TEXT, 'scan_agent' TEXT, 'scan_location' TEXT, 'scan_date' NUMERIC, 'scan_time' NUMERIC)",
-    "insertItems" : "INSERT OR IGNORE INTO Items (barcode, bar_type, scan_agent, scan_location, scan_date, scan_time) VALUES (?, ?, ?, ?, ?, ?)"
+    "createTables" : "DROP TABLE IF EXISTS Items; CREATE TABLE Items ('barcode' TEXT, 'bar_type' TEXT, 'scan_agent' TEXT, 'scan_agent_code' TEXT, 'scan_location' TEXT, 'scan_date' NUMERIC, 'scan_time' NUMERIC)",
+    "insertItems" : "INSERT OR IGNORE INTO Items (barcode, bar_type, scan_agent, scan_agent_code, scan_location, scan_date, scan_time) VALUES (?, ?, ?, ?, ?, ?, ?)"
 }
