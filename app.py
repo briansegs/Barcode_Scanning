@@ -20,16 +20,17 @@ cur.executescript(data["createTables"])
 print('*Tables created*')
 t.sleep(1)
 
-# Scans barcodes and stores in data{}
+# Create scanners
 iScan = ItemScanner()
 aScan = AgentScanner()
 
+# Login process
 print('Login to start scanning.')
 t.sleep(1)
 location = getLocation()
+
 print('Scan your user ID.')
 t.sleep(1)
-
 try:
     agent, agentCode = aScan.scanAgent()
 
@@ -42,10 +43,12 @@ except TypeError:
     t.sleep(1)
     quit()
 
+# Scans barcodes and stores in data{}
 print(f'Welcome {agent}. You are logged into the {location} location.')
 t.sleep(1)
 print('*Starting scanner...*')
 t.sleep(1)
+
 iScan.scanItems()
 itemData = iScan.getScanData()
 
