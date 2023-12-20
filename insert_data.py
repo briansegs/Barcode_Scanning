@@ -1,5 +1,6 @@
 "Add data to database"
 import sqlite3
+import time as t
 from functions import getData
 
 db = 'testDb.sqlite'
@@ -8,6 +9,7 @@ try:
     conn = sqlite3.connect(db)
     cur = conn.cursor()
     print(f'Connected to database: {db}')
+    t.sleep(1)
 except sqlite3.Error as error:
     print(f'failed to connect to database: {db}')
     print(error)
@@ -51,10 +53,15 @@ def insertInventory():
 
 while True:
     print("Options: ")
+    t.sleep(1)
     print("1. Update agents")
+    t.sleep(1)
     print("2. Update Inventory")
+    t.sleep(1)
     print("3. Quit")
+    t.sleep(.5)
     opt = input(">>> ")
+    t.sleep(1)
 
     if opt == "1":
         insertAgents()
@@ -64,8 +71,9 @@ while True:
         insertInventory()
         print("Inventory update completed")
         break
-    elif opt == "q":
+    elif opt == "3":
         print("*Quitting program...*")
         quit()
 
-    print("Error: Enter either 1, 2, or q")
+    print("Error: Enter either 1, 2, or 3")
+    t.sleep(1)
