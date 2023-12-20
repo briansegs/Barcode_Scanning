@@ -32,6 +32,8 @@ class ItemScanner(Scanner):
                 res = cur.execute("SELECT name, barcode FROM Inventory WHERE barcode = ?", (bCode,))
                 inventoryData = res.fetchone()
 
+                # TODO: Add in quanity logic
+
                 if inventoryData is None:
                     print("Item not found.")
                     t.sleep(1)
