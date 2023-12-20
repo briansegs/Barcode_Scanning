@@ -46,8 +46,10 @@ def storeData(data, itemData, cur, location, agent, agentCode):
         scanAgentCode = agentCode
         scanLocation = location
         barcode = v["barcode"]
+        name = v["name"]
+        quantity = v["quantity"]
         scanDate = v["scan_date"]
         scanTime = v["scan_time"]
 
         cur.execute(data["insertItems"],
-            (barcode, scanAgent, scanAgentCode, scanLocation, scanDate, scanTime))
+            (barcode, scanAgent, scanAgentCode, scanLocation, name, quantity, scanDate, scanTime))
