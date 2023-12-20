@@ -5,11 +5,10 @@ from items_scanner import ItemScanner
 from agent_scanner import AgentScanner
 from functions import storeData, getLocation, getData
 
-# TODO: get mock data from database {invetory}
-# TODO: check if scanned data is in inventory
 # TODO: Creat agent in app if admin
 # TODO: Clean up database 
 # TODO: Track agent login and logout
+# TODO: Pass name and quantity to database
 
 # Connects to database
 conn = sqlite3.connect('testDb.sqlite')
