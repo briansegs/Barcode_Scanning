@@ -34,3 +34,18 @@ conn.commit()
 
 # res = cur.execute("SELECT name, barcode FROM Agents WHERE barcode = ?", code)
 # print(res.fetchone())
+
+createInventoryTable = '''
+    DROP TABLE IF EXISTS Inventory;
+    CREATE TABLE Inventory (
+        'barcode' TEXT,
+        'name' TEXT
+    );
+'''
+
+cur.executescript(createInventoryTable)
+
+insertInventory = "INSERT OR IGNORE INTO Inventory (barcode, name) VALUES (:barcode, :name)"
+
+cur.executemany(insertInventory, data["inventory"])
+conn.commit()
