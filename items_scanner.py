@@ -37,8 +37,33 @@ class ItemScanner(Scanner):
                     t.sleep(1)
 
                 elif bCode in self.itemData:
+                    name = self.itemData[bCode]["name"]
                     print("Item already scanned.")
-                    print("Would you like to update the quanity?")
+                    print(f'Would you like to update the quantity of {name}?')
+                    ans = input("Enter y to update: ")
+
+                    if ans == "y":
+                        oldQty = self.itemData[bCode]["quantity"]
+
+                        try:
+                            newQty = int(input("Enter Quantity: "))
+                            t.sleep(.5)
+                            if newQty <= 0:
+                                print("Error: Number must be greater than 0.")
+                                print("Could not update the quantity.")
+                            elif newQty > 0:
+                                self.itemData[bCode]["quantity"] = newQty
+                                print(f'{name} quantity updated from {oldQty} to {newQty}.')
+
+                        except ValueError:
+                            print("Error: Not a number.")
+                            t.sleep(1)
+                            print("Could not update the quantity.")
+                            t.sleep(1)
+
+                    else:
+                        print("Continue scanning.")
+                        t.sleep(1)
 
                 else:
                     itemName = inventoryData[0]
@@ -47,7 +72,7 @@ class ItemScanner(Scanner):
                     t.sleep(.5)
                     while True:
                         try:
-                            qty = int(input("Enter Quanity: "))
+                            qty = int(input("Enter Quantity: "))
                             t.sleep(.5)
                             if qty <= 0:
                                 print("Error: Enter a number greater than 0.")
@@ -65,7 +90,8 @@ class ItemScanner(Scanner):
                         "scan_date" : getDate(),
                         "scan_time" : getTime()
                         }
-                    t.sleep(2)
+                    print(f'{itemName} saved.')
+                    t.sleep(1)
 
         cam.release()
         cv.destroyAllWindows()
