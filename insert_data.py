@@ -15,37 +15,57 @@ except sqlite3.Error as error:
 
 data = getData()
 
-createAgentTable = '''
-    DROP TABLE IF EXISTS Agents;
-    CREATE TABLE Agents (
-        'id' INTEGER PRIMARY KEY AUTOINCREMENT,
-        'barcode' TEXT,
-        'name' TEXT
+def insertAgents():
+    "inserts agents from data into database"
+    createAgentTable = '''
+        DROP TABLE IF EXISTS Agents;
+        CREATE TABLE Agents (
+            'id' INTEGER PRIMARY KEY AUTOINCREMENT,
+            'barcode' TEXT,
+            'name' TEXT
+            );
+    '''
+    cur.executescript(createAgentTable)
+
+    addAgents = "INSERT OR IGNORE INTO Agents (barcode, name) VALUES (:barcode, :name)"
+
+    cur.executemany(addAgents, data["agents"])
+    conn.commit()
+
+def insertInventory():
+    "inserts items from data into database"
+    createInventoryTable = '''
+        DROP TABLE IF EXISTS Inventory;
+        CREATE TABLE Inventory (
+            'barcode' TEXT,
+            'name' TEXT
         );
-'''
-cur.executescript(createAgentTable)
+    '''
 
-insertAgents = "INSERT OR IGNORE INTO Agents (barcode, name) VALUES (:barcode, :name)"
+    cur.executescript(createInventoryTable)
 
-cur.executemany(insertAgents, data["agents"])
-conn.commit()
+    addInventory = "INSERT OR IGNORE INTO Inventory (barcode, name) VALUES (:barcode, :name)"
 
-# code = (data["agents"][0]["barcode"],)
+    cur.executemany(addInventory, data["inventory"])
+    conn.commit()
 
-# res = cur.execute("SELECT name, barcode FROM Agents WHERE barcode = ?", code)
-# print(res.fetchone())
+while True:
+    print("Options: ")
+    print("1. Update agents")
+    print("2. Update Inventory")
+    print("3. Quit")
+    opt = input(">>> ")
 
-createInventoryTable = '''
-    DROP TABLE IF EXISTS Inventory;
-    CREATE TABLE Inventory (
-        'barcode' TEXT,
-        'name' TEXT
-    );
-'''
+    if opt == "1":
+        insertAgents()
+        print("Agents update completed")
+        break
+    elif opt == "2":
+        insertInventory()
+        print("Inventory update completed")
+        break
+    elif opt == "q":
+        print("*Quitting program...*")
+        quit()
 
-cur.executescript(createInventoryTable)
-
-insertInventory = "INSERT OR IGNORE INTO Inventory (barcode, name) VALUES (:barcode, :name)"
-
-cur.executemany(insertInventory, data["inventory"])
-conn.commit()
+    print("Error: Enter either 1, 2, or q")
