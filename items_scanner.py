@@ -32,8 +32,6 @@ class ItemScanner(Scanner):
                 res = cur.execute("SELECT name, barcode FROM Inventory WHERE barcode = ?", (bCode,))
                 inventoryData = res.fetchone()
 
-                # TODO: Add in quanity logic
-
                 if inventoryData is None:
                     print("Item not found.")
                     t.sleep(1)
@@ -45,13 +43,28 @@ class ItemScanner(Scanner):
                 else:
                     itemName = inventoryData[0]
                     itemCode = inventoryData[1]
+                    print(itemName)
+                    t.sleep(.5)
+                    while True:
+                        try:
+                            qty = int(input("Enter Quanity: "))
+                            t.sleep(.5)
+                            if qty <= 0:
+                                print("Error: Enter a number greater than 0.")
+                                t.sleep(1)
+                            elif qty > 0:
+                                break
+                        except ValueError:
+                            print("Error: Not a number.")
+                            t.sleep(1)
+
                     self.itemData[bCode] = {
                         "barcode" : itemCode,
                         "name" : itemName,
+                        "quantity" : qty,
                         "scan_date" : getDate(),
                         "scan_time" : getTime()
                         }
-                    print(itemName)
                     t.sleep(2)
 
         cam.release()
