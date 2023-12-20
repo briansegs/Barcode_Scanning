@@ -38,6 +38,10 @@ class ItemScanner(Scanner):
                     print("Item not found.")
                     t.sleep(1)
 
+                elif bCode in self.itemData:
+                    print("Item already scanned.")
+                    print("Would you like to update the quanity?")
+
                 else:
                     itemName = inventoryData[0]
                     itemCode = inventoryData[1]
