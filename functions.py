@@ -1,19 +1,19 @@
 """data and functions for app"""
 from datetime import datetime
+from data import states
 
 def getLocation():
     "Retuns location from input statment"
-    data = getData()
     location = ''
-    while location not in data["states"]:
+    while location not in states:
         location = input('Enter state: ')
 
         # To speed up testing (remove for production version)
         if location == '':
             location = 'ny'
 
-        if location in data["states"]:
-            location = data["states"][location]
+        if location in states:
+            location = states[location]
             break
         print('Not a state \nStates: ny, nj, pa, fl \nPlease pick one from the list')
     return location
