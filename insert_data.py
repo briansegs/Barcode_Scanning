@@ -1,7 +1,7 @@
 "Add data to database"
 import sqlite3
 import time as t
-from functions import getData
+from data import agents, inventory
 
 db = 'testDb.sqlite'
 
@@ -14,8 +14,6 @@ except sqlite3.Error as error:
     print(f'failed to connect to database: {db}')
     print(error)
     quit()
-
-data = getData()
 
 def insertAgents():
     "inserts agents from data into database"
@@ -31,7 +29,7 @@ def insertAgents():
 
     addAgents = "INSERT OR IGNORE INTO Agents (barcode, name) VALUES (:barcode, :name)"
 
-    cur.executemany(addAgents, data["agents"])
+    cur.executemany(addAgents, agents)
     conn.commit()
 
 def insertInventory():
@@ -48,7 +46,7 @@ def insertInventory():
 
     addInventory = "INSERT OR IGNORE INTO Inventory (barcode, name) VALUES (:barcode, :name)"
 
-    cur.executemany(addInventory, data["inventory"])
+    cur.executemany(addInventory, inventory)
     conn.commit()
 
 while True:
