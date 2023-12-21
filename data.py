@@ -1,11 +1,12 @@
-{
-    "states" : {
+"App data"
+
+states = {
         "ny" : "New York",
         "nj" : "New Jersey",
         "pa" : "Pennsylvinia",
         "fl" : "Florida"
-    },
-    "agents" : [
+    }
+agents = [
         {
             "barcode" : "1017574074152",
             "name" : "Brian"
@@ -22,8 +23,8 @@
             "barcode" : "1019148016353",
             "name" : "Barb"
         }
-    ],
-    "inventory" : [
+    ]
+inventory = [
         {
             "barcode" : "0052000135138",
             "name" : "Gatorade Fruit Punch"
@@ -48,7 +49,6 @@
             "barcode" : "0070330000025",
             "name" : "BIC Lighter Blk sm"
         }
-    ],
-    "createTables" : "DROP TABLE IF EXISTS Items; CREATE TABLE Items ('scan_agent' TEXT, 'scan_agent_code' TEXT, 'scan_location' TEXT, 'barcode' TEXT, 'name' TEXT, 'quantity' INTEGER, 'scan_date' NUMERIC, 'scan_time' NUMERIC)",
-    "insertItems" : "INSERT OR IGNORE INTO Items (scan_agent, scan_agent_code, scan_location, barcode, name, quantity, scan_date, scan_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
-}
+    ]
+createTables = "DROP TABLE IF EXISTS Items; CREATE TABLE Items ('scan_agent' TEXT, 'scan_agent_code' TEXT, 'scan_location' TEXT, 'barcode' TEXT, 'name' TEXT, 'quantity' INTEGER, 'scan_date' NUMERIC, 'scan_time' NUMERIC)",
+insertItems = "INSERT OR IGNORE INTO Items (scan_agent, scan_agent_code, scan_location, barcode, name, quantity, scan_date, scan_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
