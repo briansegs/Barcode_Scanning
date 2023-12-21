@@ -1,14 +1,5 @@
 """data and functions for app"""
-import json
 from datetime import datetime
-
-def getData():
-    "gets data from local json file"
-    dataFile = "data.json"
-    with open(dataFile, "r", encoding="utf-8") as f:
-        data = json.load(f)
-        f.close()
-    return data
 
 def getLocation():
     "Retuns location from input statment"
