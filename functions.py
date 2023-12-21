@@ -1,6 +1,6 @@
 """data and functions for app"""
 from datetime import datetime
-from data import states
+from data import states, insertItems
 
 def getLocation():
     "Retuns location from input statment"
@@ -30,7 +30,7 @@ def getTime():
     time = now.strftime("%H:%M:%S")
     return time
 
-def storeData(data, itemData, cur, location, agent, agentCode):
+def storeData(itemData, cur, location, agent, agentCode):
     "Stores scanned data into database"
     for v in itemData.values():
         scanAgent = agent
@@ -42,5 +42,5 @@ def storeData(data, itemData, cur, location, agent, agentCode):
         scanDate = v["scan_date"]
         scanTime = v["scan_time"]
 
-        cur.execute(data["insertItems"],
+        cur.execute(insertItems,
             (scanAgent, scanAgentCode, scanLocation, barcode, name, quantity, scanDate, scanTime))

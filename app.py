@@ -3,7 +3,8 @@ import sqlite3
 import time as t
 from items_scanner import ItemScanner
 from agent_scanner import AgentScanner
-from functions import storeData, getLocation, getData
+from functions import storeData, getLocation
+from data import createTables
 
 # TODO: Creat agent in app if admin
 # TODO: Clean up database 
@@ -17,8 +18,7 @@ print('*Connected to database*')
 t.sleep(1)
 
 # Drops and then creates tables in database
-data = getData()
-cur.executescript(data["createTables"])
+cur.executescript(createTables)
 print('*Tables created*')
 t.sleep(1)
 
@@ -61,7 +61,7 @@ if len(itemData) == 0:
     quit()
 
 # Stores scanned data into database
-storeData(data, itemData, cur, location, agent, agentCode)
+storeData(itemData, cur, location, agent, agentCode)
 conn.commit()
 t.sleep(1)
 print('*Data stored*')
