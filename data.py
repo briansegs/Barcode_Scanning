@@ -60,16 +60,15 @@ locations = [
     ]
 
 createTables = '''
-    DROP TABLE IF EXISTS Items; 
-    CREATE TABLE Items (
-        'scan_agent' TEXT, 
-        'scan_agent_code' TEXT, 
-        'scan_location' TEXT, 
-        'barcode' TEXT, 
-        'name' TEXT, 
+    DROP TABLE IF EXISTS Scan; 
+    CREATE TABLE Scan (
+        'id' INTEGER PRIMARY KEY AUTOINCREMENT,
+        'date' NUMERIC, 
+        'time' NUMERIC,
         'quantity' INTEGER, 
-        'scan_date' NUMERIC, 
-        'scan_time' NUMERIC
+        'item_id' INTEGER, 
+        'agent_id' INTEGER, 
+        'location_id' INTEGER
         )
     '''
 
