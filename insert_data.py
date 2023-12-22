@@ -1,7 +1,7 @@
 "Add data to database"
 import sqlite3
 import time as t
-from data import agents, inventory, locations
+from data import agents, items, locations
 
 db = 'testDb.sqlite'
 
@@ -36,24 +36,25 @@ def insertAgents():
     cur.executemany(addAgents, agents)
     conn.commit()
 
-def insertInventory():
+def insertItems():
     "inserts items from data into database"
-    createInventoryTable = '''
-        DROP TABLE IF EXISTS Inventory;
-        CREATE TABLE Inventory (
+    createItemsTable = '''
+        DROP TABLE IF EXISTS Items;
+        CREATE TABLE Items (
+            'id' INTEGER PRIMARY KEY AUTOINCREMENT,
             'barcode' TEXT,
             'name' TEXT
         );
     '''
 
-    cur.executescript(createInventoryTable)
+    cur.executescript(createItemsTable)
 
-    addInventory = '''
-        INSERT OR IGNORE INTO Inventory (barcode, name) 
+    addItems = '''
+        INSERT OR IGNORE INTO Items (barcode, name) 
         VALUES (:barcode, :name)
         '''
 
-    cur.executemany(addInventory, inventory)
+    cur.executemany(addItems, items)
     conn.commit()
 
 def insertLocations():
@@ -76,7 +77,7 @@ def insertLocations():
 while True:
     print("Options: ")
     print("1. Update agents")
-    print("2. Update Inventory")
+    print("2. Update Items")
     print("3. Update Locations")
     print("4. Quit")
     t.sleep(.5)
@@ -88,8 +89,8 @@ while True:
         print("Agents update completed")
         break
     elif opt == "2":
-        insertInventory()
-        print("Inventory update completed")
+        insertItems()
+        print("Items update completed")
         break
     elif opt == "3":
         insertLocations()

@@ -25,7 +25,7 @@ agents = [
         }
     ]
 
-inventory = [
+items = [
         {
             "barcode" : "0052000135138",
             "name" : "Gatorade Fruit Punch"
