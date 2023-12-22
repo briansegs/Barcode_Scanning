@@ -1,17 +1,15 @@
 """Agent Scanner"""
 import time as t
-import sqlite3
 import cv2 as cv
 from pyzbar.pyzbar import decode
 from scanner import Scanner
+from functions import getCursor
 
 class AgentScanner(Scanner):
     "scans agent's barcodes"
     def scanAgent(self):
         "Scans Agent barcodes"
-        db = 'testDb.sqlite'
-        conn = sqlite3.connect(db)
-        cur = conn.cursor()
+        cur = getCursor()
         print(f'Hit the ({self.closeKey}) key to quit scanning.')
         t.sleep(1)
 
