@@ -27,6 +27,7 @@ class AgentScanner(Scanner):
             for code in decode(frame):
                 bCode = str(code.data.decode('utf-8'))
                 print(bCode)
+
                 res = cur.execute(getAgent, (bCode,))
                 agentData = res.fetchone()
 
@@ -34,9 +35,9 @@ class AgentScanner(Scanner):
                     print("Agent not found.")
                     t.sleep(1)
                 else:
-                    name = agentData[0] + " " + agentData[1]
-                    agentCode = agentData[2]
-                    return name, agentCode
+                    agentId = agentData[0]
+                    name = agentData[1] + " " + agentData[2]
+                    return name, agentId
 
         cam.release()
         cv.destroyAllWindows()

@@ -32,7 +32,7 @@ locationId, location = getLocation()
 print('Scan your user ID.')
 t.sleep(1)
 try:
-    agent, agentCode = aScan.scanAgent()
+    agent, agentId = aScan.scanAgent()
 
 except TypeError:
     print('The program can not proceed without an agent.')
@@ -59,7 +59,7 @@ if len(itemData) == 0:
     quit()
 
 # Stores scanned data into database
-storeData(itemData, cur, location, agent, agentCode)
+storeData(itemData, cur, locationId, agentId)
 conn.commit()
 t.sleep(1)
 print('*Data stored*')

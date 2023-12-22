@@ -85,7 +85,8 @@ insertScan = '''
     '''
 
 getAgent = '''
-    SELECT 
+    SELECT
+        id,
         first_name, 
         last_name, 
         barcode 
