@@ -102,3 +102,10 @@ getAgent = '''
     FROM Agents 
     WHERE barcode = ?
     '''
+
+getLocations = '''
+    SELECT 
+        id, 
+        name 
+    FROM Locations
+    '''

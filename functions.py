@@ -2,7 +2,7 @@
 import sqlite3
 from datetime import datetime
 import time as t
-from data import insertItems
+from data import insertItems, getLocations
 from data import database as db
 
 def getCursor():
@@ -14,7 +14,7 @@ def getCursor():
 def getLocation():
     "Returns location"
     cur = getCursor()
-    res = cur.execute("SELECT id, name FROM Locations")
+    res = cur.execute(getLocations)
     lst = res.fetchall()
 
     locations = {}
