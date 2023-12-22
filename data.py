@@ -1,5 +1,7 @@
 "App data"
 
+database = 'testDb.sqlite'
+
 states = {
         "ny" : "New York",
         "nj" : "New Jersey",

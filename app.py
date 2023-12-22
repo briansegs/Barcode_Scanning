@@ -28,7 +28,7 @@ aScan = AgentScanner()
 # Login process
 print('Login to start scanning.')
 t.sleep(1)
-location = getLocation()
+locationId, location = getLocation()
 
 print('Scan your user ID.')
 t.sleep(1)

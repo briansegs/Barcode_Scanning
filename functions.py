@@ -1,22 +1,48 @@
 """data and functions for app"""
+import sqlite3
 from datetime import datetime
-from data import states, insertItems
+import time as t
+from data import insertItems
+from data import database as db
+
+def getCursor():
+    "Returns cursor from database"
+    conn = sqlite3.connect(db)
+    cur = conn.cursor()
+    return cur
 
 def getLocation():
-    "Retuns location from input statment"
-    location = ''
-    while location not in states:
-        location = input('Enter state: ')
+    "Returns location"
+    cur = getCursor()
+    res = cur.execute("SELECT id, name FROM Locations")
+    lst = res.fetchall()
 
-        # To speed up testing (remove for production version)
-        if location == '':
-            location = 'ny'
+    locations = {}
+    for item in lst:
+        locations[item[0]] = item[1]
 
-        if location in states:
-            location = states[location]
-            break
-        print('Not a state \nStates: ny, nj, pa, fl \nPlease pick one from the list')
-    return location
+    while True:
+        print("Enter the number of your Location: ")
+        t.sleep(1)
+        for num, location in locations.items():
+            print(f'{num}. {location}')
+        t.sleep(.5)
+
+        try:
+            opt = int(input(">>> "))
+            t.sleep(.5)
+            if opt in locations:
+                locationId = opt
+                location = locations[opt]
+                break
+
+        except ValueError:
+            pass
+
+        print("Error: Not an option.")
+        t.sleep(1)
+
+    return locationId, location
 
 def getDate():
     "returns current date"
