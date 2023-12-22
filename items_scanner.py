@@ -66,8 +66,8 @@ class ItemScanner(Scanner):
                         t.sleep(1)
 
                 else:
-                    itemName = inventoryData[0]
-                    itemCode = inventoryData[1]
+                    itemId = inventoryData[0]
+                    itemName = inventoryData[1]
                     print(itemName)
                     t.sleep(.5)
                     while True:
@@ -84,13 +84,13 @@ class ItemScanner(Scanner):
                             t.sleep(1)
 
                     self.itemData[bCode] = {
-                        "barcode" : itemCode,
+                        "item_id" : itemId,
                         "name" : itemName,
                         "quantity" : qty,
                         "scan_date" : getDate(),
                         "scan_time" : getTime()
                         }
-                    print(f'{itemName} saved.')
+                    print("item saved.")
                     t.sleep(1)
 
         cam.release()

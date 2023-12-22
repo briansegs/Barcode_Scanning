@@ -2,7 +2,7 @@
 import sqlite3
 from datetime import datetime
 import time as t
-from data import insertItems, getLocations
+from data import insertScan, getLocations
 from data import database as db
 
 def getCursor():
@@ -56,17 +56,15 @@ def getTime():
     time = now.strftime("%H:%M:%S")
     return time
 
-def storeData(itemData, cur, location, agent, agentCode):
+def storeData(itemData, cur, locationId, agentId):
     "Stores scanned data into database"
     for v in itemData.values():
-        scanAgent = agent
-        scanAgentCode = agentCode
-        scanLocation = location
-        barcode = v["barcode"]
-        name = v["name"]
+        date = v["scan_date"]
+        time = v["scan_time"]
         quantity = v["quantity"]
-        scanDate = v["scan_date"]
-        scanTime = v["scan_time"]
+        itemId = v["item_id"]
+        sAgentId = agentId
+        sLocationId = locationId
 
-        cur.execute(insertItems,
-            (scanAgent, scanAgentCode, scanLocation, barcode, name, quantity, scanDate, scanTime))
+        cur.execute(insertScan,
+            (date, time, quantity, itemId, sAgentId, sLocationId))
