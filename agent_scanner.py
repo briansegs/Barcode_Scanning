@@ -26,15 +26,18 @@ class AgentScanner(Scanner):
             for code in decode(frame):
                 bCode = str(code.data.decode('utf-8'))
                 print(bCode)
-                res = cur.execute("SELECT name, barcode FROM Agents WHERE barcode = ?", (bCode,))
+                res = cur.execute('''
+                                  SELECT first_name, last_name, barcode 
+                                  FROM Agents WHERE barcode = ?
+                                  ''', (bCode,))
                 agentData = res.fetchone()
 
                 if agentData is None:
                     print("Agent not found.")
                     t.sleep(1)
                 else:
-                    name = agentData[0]
-                    agentCode = agentData[1]
+                    name = agentData[0] + " " + agentData[1]
+                    agentCode = agentData[2]
                     return name, agentCode
 
         cam.release()
