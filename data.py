@@ -73,7 +73,7 @@ createTables = '''
     '''
 
 insertScan = '''
-    INSERT OR IGNORE INTO Items (
+    INSERT OR IGNORE INTO Scan (
         date,
         time,
         quantity,
