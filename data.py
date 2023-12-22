@@ -50,5 +50,28 @@ inventory = [
             "name" : "BIC Lighter Blk sm"
         }
     ]
-createTables = "DROP TABLE IF EXISTS Items; CREATE TABLE Items ('scan_agent' TEXT, 'scan_agent_code' TEXT, 'scan_location' TEXT, 'barcode' TEXT, 'name' TEXT, 'quantity' INTEGER, 'scan_date' NUMERIC, 'scan_time' NUMERIC)",
-insertItems = "INSERT OR IGNORE INTO Items (scan_agent, scan_agent_code, scan_location, barcode, name, quantity, scan_date, scan_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+createTables = '''
+    DROP TABLE IF EXISTS Items; 
+    CREATE TABLE Items (
+        'scan_agent' TEXT, 
+        'scan_agent_code' TEXT, 
+        'scan_location' TEXT, 
+        'barcode' TEXT, 
+        'name' TEXT, 
+        'quantity' INTEGER, 
+        'scan_date' NUMERIC, 
+        'scan_time' NUMERIC
+    )'''
+insertItems = '''
+    INSERT OR IGNORE INTO Items (
+        scan_agent, 
+        scan_agent_code, 
+        scan_location, 
+        barcode, 
+        name, 
+        quantity, 
+        scan_date, 
+        scan_time
+        ) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        '''
