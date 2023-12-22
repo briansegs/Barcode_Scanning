@@ -93,3 +93,12 @@ insertItems = '''
         ) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     '''
+
+getAgent = '''
+    SELECT 
+        first_name, 
+        last_name, 
+        barcode 
+    FROM Agents 
+    WHERE barcode = ?
+    '''

@@ -4,6 +4,7 @@ import cv2 as cv
 from pyzbar.pyzbar import decode
 from scanner import Scanner
 from functions import getCursor
+from data import getAgent
 
 class AgentScanner(Scanner):
     "scans agent's barcodes"
@@ -26,10 +27,7 @@ class AgentScanner(Scanner):
             for code in decode(frame):
                 bCode = str(code.data.decode('utf-8'))
                 print(bCode)
-                res = cur.execute('''
-                                  SELECT first_name, last_name, barcode 
-                                  FROM Agents WHERE barcode = ?
-                                  ''', (bCode,))
+                res = cur.execute(getAgent, (bCode,))
                 agentData = res.fetchone()
 
                 if agentData is None:
