@@ -8,7 +8,6 @@ from data import createTables
 
 # TODO: Creat agent in app if admin
 # TODO: Clean up database 
-# TODO: Plan data and how it is stored
 
 # Connects to database
 conn = sqlite3.connect('testDb.sqlite')
