@@ -2,13 +2,6 @@
 
 database = 'testDb.sqlite'
 
-states = {
-        "ny" : "New York",
-        "nj" : "New Jersey",
-        "pa" : "Pennsylvinia",
-        "fl" : "Florida"
-    }
-
 agents = [
         {
             "barcode" : "1017574074152",
