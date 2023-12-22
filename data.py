@@ -10,19 +10,23 @@ states = {
 agents = [
         {
             "barcode" : "1017574074152",
-            "name" : "Brian"
+            "first_name" : "Brian",
+            "last_name" : "Segs"
         },
         {
             "barcode" : "1013447692447",
-            "name" : "Tom"
+            "first_name" : "Tom",
+            "last_name" : "Mango"
         },
         {
             "barcode" : "1015241102962",
-            "name" : "Ron"
+            "first_name" : "Ron",
+            "last_name" : "Law"
         },
         {
             "barcode" : "1019148016353",
-            "name" : "Barb"
+            "first_name" : "Barb",
+            "last_name" : "Beetle"
         }
     ]
 

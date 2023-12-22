@@ -22,14 +22,15 @@ def insertAgents():
         CREATE TABLE Agents (
             'id' INTEGER PRIMARY KEY AUTOINCREMENT,
             'barcode' TEXT,
-            'name' TEXT
+            'first_name' TEXT,
+            'last_name' TEXT
             );
     '''
     cur.executescript(createAgentTable)
 
     addAgents = '''
-        INSERT OR IGNORE INTO Agents (barcode, name) 
-        VALUES (:barcode, :name)
+        INSERT OR IGNORE INTO Agents (barcode, first_name, last_name) 
+        VALUES (:barcode, :first_name, :last_name)
         '''
 
     cur.executemany(addAgents, agents)
