@@ -57,6 +57,13 @@ inventory = [
         }
     ]
 
+locations = [
+        "New York",
+        "New Jersey",
+        "Pennsylvinia",
+        "Florida"
+    ]
+
 createTables = '''
     DROP TABLE IF EXISTS Items; 
     CREATE TABLE Items (
