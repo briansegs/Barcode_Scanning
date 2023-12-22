@@ -72,18 +72,16 @@ createTables = '''
         )
     '''
 
-insertItems = '''
+insertScan = '''
     INSERT OR IGNORE INTO Items (
-        scan_agent, 
-        scan_agent_code, 
-        scan_location, 
-        barcode, 
-        name, 
-        quantity, 
-        scan_date, 
-        scan_time
+        date,
+        time,
+        quantity,
+        item_id,
+        agent_id,
+        location_id
         ) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?)
     '''
 
 getAgent = '''
