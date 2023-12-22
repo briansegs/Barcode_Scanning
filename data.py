@@ -6,6 +6,7 @@ states = {
         "pa" : "Pennsylvinia",
         "fl" : "Florida"
     }
+
 agents = [
         {
             "barcode" : "1017574074152",
@@ -24,6 +25,7 @@ agents = [
             "name" : "Barb"
         }
     ]
+
 inventory = [
         {
             "barcode" : "0052000135138",
@@ -50,6 +52,7 @@ inventory = [
             "name" : "BIC Lighter Blk sm"
         }
     ]
+
 createTables = '''
     DROP TABLE IF EXISTS Items; 
     CREATE TABLE Items (
@@ -61,7 +64,9 @@ createTables = '''
         'quantity' INTEGER, 
         'scan_date' NUMERIC, 
         'scan_time' NUMERIC
-    )'''
+        )
+    '''
+
 insertItems = '''
     INSERT OR IGNORE INTO Items (
         scan_agent, 
@@ -74,4 +79,4 @@ insertItems = '''
         scan_time
         ) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        '''
+    '''
