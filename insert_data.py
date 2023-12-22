@@ -27,7 +27,10 @@ def insertAgents():
     '''
     cur.executescript(createAgentTable)
 
-    addAgents = "INSERT OR IGNORE INTO Agents (barcode, name) VALUES (:barcode, :name)"
+    addAgents = '''
+        INSERT OR IGNORE INTO Agents (barcode, name) 
+        VALUES (:barcode, :name)
+        '''
 
     cur.executemany(addAgents, agents)
     conn.commit()
@@ -44,7 +47,10 @@ def insertInventory():
 
     cur.executescript(createInventoryTable)
 
-    addInventory = "INSERT OR IGNORE INTO Inventory (barcode, name) VALUES (:barcode, :name)"
+    addInventory = '''
+        INSERT OR IGNORE INTO Inventory (barcode, name) 
+        VALUES (:barcode, :name)
+        '''
 
     cur.executemany(addInventory, inventory)
     conn.commit()
