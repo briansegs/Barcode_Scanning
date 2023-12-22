@@ -57,15 +57,12 @@ def insertInventory():
 
 while True:
     print("Options: ")
-    t.sleep(1)
     print("1. Update agents")
-    t.sleep(1)
     print("2. Update Inventory")
-    t.sleep(1)
     print("3. Quit")
     t.sleep(.5)
     opt = input(">>> ")
-    t.sleep(1)
+    t.sleep(.5)
 
     if opt == "1":
         insertAgents()
