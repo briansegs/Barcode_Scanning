@@ -59,6 +59,33 @@ locations = [
         "Florida"
     ]
 
+inventory = [
+    {
+        "item_id" : 1,
+        "quantity" : 100
+    },
+    {
+        "item_id" : 2,
+        "quantity" : 100
+    },
+    {
+        "item_id" : 3,
+        "quantity" : 100
+    },
+    {
+        "item_id" : 4,
+        "quantity" : 100
+    },
+    {
+        "item_id" : 5,
+        "quantity" : 100
+    },
+    {
+        "item_id" : 6,
+        "quantity" : 100
+    }
+]
+
 createTables = '''
     DROP TABLE IF EXISTS Scan; 
     CREATE TABLE Scan (
