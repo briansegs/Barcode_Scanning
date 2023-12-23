@@ -8,6 +8,8 @@ from data import createTables
 
 # TODO: Update quantitiy in inventory after scan
 # TODO: Item dropoff / remove item from inventory after scan
+# TODO: Close connections
+# TODO: Clean up database calls
 
 # Connects to database
 conn = sqlite3.connect('testDb.sqlite')
