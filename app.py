@@ -7,7 +7,6 @@ from functions import storeData, getLocation
 from data import createTables
 
 # TODO: Creat agent in app if admin
-# TODO: Clean up database
 
 # Connects to database
 conn = sqlite3.connect('testDb.sqlite')
