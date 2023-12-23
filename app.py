@@ -6,7 +6,8 @@ from agent_scanner import AgentScanner
 from functions import storeData, getLocation
 from data import createTables
 
-# TODO: Creat agent in app if admin
+# TODO: Update quantitiy in inventory after scan
+# TODO: Item dropoff / remove item from inventory after scan
 
 # Connects to database
 conn = sqlite3.connect('testDb.sqlite')
