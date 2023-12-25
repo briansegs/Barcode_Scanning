@@ -1,9 +1,8 @@
 """App"""
-import sqlite3
 import time as t
 from items_scanner import ItemScanner
 from agent_scanner import AgentScanner
-from functions import storeData, getLocation
+from functions import storeData, getLocation, getCursorConnection
 from data import createTables
 
 # TODO: Update quantitiy in inventory after scan
@@ -12,13 +11,13 @@ from data import createTables
 # TODO: Clean up database calls
 
 # Connects to database
-conn = sqlite3.connect('testDb.sqlite')
-cur = conn.cursor()
+cur, conn = getCursorConnection()
 print('*Connected to database*')
 t.sleep(1)
 
 # Drops and then creates tables in database
 cur.executescript(createTables)
+conn.close()
 print('*Tables created*')
 t.sleep(1)
 
@@ -62,6 +61,5 @@ if len(itemData) == 0:
 
 # Stores scanned data into database
 storeData(itemData, cur, locationId, agentId)
-conn.commit()
 t.sleep(1)
 print('*Data stored*')

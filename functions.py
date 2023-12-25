@@ -13,8 +13,9 @@ def getCursorConnection():
 
 def getLocation():
     "Returns location"
-    cur = getCursorConnection()
+    cur, conn = getCursorConnection()
     res = cur.execute(getLocations)
+    conn.close()
     lst = res.fetchall()
 
     locations = {}
@@ -58,6 +59,7 @@ def getTime():
 
 def storeData(itemData, cur, locationId, agentId):
     "Stores scanned data into database"
+    cur, conn = getCursorConnection()
     for v in itemData.values():
         date = v["scan_date"]
         time = v["scan_time"]
@@ -68,3 +70,4 @@ def storeData(itemData, cur, locationId, agentId):
 
         cur.execute(insertScan,
             (date, time, quantity, itemId, sAgentId, sLocationId))
+    conn.close()
