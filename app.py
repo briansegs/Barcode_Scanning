@@ -5,7 +5,6 @@ from agent_scanner import AgentScanner
 from functions import storeData, getLocation, getCursorConnection
 from data import createTables
 
-# TODO: Update quantitiy in inventory after scan
 # TODO: Item dropoff / remove item from inventory after scan
 
 # Drops and then creates tables in database
