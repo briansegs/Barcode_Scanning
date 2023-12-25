@@ -70,4 +70,14 @@ def storeData(itemData, cur, locationId, agentId):
 
         cur.execute(insertScan,
             (date, time, quantity, itemId, sAgentId, sLocationId))
+
+        updateInventory = '''
+            UPDATE Inventory 
+            SET quantity = quantity + ? 
+            WHERE Item_id = ?
+        '''
+        cur.execute(updateInventory,
+                    (quantity, itemId))
+
+    conn.commit()
     conn.close()
