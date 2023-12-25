@@ -15,8 +15,8 @@ def getLocation():
     "Returns location"
     cur, conn = getCursorConnection()
     res = cur.execute(getLocations)
-    conn.close()
     lst = res.fetchall()
+    conn.close()
 
     locations = {}
     for item in lst:
