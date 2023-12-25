@@ -5,15 +5,15 @@ import time as t
 from data import insertScan, getLocations
 from data import database as db
 
-def getCursor():
+def getCursorConnection():
     "Returns cursor from database"
     conn = sqlite3.connect(db)
     cur = conn.cursor()
-    return cur
+    return cur, conn
 
 def getLocation():
     "Returns location"
-    cur = getCursor()
+    cur = getCursorConnection()
     res = cur.execute(getLocations)
     lst = res.fetchall()
 
