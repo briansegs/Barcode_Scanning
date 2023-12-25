@@ -127,3 +127,9 @@ getLocations = '''
         name 
     FROM Locations
     '''
+
+updateInventory = '''
+        UPDATE Inventory 
+        SET quantity = quantity + ? 
+        WHERE Item_id = ?
+    '''

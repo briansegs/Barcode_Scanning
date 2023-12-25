@@ -2,7 +2,7 @@
 import sqlite3
 from datetime import datetime
 import time as t
-from data import insertScan, getLocations
+from data import insertScan, getLocations, updateInventory
 from data import database as db
 
 def getCursorConnection():
@@ -71,11 +71,6 @@ def storeData(itemData, cur, locationId, agentId):
         cur.execute(insertScan,
             (date, time, quantity, itemId, sAgentId, sLocationId))
 
-        updateInventory = '''
-            UPDATE Inventory 
-            SET quantity = quantity + ? 
-            WHERE Item_id = ?
-        '''
         cur.execute(updateInventory,
                     (quantity, itemId))
 
