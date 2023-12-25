@@ -8,16 +8,11 @@ from data import createTables
 # TODO: Update quantitiy in inventory after scan
 # TODO: Item dropoff / remove item from inventory after scan
 
-# Connects to database
-cur, conn = getCursorConnection()
-print('*Connected to database*')
-t.sleep(1)
-
 # Drops and then creates tables in database
+# For development and testing
+cur, conn = getCursorConnection()
 cur.executescript(createTables)
 conn.close()
-print('*Tables created*')
-t.sleep(1)
 
 # Create scanners
 iScan = ItemScanner()
