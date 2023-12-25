@@ -1,18 +1,15 @@
 """Item Scanner"""
 import time as t
-import sqlite3
 import cv2 as cv
 from pyzbar.pyzbar import decode
 from scanner import Scanner
-from functions import getDate, getTime
+from functions import getDate, getTime, getCursorConnection
 
 class ItemScanner(Scanner):
     "scans item barcodes"
     def scanItems(self):
         "Scans item barcodes and stores them"
-        db = 'testDb.sqlite'
-        conn = sqlite3.connect(db)
-        cur = conn.cursor()
+        cur, conn = getCursorConnection()
         print(f'Hit the ({self.closeKey}) key to quit scanning.')
         t.sleep(1)
 
@@ -91,6 +88,6 @@ class ItemScanner(Scanner):
                         }
                     print("item saved.")
                     t.sleep(1)
-
+        conn.close()
         cam.release()
         cv.destroyAllWindows()
