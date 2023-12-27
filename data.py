@@ -99,7 +99,7 @@ createTables = '''
         )
     '''
 
-insertScan = '''
+insertPendingScan = '''
     INSERT OR IGNORE INTO pending_scan (
         date,
         time,
