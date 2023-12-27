@@ -117,7 +117,7 @@ getAgent = '''
         first_name, 
         last_name, 
         barcode 
-    FROM Agents 
+    FROM agent 
     WHERE barcode = ?
     '''
 
@@ -125,11 +125,11 @@ getLocations = '''
     SELECT 
         id, 
         name 
-    FROM Locations
+    FROM location
     '''
 
 updateInventory = '''
-        UPDATE Inventory 
+        UPDATE inventory 
         SET quantity = quantity + ? 
         WHERE Item_id = ?
     '''
