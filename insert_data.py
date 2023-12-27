@@ -91,13 +91,30 @@ def insertPendingDropoff():
     cur.executemany(addPendingDropoff, pendingDropoff)
     conn.commit()
 
+def insertDropoffScan():
+    "drops and adds dropoff scan table"
+    createDropoffScanTable = '''
+        DROP TABLE IF EXISTS dropoff_scan;
+        CREATE TABLE dropoff_scan (
+            'id' INTEGER PRIMARY KEY AUTOINCREMENT,
+            'date' NUMERIC, 
+            'time' NUMERIC,
+            'quantity' INTEGER, 
+            'item_id' INTEGER, 
+            'agent_id' INTEGER
+        );
+    '''
+    cur.executescript(createDropoffScanTable)
+    conn.commit()
+
 while True:
     print("Options: ")
     print("1. Update agents")
     print("2. Update Items")
     print("3. Update Locations")
     print("4. Update Pending Dropoff")
-    print("5. Quit")
+    print("5. Drop / Add Dropoff Scan")
+    print("6. Quit")
     t.sleep(.5)
     opt = input(">>> ")
     t.sleep(.5)
@@ -119,6 +136,10 @@ while True:
         print("Pending Dropoff update completed")
         break
     elif opt == "5":
+        insertDropoffScan()
+        print("Drop / Add Dropoff Scan completed")
+        break
+    elif opt == "6":
         print("*Quitting program...*")
         quit()
 
