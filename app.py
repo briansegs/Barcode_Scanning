@@ -8,7 +8,6 @@ from data import createTables
 # TODO: Item dropoff / remove item from inventory after scan
 # TODO: Display Inventory
 # TODO: Display scans / history
-# TODO: Work on database table names
 
 # Drops and then creates tables in database
 # For development and testing
