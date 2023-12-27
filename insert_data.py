@@ -18,8 +18,8 @@ except sqlite3.Error as error:
 def insertAgents():
     "inserts agents from data into database"
     createAgentTable = '''
-        DROP TABLE IF EXISTS Agents;
-        CREATE TABLE Agents (
+        DROP TABLE IF EXISTS agent;
+        CREATE TABLE agent (
             'id' INTEGER PRIMARY KEY AUTOINCREMENT,
             'barcode' TEXT,
             'first_name' TEXT,
@@ -29,7 +29,7 @@ def insertAgents():
     cur.executescript(createAgentTable)
 
     addAgents = '''
-        INSERT OR IGNORE INTO Agents (barcode, first_name, last_name) 
+        INSERT OR IGNORE INTO agent (barcode, first_name, last_name) 
         VALUES (:barcode, :first_name, :last_name)
         '''
 
