@@ -39,8 +39,8 @@ def insertAgents():
 def insertItems():
     "inserts items from data into database"
     createItemsTable = '''
-        DROP TABLE IF EXISTS Items;
-        CREATE TABLE Items (
+        DROP TABLE IF EXISTS item;
+        CREATE TABLE item (
             'id' INTEGER PRIMARY KEY AUTOINCREMENT,
             'barcode' TEXT,
             'name' TEXT
@@ -50,7 +50,7 @@ def insertItems():
     cur.executescript(createItemsTable)
 
     addItems = '''
-        INSERT OR IGNORE INTO Items (barcode, name) 
+        INSERT OR IGNORE INTO item (barcode, name) 
         VALUES (:barcode, :name)
         '''
 
@@ -60,14 +60,14 @@ def insertItems():
 def insertLocations():
     "inserts locations from data into database"
     createLocationsTable = '''
-        DROP TABLE IF EXISTS Locations;
-        CREATE TABLE Locations (
+        DROP TABLE IF EXISTS location;
+        CREATE TABLE location (
             'id' INTEGER PRIMARY KEY AUTOINCREMENT,
             'name' TEXT
         );
     '''
     addLocations = '''
-        INSERT OR IGNORE INTO Locations (name) 
+        INSERT OR IGNORE INTO location (name) 
         VALUES (?)
     '''
     cur.executescript(createLocationsTable)
@@ -77,14 +77,14 @@ def insertLocations():
 def insertInventory():
     "inserts inventory from data into database"
     createInventoryTable = '''
-        DROP TABLE IF EXISTS Inventory;
-        CREATE TABLE Inventory (
+        DROP TABLE IF EXISTS inventory;
+        CREATE TABLE inventory (
             'item_id' INTEGER,
             'quantity' INTEGER
         );
     '''
     addInventory = '''
-        INSERT OR IGNORE INTO Inventory (item_id, quantity) 
+        INSERT OR IGNORE INTO inventory (item_id, quantity) 
         VALUES (:item_id, :quantity)
     '''
     cur.executescript(createInventoryTable)
