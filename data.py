@@ -87,8 +87,8 @@ inventory = [
 ]
 
 createTables = '''
-    DROP TABLE IF EXISTS Scan; 
-    CREATE TABLE Scan (
+    DROP TABLE IF EXISTS pending_scan; 
+    CREATE TABLE pending_scan (
         'id' INTEGER PRIMARY KEY AUTOINCREMENT,
         'date' NUMERIC, 
         'time' NUMERIC,
@@ -100,7 +100,7 @@ createTables = '''
     '''
 
 insertScan = '''
-    INSERT OR IGNORE INTO Scan (
+    INSERT OR IGNORE INTO pending_scan (
         date,
         time,
         quantity,
