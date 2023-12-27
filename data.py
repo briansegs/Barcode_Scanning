@@ -86,7 +86,7 @@ pendingDropoff = [
     }
 ]
 
-createTables = '''
+createPendingScanTable = '''
     DROP TABLE IF EXISTS pending_scan; 
     CREATE TABLE pending_scan (
         'id' INTEGER PRIMARY KEY AUTOINCREMENT,

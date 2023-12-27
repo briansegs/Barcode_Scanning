@@ -3,7 +3,7 @@ import time as t
 from items_scanner import ItemScanner
 from agent_scanner import AgentScanner
 from functions import storeData, getLocation, getCursorConnection
-from data import createTables
+from data import createPendingScanTable
 
 # TODO: Item dropoff / remove item from inventory after scan
 # TODO: Display Inventory
@@ -12,7 +12,7 @@ from data import createTables
 # Drops and then creates tables in database
 # For development and testing
 cur, conn = getCursorConnection()
-cur.executescript(createTables)
+cur.executescript(createPendingScanTable)
 conn.close()
 
 # Create scanners
