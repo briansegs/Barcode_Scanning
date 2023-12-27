@@ -128,8 +128,8 @@ getLocations = '''
     FROM location
     '''
 
-updateInventory = '''
-        UPDATE inventory 
+updatePendingDropoff = '''
+        UPDATE pending_dropoff 
         SET quantity = quantity + ? 
-        WHERE Item_id = ?
+        WHERE item_id = ?
     '''
