@@ -2,18 +2,11 @@
 import time as t
 from items_scanner import ItemScanner
 from agent_scanner import AgentScanner
-from functions import storeData, getLocation, getCursorConnection
-from data import createPendingScanTable
+from functions import storeData, getLocation
 
 # TODO: Item dropoff / remove item from inventory after scan
 # TODO: Display Inventory
 # TODO: Display scans / history
-
-# Drops and then creates tables in database
-# For development and testing
-cur, conn = getCursorConnection()
-cur.executescript(createPendingScanTable)
-conn.close()
 
 # Create scanners
 iScan = ItemScanner()
@@ -54,6 +47,6 @@ if len(itemData) == 0:
     quit()
 
 # Stores scanned data into database
-storeData(itemData, cur, locationId, agentId)
+storeData(itemData, locationId, agentId)
 t.sleep(1)
 print('*Data stored*')

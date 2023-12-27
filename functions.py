@@ -2,7 +2,12 @@
 import sqlite3
 from datetime import datetime
 import time as t
-from data import insertPendingScan, getLocations, updatePendingDropoff
+from data import (
+    insertPendingScan,
+    getLocations,
+    updatePendingDropoff,
+    createPendingScanTable
+    )
 from data import database as db
 
 def getCursorConnection():
@@ -57,9 +62,12 @@ def getTime():
     time = now.strftime("%H:%M:%S")
     return time
 
-def storeData(itemData, cur, locationId, agentId):
+def storeData(itemData, locationId, agentId):
     "Stores scanned data into database"
     cur, conn = getCursorConnection()
+
+    cur.executescript(createPendingScanTable)
+
     for v in itemData.values():
         date = v["scan_date"]
         time = v["scan_time"]
