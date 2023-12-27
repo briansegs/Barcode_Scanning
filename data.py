@@ -59,7 +59,7 @@ locations = [
         "Florida"
     ]
 
-inventory = [
+pendingDropoff = [
     {
         "item_id" : 1,
         "quantity" : 100
