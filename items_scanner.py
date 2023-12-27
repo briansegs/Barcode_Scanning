@@ -26,7 +26,7 @@ class ItemScanner(Scanner):
             for code in decode(frame):
                 bCode = str(code.data.decode('utf-8'))
                 print(bCode)
-                res = cur.execute("SELECT id, name FROM Items WHERE barcode = ?", (bCode,))
+                res = cur.execute("SELECT id, name FROM item WHERE barcode = ?", (bCode,))
                 inventoryData = res.fetchone()
 
                 if inventoryData is None:
