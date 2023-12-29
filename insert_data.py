@@ -95,7 +95,9 @@ def insertDropoffScan():
     "drops and adds dropoff scan table"
     createDropoffScanTable = '''
         DROP TABLE IF EXISTS dropoff_scan;
-        CREATE TABLE dropoff_scan (
+        
+        DROP TABLE IF EXISTS dropoff_log;
+        CREATE TABLE dropoff_log (
             'id' INTEGER PRIMARY KEY AUTOINCREMENT,
             'date' NUMERIC, 
             'time' NUMERIC,
