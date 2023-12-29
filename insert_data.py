@@ -115,7 +115,7 @@ while True:
     print("2. Update Items")
     print("3. Update Locations")
     print("4. Update Pending Dropoff")
-    print("5. Drop / Add Dropoff Scan")
+    print("5. Drop / Add Dropoff log")
     print("6. Quit")
     t.sleep(.5)
     opt = input(">>> ")
@@ -138,7 +138,7 @@ while True:
         print("Pending Dropoff update completed")
         break
     elif opt == "5":
-        insertDropoffScan()
+        insertDropoffLog()
         print("Drop / Add Dropoff Scan completed")
         break
     elif opt == "6":
