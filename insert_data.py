@@ -94,8 +94,6 @@ def insertPendingDropoff():
 def insertDropoffLog():
     "drops and adds dropoff log table"
     createDropoffLogTable = '''
-        DROP TABLE IF EXISTS dropoff_scan;
-        
         DROP TABLE IF EXISTS dropoff_log;
         CREATE TABLE dropoff_log (
             'id' INTEGER PRIMARY KEY AUTOINCREMENT,
