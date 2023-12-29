@@ -91,9 +91,9 @@ def insertPendingDropoff():
     cur.executemany(addPendingDropoff, pendingDropoff)
     conn.commit()
 
-def insertDropoffScan():
-    "drops and adds dropoff scan table"
-    createDropoffScanTable = '''
+def insertDropoffLog():
+    "drops and adds dropoff log table"
+    createDropoffLogTable = '''
         DROP TABLE IF EXISTS dropoff_scan;
         
         DROP TABLE IF EXISTS dropoff_log;
@@ -106,7 +106,7 @@ def insertDropoffScan():
             'agent_id' INTEGER
         );
     '''
-    cur.executescript(createDropoffScanTable)
+    cur.executescript(createDropoffLogTable)
     conn.commit()
 
 while True:
