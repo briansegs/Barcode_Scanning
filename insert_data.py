@@ -139,7 +139,7 @@ while True:
         break
     elif opt == "5":
         insertDropoffLog()
-        print("Drop / Add Dropoff Scan completed")
+        print("Drop / Add Dropoff log completed")
         break
     elif opt == "6":
         print("*Quitting program...*")
