@@ -101,7 +101,7 @@ createPendingScanTable = '''
     '''
 
 insertPendingScan = '''
-    INSERT OR IGNORE INTO pending_scan (
+    INSERT OR IGNORE INTO item_scan (
         date,
         time,
         quantity,
