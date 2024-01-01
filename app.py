@@ -8,6 +8,7 @@ from functions import storeData, getLocation
 # TODO: Display Inventory
 # TODO: Display scans / history
 # TODO: Change pending scan table to item scan table
+# TODO: Refactor code to match table name changes
 
 # Create scanners
 iScan = ItemScanner()
