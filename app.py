@@ -7,6 +7,7 @@ from functions import storeData, getLocation
 # TODO: Item dropoff / remove item from inventory after scan
 # TODO: Display Inventory
 # TODO: Display scans / history
+# TODO: Change pending scan table to item scan table
 
 # Create scanners
 iScan = ItemScanner()
