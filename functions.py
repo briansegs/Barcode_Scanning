@@ -3,10 +3,10 @@ import sqlite3
 from datetime import datetime
 import time as t
 from data import (
-    insertPendingScan,
+    insertItemScan,
     getLocations,
     updatePendingDropoff,
-    createPendingScanTable
+    createItemScanTable
     )
 from data import database as db
 
@@ -66,7 +66,7 @@ def storeData(itemData, locationId, agentId):
     "Stores scanned data into database"
     cur, conn = getCursorConnection()
 
-    cur.executescript(createPendingScanTable)
+    cur.executescript(createItemScanTable)
 
     for v in itemData.values():
         date = v["scan_date"]
@@ -76,7 +76,7 @@ def storeData(itemData, locationId, agentId):
         sAgentId = agentId
         sLocationId = locationId
 
-        cur.execute(insertPendingScan,
+        cur.execute(insertItemScan,
             (date, time, quantity, itemId, sAgentId, sLocationId))
 
         cur.execute(updatePendingDropoff,

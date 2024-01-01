@@ -86,7 +86,7 @@ pendingDropoff = [
     }
 ]
 
-createPendingScanTable = '''
+createItemScanTable = '''
     DROP TABLE IF EXISTS pending_scan;
     DROP TABLE IF EXISTS item_scan;
     CREATE TABLE item_scan (
@@ -100,7 +100,7 @@ createPendingScanTable = '''
         )
     '''
 
-insertPendingScan = '''
+insertItemScan = '''
     INSERT OR IGNORE INTO item_scan (
         date,
         time,
