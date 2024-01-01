@@ -7,6 +7,13 @@ from functions import storeData, getLocation
 # TODO: Item dropoff / remove item from inventory after scan
 # TODO: Display Inventory
 # TODO: Display scans / history
+# TODO: Make options / show before login
+# TODO: Options: 
+# TODO: Scan items for pickup
+# TODO: Drop off items 
+# TODO: Show items pending dropoff
+# TODO: Show items scanned / by date
+# TODO: Show items dropped off / by date
 
 # Create scanners
 iScan = ItemScanner()
