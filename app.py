@@ -23,7 +23,6 @@ aScan = AgentScanner()
 # Login process
 print('Login to start scanning.')
 t.sleep(1)
-locationId, location = getLocation()
 
 print('Scan your user ID.')
 t.sleep(1)
@@ -40,6 +39,8 @@ except TypeError:
     quit()
 
 # Scans barcodes and stores in data{}
+locationId, location = getLocation()
+
 print(f'Welcome {agent}. You are logged into the {location} location.')
 t.sleep(1)
 print('*Starting scanner...*')
