@@ -14,6 +14,7 @@ from functions import storeData, getLocation
 # TODO: Show items pending dropoff
 # TODO: Show items scanned / by date
 # TODO: Show items dropped off / by date
+# TODO: Spit out options into seperate files
 
 # Create scanners
 iScan = ItemScanner()
