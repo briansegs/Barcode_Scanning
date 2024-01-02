@@ -8,9 +8,9 @@ from functions import storeData, getLocation
 # TODO: Display Inventory
 # TODO: Display scans / history
 # TODO: Make options / show before login
-# TODO: Options: 
+# TODO: Options:
 # TODO: Scan items for pickup
-# TODO: Drop off items 
+# TODO: Drop off items
 # TODO: Show items pending dropoff
 # TODO: Show items scanned / by date
 # TODO: Show items dropped off / by date
@@ -38,11 +38,13 @@ except TypeError:
     t.sleep(1)
     quit()
 
-# Scans barcodes and stores in data{}
+
 locationId, location = getLocation()
 
 print(f'Welcome {agent}. You are logged into the {location} location.')
 t.sleep(1)
+
+# Scans barcodes and stores in data{}
 print('*Starting scanner...*')
 t.sleep(1)
 
