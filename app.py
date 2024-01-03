@@ -5,7 +5,6 @@ from scan_items import scanItems
 # TODO: Item dropoff / remove item from inventory after scan
 # TODO: Display Inventory
 # TODO: Display scans / history
-# TODO: Make options / show before login
 # TODO: Options:
 # TODO: Scan items for pickup
 # TODO: Drop off items
