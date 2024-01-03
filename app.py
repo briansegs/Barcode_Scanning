@@ -1,8 +1,6 @@
 """App"""
 import time as t
-from items_scanner import ItemScanner
-from agent_scanner import AgentScanner
-from functions import storeData, getLocation
+from scan_items import scanItems
 
 # TODO: Item dropoff / remove item from inventory after scan
 # TODO: Display Inventory
@@ -16,48 +14,27 @@ from functions import storeData, getLocation
 # TODO: Show items dropped off / by date
 # TODO: Spit out options into seperate files
 
-# Create scanners
-iScan = ItemScanner()
-aScan = AgentScanner()
-
-# Login process
-print('Login to start scanning.')
-t.sleep(1)
-
-print('Scan your user ID.')
-t.sleep(1)
-try:
-    agent, agentId = aScan.scanAgent()
-
-except TypeError:
-    print('The program can not proceed without an agent.')
+while True:
+    print("Options: ")
+    t.sleep(.5)
+    print('''
+    1. Scan items for pickup
+    2. Drop off items
+    3. Show items  pending drop off
+    4. Show items scanned
+    5. Show items dropped off
+    6. Quit
+    ''')
+    t.sleep(.5)
+    opt = input(">>> ")
     t.sleep(1)
-    print('Start the program over once you have an agent ID.')
-    t.sleep(1)
-    print('*Application shutting down...*')
-    t.sleep(1)
-    quit()
 
-
-locationId, location = getLocation()
-
-print(f'Welcome {agent}. You are logged into the {location} location.')
-t.sleep(1)
-
-# Scans barcodes and stores in data{}
-print('*Starting scanner...*')
-t.sleep(1)
-
-iScan.scanItems()
-itemData = iScan.getScanData()
-
-if len(itemData) == 0:
-    print('No Items were scanned.')
-    t.sleep(1)
-    print('*Application shutting down...*')
-    quit()
-
-# Stores scanned data into database
-storeData(itemData, locationId, agentId)
-t.sleep(1)
-print('*Data stored*')
+    if opt == "1":
+        scanItems()
+        break
+    elif opt == "6":
+        print("Quitting application...")
+        quit()
+    else:
+        print("option not avaliable yet.")
+        t.sleep(1)
