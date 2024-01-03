@@ -12,7 +12,6 @@ from scan_items import scanItems
 # TODO: Show items scanned / by date
 # TODO: Show items dropped off / by date
 # TODO: Spit out options into seperate files
-# TODO: Make application options match eachother
 
 while True:
     print("Options: ")
