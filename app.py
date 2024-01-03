@@ -12,6 +12,7 @@ from scan_items import scanItems
 # TODO: Show items scanned / by date
 # TODO: Show items dropped off / by date
 # TODO: Spit out options into seperate files
+# TODO: Fix grammer: dropoff to drop off
 
 while True:
     print("Options: ")
@@ -19,7 +20,7 @@ while True:
     print('''
     1. Scan items for pickup
     2. Drop off items
-    3. Show items  pending drop off
+    3. Show items pending drop off
     4. Show items scanned
     5. Show items dropped off
     6. Quit
