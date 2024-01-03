@@ -29,9 +29,11 @@ def getLocation():
 
     while True:
         print("Enter the number of your Location: ")
+        print("")
         t.sleep(1)
         for num, location in locations.items():
-            print(f'{num}. {location}')
+            print(f'    {num}. {location}')
+        print("")
         t.sleep(.5)
 
         try:

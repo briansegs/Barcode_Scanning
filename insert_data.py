@@ -109,12 +109,15 @@ def insertDropoffLog():
 
 while True:
     print("Options: ")
-    print("1. Update agents")
-    print("2. Update Items")
-    print("3. Update Locations")
-    print("4. Update Pending Dropoff")
-    print("5. Drop / Add Dropoff log")
-    print("6. Quit")
+    t.sleep(.5)
+    print('''
+    1. Update agents
+    2. Update Items
+    3. Update Locations
+    4. Update Pending Dropoff
+    5. Drop / Add Dropoff log
+    6. Quit
+    ''')
     t.sleep(.5)
     opt = input(">>> ")
     t.sleep(.5)

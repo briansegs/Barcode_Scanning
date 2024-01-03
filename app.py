@@ -33,7 +33,7 @@ while True:
         scanItems()
         break
     elif opt == "6":
-        print("Quitting application...")
+        print("*Application shutting down...*")
         quit()
     else:
         print("option not avaliable yet.")
