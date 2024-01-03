@@ -87,7 +87,6 @@ pendingDropOff = [
 ]
 
 createItemScanTable = '''
-    DROP TABLE IF EXISTS pending_scan;
     DROP TABLE IF EXISTS item_scan;
     CREATE TABLE item_scan (
         'id' INTEGER PRIMARY KEY AUTOINCREMENT,

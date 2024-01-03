@@ -77,7 +77,6 @@ def insertLocations():
 def insertPendingDropOff():
     "inserts pending drop off from data into database"
     createPendingDropOffTable = '''
-        DROP TABLE IF EXISTS pending_dropoff;
         DROP TABLE IF EXISTS pending_drop_off;
         CREATE TABLE pending_drop_off (
             'item_id' INTEGER,
@@ -95,7 +94,6 @@ def insertPendingDropOff():
 def insertDropOffLog():
     "drops and adds drop off log table"
     createDropOffLogTable = '''
-        DROP TABLE IF EXISTS dropoff_log;
         DROP TABLE IF EXISTS drop_off_log;
         CREATE TABLE drop_off_log (
             'id' INTEGER PRIMARY KEY AUTOINCREMENT,
