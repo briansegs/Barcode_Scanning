@@ -59,7 +59,7 @@ locations = [
         "Florida"
     ]
 
-pendingDropoff = [
+pendingDropOff = [
     {
         "item_id" : 1,
         "quantity" : 0
@@ -129,8 +129,8 @@ getLocations = '''
     FROM location
     '''
 
-updatePendingDropoff = '''
-        UPDATE pending_dropoff 
+updatePendingDropOff = '''
+        UPDATE pending_drop_off 
         SET quantity = quantity + ? 
         WHERE item_id = ?
     '''

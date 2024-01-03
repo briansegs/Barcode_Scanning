@@ -5,7 +5,7 @@ import time as t
 from data import (
     insertItemScan,
     getLocations,
-    updatePendingDropoff,
+    updatePendingDropOff,
     createItemScanTable
     )
 from data import database as db
@@ -81,7 +81,7 @@ def storeData(itemData, locationId, agentId):
         cur.execute(insertItemScan,
             (date, time, quantity, itemId, sAgentId, sLocationId))
 
-        cur.execute(updatePendingDropoff,
+        cur.execute(updatePendingDropOff,
                     (quantity, itemId))
 
     conn.commit()

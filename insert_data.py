@@ -1,7 +1,7 @@
 "Add data to database"
 import sqlite3
 import time as t
-from data import agents, items, locations, pendingDropoff
+from data import agents, items, locations, pendingDropOff
 
 db = 'testDb.sqlite'
 
@@ -74,28 +74,30 @@ def insertLocations():
     cur.executemany(addLocations, [(a,) for a in locations])
     conn.commit()
 
-def insertPendingDropoff():
-    "inserts pending dropoff from data into database"
-    createPendingDropoffTable = '''
+def insertPendingDropOff():
+    "inserts pending drop off from data into database"
+    createPendingDropOffTable = '''
         DROP TABLE IF EXISTS pending_dropoff;
-        CREATE TABLE pending_dropoff (
+        DROP TABLE IF EXISTS pending_drop_off;
+        CREATE TABLE pending_drop_off (
             'item_id' INTEGER,
             'quantity' INTEGER
         );
     '''
-    addPendingDropoff = '''
-        INSERT OR IGNORE INTO pending_dropoff (item_id, quantity) 
+    addPendingDropOff = '''
+        INSERT OR IGNORE INTO pending_drop_off (item_id, quantity) 
         VALUES (:item_id, :quantity)
     '''
-    cur.executescript(createPendingDropoffTable)
-    cur.executemany(addPendingDropoff, pendingDropoff)
+    cur.executescript(createPendingDropOffTable)
+    cur.executemany(addPendingDropOff, pendingDropOff)
     conn.commit()
 
-def insertDropoffLog():
-    "drops and adds dropoff log table"
-    createDropoffLogTable = '''
+def insertDropOffLog():
+    "drops and adds drop off log table"
+    createDropOffLogTable = '''
         DROP TABLE IF EXISTS dropoff_log;
-        CREATE TABLE dropoff_log (
+        DROP TABLE IF EXISTS drop_off_log;
+        CREATE TABLE drop_off_log (
             'id' INTEGER PRIMARY KEY AUTOINCREMENT,
             'date' NUMERIC, 
             'time' NUMERIC,
@@ -104,7 +106,7 @@ def insertDropoffLog():
             'agent_id' INTEGER
         );
     '''
-    cur.executescript(createDropoffLogTable)
+    cur.executescript(createDropOffLogTable)
     conn.commit()
 
 while True:
@@ -114,8 +116,8 @@ while True:
     1. Update agents
     2. Update Items
     3. Update Locations
-    4. Update Pending Dropoff
-    5. Drop / Add Dropoff log
+    4. Update Pending Drop off
+    5. Drop / Add Drop off log
     6. Quit
     ''')
     t.sleep(.5)
@@ -135,12 +137,12 @@ while True:
         print("Locations update completed")
         break
     elif opt == "4":
-        insertPendingDropoff()
-        print("Pending Dropoff update completed")
+        insertPendingDropOff()
+        print("Pending Drop off update completed")
         break
     elif opt == "5":
-        insertDropoffLog()
-        print("Drop / Add Dropoff log completed")
+        insertDropOffLog()
+        print("Drop / Add Drop off log completed")
         break
     elif opt == "6":
         print("*Quitting program...*")
