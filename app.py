@@ -2,17 +2,16 @@
 import time as t
 from scan_items import scanItems
 
-# TODO: Item dropoff / remove item from inventory after scan
+# TODO: Item drop off / remove item from inventory after scan
 # TODO: Display Inventory
 # TODO: Display scans / history
 # TODO: Options:
 # TODO: Scan items for pickup
 # TODO: Drop off items
-# TODO: Show items pending dropoff
+# TODO: Show items pending drop off
 # TODO: Show items scanned / by date
 # TODO: Show items dropped off / by date
 # TODO: Spit out options into seperate files
-# TODO: Fix grammer: dropoff to drop off
 
 while True:
     print("Options: ")
