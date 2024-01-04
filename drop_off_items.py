@@ -2,7 +2,6 @@
 import time as t
 from functions import getAgent
 
-# TODO: Get agent
 # TODO: Ask if items were dropped off successfully
 # TODO: Add options
 # TODO: Yes - for each item in pending list - remove from list - add to log
