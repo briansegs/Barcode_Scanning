@@ -2,6 +2,7 @@
 import sqlite3
 from datetime import datetime
 import time as t
+from agent_scanner import AgentScanner
 from data import (
     insertItemScan,
     getLocations,
@@ -15,6 +16,27 @@ def getCursorConnection():
     conn = sqlite3.connect(db)
     cur = conn.cursor()
     return cur, conn
+
+def getAgent():
+    "Returns: agent and agentId from database"
+    aScan = AgentScanner()
+
+    print('Scan your user ID.')
+    t.sleep(1)
+
+    try:
+        agent, agentId = aScan.scanAgent()
+
+    except TypeError:
+        print('The program can not proceed without an agent.')
+        t.sleep(1)
+        print('Start the program over once you have an agent ID.')
+        t.sleep(1)
+        print('*Application shutting down...*')
+        t.sleep(1)
+        quit()
+
+    return agent, agentId
 
 def getLocation():
     "Returns location"
