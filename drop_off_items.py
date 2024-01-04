@@ -31,10 +31,14 @@ while True:
     if opt == "1":
         break
     elif opt == "2":
-        break
+        t.sleep(1)
+        print("please contact HQ for futher steps.")
+        t.sleep(1)
+        print("*Application shutting down...*")
+        quit()
     elif opt == "3":
         t.sleep(1)
-        print('*Application shutting down...*')
+        print("*Application shutting down...*")
         quit()
     else:
         t.sleep(1)
