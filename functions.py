@@ -1,21 +1,13 @@
 """data and functions for app"""
-import sqlite3
-from datetime import datetime
 import time as t
-from agent_scanner import AgentScanner
+from util import getCursorConnection
 from data import (
     insertItemScan,
     getLocations,
     updatePendingDropOff,
     createItemScanTable
     )
-from data import database as db
-
-def getCursorConnection():
-    "Returns cursor from database"
-    conn = sqlite3.connect(db)
-    cur = conn.cursor()
-    return cur, conn
+from agent_scanner import AgentScanner
 
 def getAgent():
     "Returns: agent and agentId from database"
@@ -73,18 +65,6 @@ def getLocation():
         t.sleep(1)
 
     return locationId, location
-
-def getDate():
-    "returns current date"
-    now = datetime.now()
-    date = now.strftime("%m/%d/%Y")
-    return date
-
-def getTime():
-    "return current Time"
-    now = datetime.now()
-    time = now.strftime("%H:%M:%S")
-    return time
 
 def storeData(itemData, locationId, agentId):
     "Stores scanned data into database"
