@@ -1,8 +1,7 @@
 "Scan items"
 import time as t
 from items_scanner import ItemScanner
-from agent_scanner import AgentScanner
-from functions import storeData, getLocation
+from functions import storeData, getLocation, getAgent
 
 def scanItems():
     '''
@@ -14,26 +13,12 @@ def scanItems():
 
     # Create scanners
     iScan = ItemScanner()
-    aScan = AgentScanner()
 
     # Login process
     print('Login to start scanning.')
     t.sleep(1)
 
-    print('Scan your user ID.')
-    t.sleep(1)
-    try:
-        agent, agentId = aScan.scanAgent()
-
-    except TypeError:
-        print('The program can not proceed without an agent.')
-        t.sleep(1)
-        print('Start the program over once you have an agent ID.')
-        t.sleep(1)
-        print('*Application shutting down...*')
-        t.sleep(1)
-        quit()
-
+    agent, agentId = getAgent()
 
     locationId, location = getLocation()
 
