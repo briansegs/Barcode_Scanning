@@ -103,30 +103,34 @@ def updateDropOffLog(agentId):
     res = cur.execute(getPendingDropOff)
     lst = res.fetchall()
 
-    t.sleep(1)
-    print("Items dropped off: ")
-    print("")
+    if len(lst) > 0:
+        t.sleep(1)
+        print("Items dropped off: ")
+        print("")
 
-    for i in lst:
-        itemId = i[0]
-        quantity = i[1]
-        date = getDate()
-        time = getTime()
+        for i in lst:
+            itemId = i[0]
+            quantity = i[1]
+            date = getDate()
+            time = getTime()
 
-        cur.execute(insertDropOffLog,
-            (date, time, quantity, itemId, agentId))
+            cur.execute(insertDropOffLog,
+                (date, time, quantity, itemId, agentId))
 
-        cur.execute(clearPendingDropOff, (itemId,))
+            cur.execute(clearPendingDropOff, (itemId,))
 
-        res = cur.execute(getItemName,(itemId,))
-        tup = res.fetchone()
-        name = tup[0]
+            res = cur.execute(getItemName,(itemId,))
+            tup = res.fetchone()
+            name = tup[0]
 
-        print(f'    {quantity}  {name}')
+            print(f'    {quantity}  {name}')
 
-    conn.commit()
-    conn.close()
+        conn.commit()
+        conn.close()
 
-    print("")
-    t.sleep(1)
-    print("Items added to drop off log.")
+        print("")
+        t.sleep(1)
+        print("Items added to drop off log.")
+
+    else:
+        print("No Items to drop off.")
