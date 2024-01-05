@@ -1,6 +1,7 @@
 "Show items scanned"
 import time as t
 from functions import getAgent
+from util import getCursorConnection
 
 # TODO: Login agent
 # TODO: Show items scanned options:
@@ -12,13 +13,13 @@ from functions import getAgent
 # TODO: Extract function for login
 
 # Login
-print("Login to continue. ")
-t.sleep(1)
+# print("Login to continue. ")
+# t.sleep(1)
 
-agent, agentId = getAgent()
+# agent, agentId = getAgent()
 
-print(f"Welcome {agent}.")
-t.sleep(.5)
+# print(f"Welcome {agent}.")
+# t.sleep(.5)
 
 # Options
 while True:
@@ -30,6 +31,33 @@ while True:
     3. Show by date
     4. Show by agent
     5. Show by location
+    6. Quit
     ''')
     t.sleep(.5)
     opt = input(">>> ")
+
+    if opt == "1":
+        getItemScanAsc = '''
+        SELECT 
+        date,
+        time,
+        item_id,
+        agent_id,
+        location_id
+        FROM item_scan
+        ORDER BY date ASC
+        '''
+        cur, conn = getCursorConnection()
+        res = cur.execute(getItemScanAsc)
+        lst = res.fetchall()
+        for i in lst:
+            print(i)
+
+    elif opt == "6":
+        t.sleep(1)
+        print("*Application shutting down...*")
+        quit()
+
+    else:
+        t.sleep(1)
+        print(f'Error: "{opt}" is not an option.')
