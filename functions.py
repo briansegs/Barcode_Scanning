@@ -1,5 +1,6 @@
 """data and functions for app"""
 import time as t
+import pandas as pd
 from util import getCursorConnection, getDate, getTime
 from data import (
     insertItemScan,
@@ -134,3 +135,37 @@ def updateDropOffLog(agentId):
 
     else:
         print("No Items to drop off.")
+
+def showAllscansAsc():
+    "Prints an asending history of scans"
+    getItemScanAsc = '''
+    SELECT 
+    item_scan.id,
+    date,
+    time,
+    quantity,
+    item.name,
+    agent.first_name,
+    agent.last_name,
+    location.name
+    FROM item_scan
+    JOIN item JOIN agent JOIN location
+    ON 
+    item_scan.item_id = item.id 
+    AND
+    item_scan.agent_id = agent.id 
+    AND
+    item_scan.location_id = location.id
+    ORDER BY 
+    date, time ASC
+    '''
+    cur, conn = getCursorConnection()
+    res = cur.execute(getItemScanAsc)
+    scans = res.fetchall()
+    conn.close()
+    columns = ["ID", "Date", "Time", "Quantity",
+                "Item", "Agent", "Name", "location"]
+    df = pd.DataFrame(data=scans, columns=columns)
+    pd.set_option('display.colheader_justify', 'center')
+    print(df)
+    print("")

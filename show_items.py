@@ -1,8 +1,6 @@
 "Show items scanned"
 import time as t
-import pandas as pd
-from functions import getAgent
-from util import getCursorConnection
+from functions import getAgent, showAllscansAsc
 
 # TODO: Login agent
 # TODO: Show items scanned options:
@@ -41,35 +39,7 @@ while True:
     print("")
 
     if opt == "1":
-        getItemScanAsc = '''
-        SELECT 
-        item_scan.id,
-        date,
-        time,
-        quantity,
-        item.name,
-        agent.first_name,
-        agent.last_name,
-        location.name
-        FROM item_scan
-        JOIN item JOIN agent JOIN location
-        ON 
-        item_scan.item_id = item.id 
-        AND
-        item_scan.agent_id = agent.id 
-        AND
-        item_scan.location_id = location.id
-        ORDER BY 
-        date, time ASC
-        '''
-        cur, conn = getCursorConnection()
-        res = cur.execute(getItemScanAsc)
-        scans = res.fetchall()
-        columns = ["ID", "Date", "Time", "Quantity",
-                   "Item", "Agent", "Name", "location"]
-        df = pd.DataFrame(data=scans, columns=columns)
-        pd.set_option('display.colheader_justify', 'center')
-        print(df)
+        showAllscansAsc()
 
         t.sleep(1)
         print("*Application shutting down...*")
