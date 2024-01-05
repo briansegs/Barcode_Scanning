@@ -3,11 +3,8 @@ import time as t
 from functions import getAgent
 from util import getCursorConnection, getDate, getTime
 
-# TODO: Ask if items were dropped off successfully
-# TODO: Add options
-# TODO: Yes - for each item in pending list - remove from list - add to log
-# TODO: No - "please contact HQ for futher steps" - quit
-# TODO: quit
+# TODO: Refactor option 1
+# TODO: Name items and quantities when dropping off
 
 # Login
 print('Login to start scanning.')
@@ -15,7 +12,7 @@ t.sleep(1)
 
 agent, agentId = getAgent()
 
-print(f"Welcome {agent}. Were all items dropped off successfully?")
+print(f"Welcome {agent}. Were all items delivered successfully?")
 t.sleep(.5)
 
 while True:
@@ -53,18 +50,39 @@ while True:
         SET quantity = 0
         WHERE item_id = ?
         '''
+        getItemName = '''
+        SELECT name FROM item WHERE id = ?
+        '''
+
+        t.sleep(1)
+        print("Items dropped off: ")
+        print("")
 
         for i in lst:
+            itemId = i[0]
+            quantity = i[1]
             date = getDate()
             time = getTime()
+
             cur.execute(insertDropOffLog,
-                (date, time, i[1], i[0], agentId))
-            cur.execute(clearPendingDropOff, (i[0],))
+                (date, time, quantity, itemId, agentId))
+
+            cur.execute(clearPendingDropOff, (itemId,))
+
+            res = cur.execute(getItemName,(itemId,))
+            tup = res.fetchone()
+            name = tup[0]
+
+            print(f'    {quantity}  {name}')
 
         conn.commit()
         conn.close()
+
+        print("")
         t.sleep(1)
-        print("Items dropped off successfully.")
+        print("Items added to drop off log.")
+        t.sleep(1)
+        print("*Application shutting down...*")
         quit()
 
     elif opt == "2":
