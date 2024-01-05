@@ -1,6 +1,6 @@
 """data and functions for app"""
 import time as t
-from util import getCursorConnection
+from util import getCursorConnection, getDate, getTime
 from data import (
     insertItemScan,
     getLocations,
@@ -88,3 +88,67 @@ def storeData(itemData, locationId, agentId):
 
     conn.commit()
     conn.close()
+
+def updateDropOffLog(agentId):
+    '''
+    Updates the drop_off_log table in the database
+    Clears the pending_drop_off table in the database
+    '''
+
+    cur, conn = getCursorConnection()
+    getPendingDropOff = '''
+    SELECT item_id, quantity FROM pending_drop_off WHERE quantity > 0
+    '''
+    res = cur.execute(getPendingDropOff)
+    lst = res.fetchall()
+
+    insertDropOffLog = '''
+    INSERT OR IGNORE INTO drop_off_log (
+        date,
+        time,
+        quantity,
+        item_id,
+        agent_id
+    )
+    VALUES (?, ?, ?, ?, ?)
+    '''
+
+    clearPendingDropOff = '''
+    UPDATE pending_drop_off
+    SET quantity = 0
+    WHERE item_id = ?
+    '''
+    getItemName = '''
+    SELECT name FROM item WHERE id = ?
+    '''
+
+    t.sleep(1)
+    print("Items dropped off: ")
+    print("")
+
+    for i in lst:
+        itemId = i[0]
+        quantity = i[1]
+        date = getDate()
+        time = getTime()
+
+        cur.execute(insertDropOffLog,
+            (date, time, quantity, itemId, agentId))
+
+        cur.execute(clearPendingDropOff, (itemId,))
+
+        res = cur.execute(getItemName,(itemId,))
+        tup = res.fetchone()
+        name = tup[0]
+
+        print(f'    {quantity}  {name}')
+
+    conn.commit()
+    conn.close()
+
+    print("")
+    t.sleep(1)
+    print("Items added to drop off log.")
+    t.sleep(1)
+    print("*Application shutting down...*")
+    quit()
