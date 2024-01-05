@@ -5,7 +5,7 @@ from functions import getAgent, updateDropOffLog
 # TODO: Refactor option 1
 
 # Login
-print('Login to start scanning.')
+print("Login to continue. ")
 t.sleep(1)
 
 agent, agentId = getAgent()
