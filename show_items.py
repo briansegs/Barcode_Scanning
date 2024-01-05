@@ -1,5 +1,6 @@
 "Show items scanned"
 import time as t
+import pandas as pd
 from functions import getAgent
 from util import getCursorConnection
 
@@ -14,13 +15,13 @@ from util import getCursorConnection
 # TODO: Find a better way to display data
 
 # Login
-# print("Login to continue. ")
-# t.sleep(1)
+print("Login to continue. ")
+t.sleep(1)
 
-# agent, agentId = getAgent()
+agent, agentId = getAgent()
 
-# print(f"Welcome {agent}.")
-# t.sleep(.5)
+print(f"Welcome {agent}.")
+t.sleep(.5)
 
 # Options
 while True:
@@ -36,10 +37,13 @@ while True:
     ''')
     t.sleep(.5)
     opt = input(">>> ")
+    t.sleep(1)
+    print("")
 
     if opt == "1":
         getItemScanAsc = '''
         SELECT 
+        item_scan.id,
         date,
         time,
         quantity,
@@ -60,17 +64,16 @@ while True:
         '''
         cur, conn = getCursorConnection()
         res = cur.execute(getItemScanAsc)
-        lst = res.fetchall()
-        print("Date, Time, Quantity, Item, Agent, location")
-        for i in lst:
-            date = i[0]
-            time = i[1]
-            quantity = i[2]
-            itemName = i[3]
-            agent = i[4] + " " + i[5]
-            location = i[6]
-            print(date, time, quantity, itemName, agent, location)
-        break
+        scans = res.fetchall()
+        columns = ["ID", "Date", "Time", "Quantity",
+                   "Item", "Agent", "Name", "location"]
+        df = pd.DataFrame(data=scans, columns=columns)
+        pd.set_option('display.colheader_justify', 'center')
+        print(df)
+
+        t.sleep(1)
+        print("*Application shutting down...*")
+        quit()
 
     elif opt == "6":
         t.sleep(1)
