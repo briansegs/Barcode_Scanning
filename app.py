@@ -1,6 +1,7 @@
 """App"""
 import time as t
 from scan_items import scanItems
+from drop_off_items import dropOffItems
 
 # TODO: Item drop off / remove item from inventory after scan
 # TODO: Display Inventory
@@ -31,6 +32,11 @@ while True:
     if opt == "1":
         scanItems()
         break
+
+    elif opt == "2":
+        dropOffItems()
+        break
+
     elif opt == "6":
         print("*Application shutting down...*")
         quit()
