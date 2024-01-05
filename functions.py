@@ -137,10 +137,10 @@ def updateDropOffLog(agentId):
     else:
         print("No Items to drop off.")
 
-def showAllscansAsc():
-    "Prints an asending history of scans"
+def showAllscans(sql):
+    "Prints a history of scans"
     cur, conn = getCursorConnection()
-    res = cur.execute(getItemScanAsc)
+    res = cur.execute(sql)
     scans = res.fetchall()
     conn.close()
 

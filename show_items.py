@@ -1,6 +1,7 @@
 "Show items scanned"
 import time as t
-from functions import getAgent, showAllscansAsc
+from functions import getAgent, showAllscans
+from data import getItemScanAsc, getItemScanDesc
 
 # TODO: Login agent
 # TODO: Show items scanned options:
@@ -23,11 +24,10 @@ t.sleep(.5)
 
 # Options
 while True:
-    print("Options")
+    print("Options: ")
     t.sleep(.5)
     print('''
-    1. Show all dates earliest to latest
-    2. Show all dates latest to earliest
+    1. Show all dates
     3. Show by date
     4. Show by agent
     5. Show by location
@@ -39,11 +39,29 @@ while True:
     print("")
 
     if opt == "1":
-        showAllscansAsc()
+        while True:
+            print("Options:")
+            t.sleep(.5)
+            print("    1. Show asending")
+            print("    2. Show desending")
+            t.sleep(.5)
+            opt = input(">>> ")
+            t.sleep(1)
+            print("")
 
-        t.sleep(1)
-        print("*Application shutting down...*")
-        quit()
+            if opt == "1":
+                showAllscans(getItemScanAsc)
+                t.sleep(1)
+                print("*Application shutting down...*")
+                quit()
+
+            elif opt == "2":
+                showAllscans(getItemScanDesc)
+                t.sleep(1)
+                print("*Application shutting down...*")
+                quit()
+            else:
+                print(f'Error: "{opt}" is not an option.')
 
     elif opt == "6":
         t.sleep(1)
