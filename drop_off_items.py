@@ -4,7 +4,6 @@ from functions import getAgent
 from util import getCursorConnection, getDate, getTime
 
 # TODO: Refactor option 1
-# TODO: Name items and quantities when dropping off
 
 # Login
 print('Login to start scanning.')
