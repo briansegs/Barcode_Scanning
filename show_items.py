@@ -7,10 +7,11 @@ from util import getCursorConnection
 # TODO: Show items scanned options:
 # TODO: All dates earliest to latest
 # TODO: All dates latest to earliest
-# TODO: Pick from dates
-# TODO: By agent
-# TODO: By location
+# TODO: Pick from dates / asending and desending by time
+# TODO: By agent / asending and desending by date
+# TODO: By location / asending and desending by date
 # TODO: Extract function for login
+# TODO: Find a better way to display data
 
 # Login
 # print("Login to continue. ")
@@ -41,17 +42,35 @@ while True:
         SELECT 
         date,
         time,
-        item_id,
-        agent_id,
-        location_id
+        quantity,
+        item.name,
+        agent.first_name,
+        agent.last_name,
+        location.name
         FROM item_scan
-        ORDER BY date ASC
+        JOIN item JOIN agent JOIN location
+        ON 
+        item_scan.item_id = item.id 
+        AND
+        item_scan.agent_id = agent.id 
+        AND
+        item_scan.location_id = location.id
+        ORDER BY 
+        date, time ASC
         '''
         cur, conn = getCursorConnection()
         res = cur.execute(getItemScanAsc)
         lst = res.fetchall()
+        print("Date, Time, Quantity, Item, Agent, location")
         for i in lst:
-            print(i)
+            date = i[0]
+            time = i[1]
+            quantity = i[2]
+            itemName = i[3]
+            agent = i[4] + " " + i[5]
+            location = i[6]
+            print(date, time, quantity, itemName, agent, location)
+        break
 
     elif opt == "6":
         t.sleep(1)
