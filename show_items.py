@@ -19,3 +19,17 @@ agent, agentId = getAgent()
 
 print(f"Welcome {agent}.")
 t.sleep(.5)
+
+# Options
+while True:
+    print("Options")
+    t.sleep(.5)
+    print('''
+    1. Show all dates earliest to latest
+    2. Show all dates latest to earliest
+    3. Show by date
+    4. Show by agent
+    5. Show by location
+    ''')
+    t.sleep(.5)
+    opt = input(">>> ")
