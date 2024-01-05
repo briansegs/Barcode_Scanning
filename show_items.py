@@ -9,6 +9,7 @@ from functions import getAgent
 # TODO: Pick from dates
 # TODO: By agent
 # TODO: By location
+# TODO: Extract function for login
 
 # Login
 print("Login to continue. ")
