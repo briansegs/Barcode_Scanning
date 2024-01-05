@@ -2,44 +2,51 @@
 import time as t
 from functions import getAgent, updateDropOffLog
 
-# Login
-print("Login to continue. ")
-t.sleep(1)
+def dropOffItems():
+    '''
+    Handles item drop off 
+    Returns nothing 
+    '''
 
-agent, agentId = getAgent()
+    # Login
+    print("Login to continue. ")
+    t.sleep(1)
 
-print(f"Welcome {agent}. Were all items delivered successfully?")
-t.sleep(.5)
+    agent, agentId = getAgent()
 
-while True:
-    print("Options: ")
+    print(f"Welcome {agent}. Were all items delivered successfully?")
     t.sleep(.5)
-    print('''
-    1. Yes
-    2. No
-    3. Quit
-    ''')
-    t.sleep(.5)
-    opt = input(">>> ")
 
-    if opt == "1":
-        updateDropOffLog(agentId)
-        t.sleep(1)
-        print("*Application shutting down...*")
-        quit()
+    # Options
+    while True:
+        print("Options: ")
+        t.sleep(.5)
+        print('''
+        1. Yes
+        2. No
+        3. Quit
+        ''')
+        t.sleep(.5)
+        opt = input(">>> ")
 
-    elif opt == "2":
-        t.sleep(1)
-        print("please contact HQ for futher steps.")
-        t.sleep(1)
-        print("*Application shutting down...*")
-        quit()
+        if opt == "1":
+            updateDropOffLog(agentId)
+            t.sleep(1)
+            print("*Application shutting down...*")
+            quit()
 
-    elif opt == "3":
-        t.sleep(1)
-        print("*Application shutting down...*")
-        quit()
+        elif opt == "2":
+            t.sleep(1)
+            print("please contact HQ for futher steps.")
+            t.sleep(1)
+            print("*Application shutting down...*")
+            quit()
 
-    else:
-        t.sleep(1)
-        print("Error: Not an option.")
+        elif opt == "3":
+            t.sleep(1)
+            print("*Application shutting down...*")
+            quit()
+
+        else:
+            t.sleep(1)
+            print("Error: Not an option.")
