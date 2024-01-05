@@ -26,6 +26,9 @@ while True:
 
     if opt == "1":
         updateDropOffLog(agentId)
+        t.sleep(1)
+        print("*Application shutting down...*")
+        quit()
 
     elif opt == "2":
         t.sleep(1)

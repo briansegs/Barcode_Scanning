@@ -5,7 +5,11 @@ from data import (
     insertItemScan,
     getLocations,
     updatePendingDropOff,
-    createItemScanTable
+    createItemScanTable,
+    getPendingDropOff,
+    insertDropOffLog,
+    clearPendingDropOff,
+    getItemName
     )
 from agent_scanner import AgentScanner
 
@@ -96,31 +100,8 @@ def updateDropOffLog(agentId):
     '''
 
     cur, conn = getCursorConnection()
-    getPendingDropOff = '''
-    SELECT item_id, quantity FROM pending_drop_off WHERE quantity > 0
-    '''
     res = cur.execute(getPendingDropOff)
     lst = res.fetchall()
-
-    insertDropOffLog = '''
-    INSERT OR IGNORE INTO drop_off_log (
-        date,
-        time,
-        quantity,
-        item_id,
-        agent_id
-    )
-    VALUES (?, ?, ?, ?, ?)
-    '''
-
-    clearPendingDropOff = '''
-    UPDATE pending_drop_off
-    SET quantity = 0
-    WHERE item_id = ?
-    '''
-    getItemName = '''
-    SELECT name FROM item WHERE id = ?
-    '''
 
     t.sleep(1)
     print("Items dropped off: ")
@@ -149,6 +130,3 @@ def updateDropOffLog(agentId):
     print("")
     t.sleep(1)
     print("Items added to drop off log.")
-    t.sleep(1)
-    print("*Application shutting down...*")
-    quit()

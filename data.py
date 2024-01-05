@@ -133,3 +133,28 @@ updatePendingDropOff = '''
         SET quantity = quantity + ? 
         WHERE item_id = ?
     '''
+
+getPendingDropOff = '''
+    SELECT item_id, quantity FROM pending_drop_off WHERE quantity > 0
+    '''
+
+insertDropOffLog = '''
+    INSERT OR IGNORE INTO drop_off_log (
+        date,
+        time,
+        quantity,
+        item_id,
+        agent_id
+    )
+    VALUES (?, ?, ?, ?, ?)
+    '''
+
+clearPendingDropOff = '''
+    UPDATE pending_drop_off
+    SET quantity = 0
+    WHERE item_id = ?
+    '''
+
+getItemName = '''
+    SELECT name FROM item WHERE id = ?
+    '''
