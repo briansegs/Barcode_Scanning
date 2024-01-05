@@ -13,6 +13,7 @@ from drop_off_items import dropOffItems
 # TODO: Show items scanned / by date
 # TODO: Show items dropped off / by date
 # TODO: Spit out options into seperate files
+# TODO: Rethink if this app can be more object oriented
 
 while True:
     print("Options: ")
@@ -22,7 +23,7 @@ while True:
     2. Drop off items
     4. Show items scanned
     3. Show items pending drop off
-    5. Show items dropped off
+    5. Show items drop off log
     6. Quit
     ''')
     t.sleep(.5)
