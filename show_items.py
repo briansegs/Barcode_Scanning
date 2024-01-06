@@ -48,6 +48,7 @@ while True:
     if opt == "1":
         while True:
             print("Options:")
+            print("")
             t.sleep(.5)
             print("    1. Show asending")
             print("    2. Show desending")
@@ -59,11 +60,12 @@ while True:
 
             if opt == "1":
                 showAllscans(getItemScanAsc)
-                shutDown()
+                break
 
             elif opt == "2":
                 showAllscans(getItemScanDesc)
-                shutDown()
+                break
+
             else:
                 optionError(opt)
 
