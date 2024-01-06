@@ -86,19 +86,6 @@ pendingDropOff = [
     }
 ]
 
-createItemScanTable = '''
-    DROP TABLE IF EXISTS item_scan;
-    CREATE TABLE item_scan (
-        'id' INTEGER PRIMARY KEY AUTOINCREMENT,
-        'date' NUMERIC, 
-        'time' NUMERIC,
-        'quantity' INTEGER, 
-        'item_id' INTEGER, 
-        'agent_id' INTEGER, 
-        'location_id' INTEGER
-        )
-    '''
-
 insertItemScan = '''
     INSERT OR IGNORE INTO item_scan (
         date,

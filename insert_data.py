@@ -92,7 +92,7 @@ def insertPendingDropOff():
     conn.commit()
 
 def insertDropOffLog():
-    "drops and adds drop off log table"
+    "drops and adds drop_off_log table"
     createDropOffLogTable = '''
         DROP TABLE IF EXISTS drop_off_log;
         CREATE TABLE drop_off_log (
@@ -107,16 +107,34 @@ def insertDropOffLog():
     cur.executescript(createDropOffLogTable)
     conn.commit()
 
+def dropCreateItemScan():
+    "drops and adds item_scan table"
+    createItemScanTable = '''
+    DROP TABLE IF EXISTS item_scan;
+    CREATE TABLE item_scan (
+        'id' INTEGER PRIMARY KEY AUTOINCREMENT,
+        'date' NUMERIC, 
+        'time' NUMERIC,
+        'quantity' INTEGER, 
+        'item_id' INTEGER, 
+        'agent_id' INTEGER, 
+        'location_id' INTEGER
+        )
+    '''
+    cur.executescript(createItemScanTable)
+    conn.commit()
+
 while True:
     print("Options: ")
     t.sleep(.5)
     print('''
-    1. Update agents
-    2. Update Items
-    3. Update Locations
-    4. Update Pending Drop off
-    5. Drop / Add Drop off log
-    6. Quit
+    1. Update agents table
+    2. Update items table
+    3. Update locations table
+    4. Update Pending_drop_off
+    5. Drop / create Drop_off_log table 
+    6. Drop / create Item_Scan table
+    7. Quit
     ''')
     t.sleep(.5)
     opt = input(">>> ")
@@ -124,27 +142,31 @@ while True:
 
     if opt == "1":
         insertAgents()
-        print("Agents update completed")
+        print("agents update completed")
         break
     elif opt == "2":
         insertItems()
-        print("Items update completed")
+        print("items update completed")
         break
     elif opt == "3":
         insertLocations()
-        print("Locations update completed")
+        print("locations update completed")
         break
     elif opt == "4":
         insertPendingDropOff()
-        print("Pending Drop off update completed")
+        print("pending_drop_off update completed")
         break
     elif opt == "5":
         insertDropOffLog()
-        print("Drop / Add Drop off log completed")
+        print("Drop / Create drop_off_log table completed")
         break
     elif opt == "6":
+        dropCreateItemScan()
+        print("Drop / Create item_scan table completed")
+        break
+    elif opt == "7":
         print("*Quitting program...*")
         quit()
 
-    print("Error: Enter either 1, 2, 3, or 4")
+    print("Error: Enter either 1, 2, 3, 4, 5, 6, or 7")
     t.sleep(1)

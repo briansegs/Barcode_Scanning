@@ -6,7 +6,6 @@ from data import (
     insertItemScan,
     getLocations,
     updatePendingDropOff,
-    createItemScanTable,
     getPendingDropOff,
     insertDropOffLog,
     clearPendingDropOff,
@@ -72,8 +71,6 @@ def getLocation():
 def storeData(itemData, locationId, agentId):
     "Stores scanned data into database"
     cur, conn = getCursorConnection()
-
-    cur.executescript(createItemScanTable)
 
     for v in itemData.values():
         date = v["scan_date"]
