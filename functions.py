@@ -151,7 +151,12 @@ def showAllscans(sql):
     data = res.fetchall()
     conn.close()
 
-    df = getScanDataFrame(data)
+    if len(data) > 0:
+        df = getScanDataFrame(data)
 
-    print(df)
-    print("")
+        print("")
+        print(df)
+        print("")
+
+    else:
+        print("No data found.")
