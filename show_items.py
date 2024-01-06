@@ -67,10 +67,10 @@ while True:
             else:
                 optionError(opt)
 
-    elif opt == "5":
+    elif opt == "4":
         showScansByLocation()
 
-    elif opt == "6":
+    elif opt == "5":
         shutDown()
 
     else:
