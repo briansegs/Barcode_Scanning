@@ -33,10 +33,10 @@ while True:
     t.sleep(.5)
     print('''
     1. Show all dates
-    3. Show by date
-    4. Show by agent
-    5. Show by location
-    6. Quit
+    2. Show by date
+    3. Show by agent
+    4. Show by location
+    5. Quit
     ''')
     t.sleep(.5)
     opt = input(">>> ")
