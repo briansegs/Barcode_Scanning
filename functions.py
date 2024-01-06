@@ -133,19 +133,25 @@ def updateDropOffLog(agentId):
     else:
         print("No Items to drop off.")
 
+def getScanDataFrame(data):
+    "Returns scan data frame"
+    columns = ["ID", "Date", "Time", "Quantity",
+                "Item", "Agent", "Name", "location"]
+
+    df = pd.DataFrame(data=data, columns=columns)
+
+    pd.set_option('display.colheader_justify', 'center')
+
+    return df
+
 def showAllscans(sql):
     "Prints a history of scans"
     cur, conn = getCursorConnection()
     res = cur.execute(sql)
-    scans = res.fetchall()
+    data = res.fetchall()
     conn.close()
 
-    columns = ["ID", "Date", "Time", "Quantity",
-                "Item", "Agent", "Name", "location"]
-
-    df = pd.DataFrame(data=scans, columns=columns)
-
-    pd.set_option('display.colheader_justify', 'center')
+    df = getScanDataFrame(data)
 
     print(df)
     print("")

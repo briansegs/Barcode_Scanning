@@ -45,6 +45,7 @@ while True:
             t.sleep(.5)
             print("    1. Show asending")
             print("    2. Show desending")
+            print("")
             t.sleep(.5)
             opt = input(">>> ")
             t.sleep(1)
