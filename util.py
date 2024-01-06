@@ -1,5 +1,6 @@
 "App Utilities"
 import sqlite3
+import time as t
 from datetime import datetime
 from data import database as db
 
@@ -20,3 +21,9 @@ def getTime():
     now = datetime.now()
     time = now.strftime("%H:%M:%S")
     return time
+
+def shutDown():
+    "Exits the application"
+    t.sleep(1)
+    print("*Application shutting down...*")
+    quit()

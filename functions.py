@@ -1,7 +1,7 @@
 """data and functions for app"""
 import time as t
 import pandas as pd
-from util import getCursorConnection, getDate, getTime
+from util import getCursorConnection, getDate, getTime, shutDown
 from data import (
     insertItemScan,
     getLocations,
@@ -10,8 +10,7 @@ from data import (
     getPendingDropOff,
     insertDropOffLog,
     clearPendingDropOff,
-    getItemName,
-    getItemScanAsc
+    getItemName
     )
 from agent_scanner import AgentScanner
 
@@ -29,10 +28,7 @@ def getAgent():
         print('The program can not proceed without an agent.')
         t.sleep(1)
         print('Start the program over once you have an agent ID.')
-        t.sleep(1)
-        print('*Application shutting down...*')
-        t.sleep(1)
-        quit()
+        shutDown()
 
     return agent, agentId
 

@@ -1,6 +1,7 @@
 "Drop off items"
 import time as t
 from functions import getAgent, updateDropOffLog
+from util import shutDown
 
 def dropOffItems():
     '''
@@ -31,21 +32,15 @@ def dropOffItems():
 
         if opt == "1":
             updateDropOffLog(agentId)
-            t.sleep(1)
-            print("*Application shutting down...*")
-            quit()
+            shutDown()
 
         elif opt == "2":
             t.sleep(1)
             print("please contact HQ for futher steps.")
-            t.sleep(1)
-            print("*Application shutting down...*")
-            quit()
+            shutDown()
 
         elif opt == "3":
-            t.sleep(1)
-            print("*Application shutting down...*")
-            quit()
+            shutDown()
 
         else:
             t.sleep(1)

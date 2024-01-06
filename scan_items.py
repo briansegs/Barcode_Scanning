@@ -2,6 +2,7 @@
 import time as t
 from items_scanner import ItemScanner
 from functions import storeData, getLocation, getAgent
+from util import shutDown
 
 def scanItems():
     '''
@@ -34,9 +35,7 @@ def scanItems():
 
     if len(itemData) == 0:
         print('No Items were scanned.')
-        t.sleep(1)
-        print('*Application shutting down...*')
-        quit()
+        shutDown()
 
     # Stores scanned data into database
     storeData(itemData, locationId, agentId)
