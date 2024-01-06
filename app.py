@@ -2,7 +2,7 @@
 import time as t
 from scan_items import scanItems
 from drop_off_items import dropOffItems
-from util import shutDown
+from util import shutDown, optionError
 
 # TODO: Item drop off / remove item from inventory after scan
 # TODO: Display Inventory
@@ -42,5 +42,4 @@ while True:
     elif opt == "6":
         shutDown()
     else:
-        print("option not avaliable yet.")
-        t.sleep(1)
+        optionError(opt)

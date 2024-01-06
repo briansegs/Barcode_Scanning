@@ -27,3 +27,8 @@ def shutDown():
     t.sleep(1)
     print("*Application shutting down...*")
     quit()
+
+def optionError(opt):
+    "Option error message"
+    print(f'Error: "{opt}" is not an option.')
+    t.sleep(1)

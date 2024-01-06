@@ -1,7 +1,7 @@
 "Drop off items"
 import time as t
 from functions import getAgent, updateDropOffLog
-from util import shutDown
+from util import shutDown, optionError
 
 def dropOffItems():
     '''
@@ -44,4 +44,4 @@ def dropOffItems():
 
         else:
             t.sleep(1)
-            print("Error: Not an option.")
+            optionError(opt)

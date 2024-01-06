@@ -2,7 +2,7 @@
 import time as t
 from functions import getAgent, showAllscans
 from data import getItemScanAsc, getItemScanDesc
-from util import shutDown
+from util import shutDown, optionError
 
 # TODO: Login agent
 # TODO: Show items scanned options:
@@ -58,11 +58,11 @@ while True:
                 showAllscans(getItemScanDesc)
                 shutDown()
             else:
-                print(f'Error: "{opt}" is not an option.')
+                optionError(opt)
 
     elif opt == "6":
         shutDown()
 
     else:
         t.sleep(1)
-        print(f'Error: "{opt}" is not an option.')
+        optionError(opt)
