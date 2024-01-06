@@ -1,11 +1,9 @@
 "Show items scanned"
 import time as t
 from functions import (
-    getAgent, 
-    showAllscans, 
-    getCursorConnection,
-    getLocation,
-    getScanDataFrame
+    getAgent,
+    showAllScans,
+    showScansByLocation
     )
 from data import getItemScanAsc, getItemScanDesc
 from util import shutDown, optionError
@@ -59,57 +57,18 @@ while True:
             print("")
 
             if opt == "1":
-                showAllscans(getItemScanAsc)
+                showAllScans(getItemScanAsc)
                 break
 
             elif opt == "2":
-                showAllscans(getItemScanDesc)
+                showAllScans(getItemScanDesc)
                 break
 
             else:
                 optionError(opt)
 
     elif opt == "5":
-        locationId, location = getLocation()
-        t.sleep(1)
-        print("")
-        t.sleep(.5)
-
-        getItemScanlocation = '''
-            SELECT 
-            item_scan.id,
-            date,
-            time,
-            quantity,
-            item.name,
-            agent.first_name,
-            agent.last_name,
-            location.name
-            FROM item_scan
-            JOIN item JOIN agent JOIN location
-            ON 
-            item_scan.item_id = item.id 
-            AND
-            item_scan.agent_id = agent.id 
-            AND
-            item_scan.location_id = location.id
-            WHERE location_id = ? 
-            '''
-        cur, conn = getCursorConnection()
-        res = cur.execute(getItemScanlocation, (locationId,))
-        data = res.fetchall()
-        conn.close()
-
-        if len(data) > 0:
-            df = getScanDataFrame(data)
-
-            print(f'Location: {location}')
-            print("")
-            print(df)
-            print("")
-
-        else:
-            print("No data found.")
+        showScansByLocation()
 
     elif opt == "6":
         shutDown()
