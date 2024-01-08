@@ -1,7 +1,13 @@
 """data and functions for app"""
 import time as t
 import pandas as pd
-from util import getCursorConnection, getDate, getTime, shutDown
+from util import (
+    getCursorConnection, 
+    getDate, 
+    getTime, 
+    shutDown,
+    optionError
+    )
 from data import (
     insertItemScan,
     getLocations,
@@ -65,7 +71,7 @@ def getLocation():
         except ValueError:
             pass
 
-        print("Error: Not an option.")
+        optionError(opt)
         t.sleep(1)
 
     return locationId, location
@@ -112,7 +118,6 @@ def updateDropOffLog(agentId):
     Updates the drop_off_log table in the database
     Clears the pending_drop_off table in the database
     '''
-
     cur, conn = getCursorConnection()
     res = cur.execute(getPendingDropOff)
     lst = res.fetchall()
