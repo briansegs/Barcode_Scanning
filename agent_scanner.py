@@ -37,7 +37,7 @@ class AgentScanner(Scanner):
                 else:
                     agentId = agentData[0]
                     name = agentData[1] + " " + agentData[2]
-                    return name, agentId
+                    return name, agentId, bCode
         conn.close()
         cam.release()
         cv.destroyAllWindows()
