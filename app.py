@@ -17,6 +17,7 @@ from util import shutDown, optionError
 # TODO: Rethink if this app can be more object oriented
 # TODO: Make Agent class
 # TODO: Make Login function
+# TODO: Make it so that only dropoff can happen at the storage facility 
 
 while True:
     print("Options: ")
