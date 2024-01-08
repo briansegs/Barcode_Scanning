@@ -32,6 +32,19 @@ def getAgent():
 
     return agent, agentId
 
+def login():
+    "Returns agent and location"
+    print("Login to continue. ")
+    t.sleep(1)
+
+    agent, agentId = getAgent()
+
+    locationId, location = getLocation()
+
+    print(f"Welcome {agent}.")
+    t.sleep(.5)
+    return agent, agentId, locationId, location
+
 def getLocation():
     "Returns location"
     cur, conn = getCursorConnection()
