@@ -22,6 +22,12 @@ from functions import login
 
 agent = login()
 
+location = agent.location.name
+
+isNotStorage = location != "Storage Facility"
+
+isStorage = location == "Storage Facility"
+
 while True:
     print("Options: ")
     t.sleep(.5)
@@ -35,17 +41,27 @@ while True:
     ''')
     t.sleep(.5)
     opt = input(">>> ")
+    print("")
     t.sleep(1)
 
-    if opt == "1":
+    if opt == "1" and isNotStorage:
         scanItems(agent)
         break
 
-    elif opt == "2":
+    elif opt == "2" and isStorage:
         dropOffItems()
         break
 
     elif opt == "6":
         shutDown()
+
+    elif opt == "1" and isStorage:
+        print("Items can not be picked up from the storage facility. \n")
+        t.sleep(1)
+
+    elif opt == "2" and isNotStorage:
+        print(f'Items can not be dropped of at the {agent.location.name} location. \n')
+        t.sleep(1)
+
     else:
         optionError(opt)
