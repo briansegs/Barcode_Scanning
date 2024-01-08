@@ -56,7 +56,8 @@ locations = [
         "New York",
         "New Jersey",
         "Pennsylvinia",
-        "Florida"
+        "Florida",
+        "Storage Facility"
     ]
 
 pendingDropOff = [
