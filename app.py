@@ -22,11 +22,11 @@ from functions import login
 
 agent = login()
 
-location = agent.location.name
+locationName = agent.location.name
 
-isNotStorage = location != "Storage Facility"
+isNotStorage = locationName != "Storage Facility"
 
-isStorage = location == "Storage Facility"
+isStorage = locationName == "Storage Facility"
 
 while True:
     print("Options: ")
@@ -60,7 +60,7 @@ while True:
         t.sleep(1)
 
     elif opt == "2" and isNotStorage:
-        print(f'Items can not be dropped of at the {agent.location.name} location. \n')
+        print(f'Items can not be dropped of at the {locationName} location. \n')
         t.sleep(1)
 
     else:
