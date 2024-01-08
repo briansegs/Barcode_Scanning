@@ -4,6 +4,7 @@ import cv2 as cv
 from pyzbar.pyzbar import decode
 from scanner import Scanner
 from util import getDate, getTime, getCursorConnection
+from item import Item
 
 class ItemScanner(Scanner):
     "scans item barcodes"
@@ -63,9 +64,8 @@ class ItemScanner(Scanner):
                         t.sleep(1)
 
                 else:
-                    itemId = inventoryData[0]
-                    itemName = inventoryData[1]
-                    print(itemName)
+                    item = Item(inventoryData[1], inventoryData[0])
+                    print(item.name)
                     t.sleep(.5)
                     while True:
                         try:
@@ -81,7 +81,7 @@ class ItemScanner(Scanner):
                             t.sleep(1)
 
                     self.itemData[bCode] = {
-                        "item_id" : itemId,
+                        "item_id" : item.id,
                         "quantity" : qty,
                         "scan_date" : getDate(),
                         "scan_time" : getTime()
