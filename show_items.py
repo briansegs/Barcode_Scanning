@@ -1,7 +1,6 @@
 "Show items scanned"
 import time as t
 from functions import (
-    getAgent,
     showAllScans,
     showScansByLocation
     )
