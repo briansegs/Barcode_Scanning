@@ -16,9 +16,7 @@ from functions import login
 # TODO: Show items dropped off / by date
 # TODO: Spit out options into seperate files
 # TODO: Rethink if this app can be more object oriented
-# TODO: Make Agent class
-# TODO: Make Login function
-# TODO: Make it so that only dropoff can happen at the storage facility 
+# TODO: Make item class
 
 agent = login()
 
@@ -49,7 +47,7 @@ while True:
         break
 
     elif opt == "2" and isStorage:
-        dropOffItems()
+        dropOffItems(agent)
         break
 
     elif opt == "6":

@@ -11,7 +11,6 @@ def scanItems(agent):
     Stores data into a database
     Returns nothing
     '''
-
     # Create scanners
     iScan = ItemScanner()
 
