@@ -15,6 +15,8 @@ from util import shutDown, optionError
 # TODO: Show items dropped off / by date
 # TODO: Spit out options into seperate files
 # TODO: Rethink if this app can be more object oriented
+# TODO: Make Agent class
+# TODO: Make Login function
 
 while True:
     print("Options: ")
