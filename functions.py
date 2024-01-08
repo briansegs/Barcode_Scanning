@@ -81,6 +81,9 @@ def login():
     agentName, agentId, agentBarcode = getAgent()
     agent = Agent(agentName, agentId, agentBarcode, location)
 
+    print(f'Welcome {agent.name}. You are logged into the {agent.location.name} location.')
+    t.sleep(1)
+
     return agent
 
 def storeData(itemData, locationId, agentId):

@@ -3,6 +3,7 @@ import time as t
 from scan_items import scanItems
 from drop_off_items import dropOffItems
 from util import shutDown, optionError
+from functions import login
 
 # TODO: Item drop off / remove item from inventory after scan
 # TODO: Display Inventory
@@ -18,6 +19,8 @@ from util import shutDown, optionError
 # TODO: Make Agent class
 # TODO: Make Login function
 # TODO: Make it so that only dropoff can happen at the storage facility 
+
+agent = login()
 
 while True:
     print("Options: ")
@@ -35,7 +38,7 @@ while True:
     t.sleep(1)
 
     if opt == "1":
-        scanItems()
+        scanItems(agent)
         break
 
     elif opt == "2":

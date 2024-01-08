@@ -1,10 +1,10 @@
 "Scan items"
 import time as t
 from items_scanner import ItemScanner
-from functions import storeData, getLocation, getAgent
+from functions import storeData
 from util import shutDown
 
-def scanItems():
+def scanItems(agent):
     '''
     Logs in an Agent
     Scans items by barcode
@@ -14,17 +14,6 @@ def scanItems():
 
     # Create scanners
     iScan = ItemScanner()
-
-    # Login process
-    print('Login to start scanning.')
-    t.sleep(1)
-
-    agent, agentId = getAgent()
-
-    locationId, location = getLocation()
-
-    print(f'Welcome {agent}. You are logged into the {location} location.')
-    t.sleep(1)
 
     # Scans barcodes and stores in data{}
     print('*Starting scanner...*')
@@ -38,6 +27,6 @@ def scanItems():
         shutDown()
 
     # Stores scanned data into database
-    storeData(itemData, locationId, agentId)
+    storeData(itemData, agent.location.id, agent.id)
     t.sleep(1)
     print('*Data stored*')

@@ -4,4 +4,4 @@ class Location:
     "Location"
     def __init__(self, name, locationId):
         self.name = name
-        self.locationId = locationId
+        self.id = locationId
