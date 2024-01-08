@@ -18,15 +18,6 @@ from util import shutDown, optionError
 # TODO: Extract function for login
 # TODO: Find a better way to display data
 
-# Login
-print("Login to continue. ")
-t.sleep(1)
-
-agent, agentId = getAgent()
-
-print(f"Welcome {agent}.")
-t.sleep(.5)
-
 # Options
 while True:
     print("Options: ")
