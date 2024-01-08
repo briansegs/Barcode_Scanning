@@ -13,6 +13,8 @@ from data import (
     getItemScanlocation
     )
 from agent_scanner import AgentScanner
+from agent import Agent
+from location import Location
 
 def getAgent():
     "Returns: agent and agentId from database"
@@ -22,7 +24,7 @@ def getAgent():
     t.sleep(1)
 
     try:
-        agent, agentId = aScan.scanAgent()
+        agent, agentId, agentBarcode = aScan.scanAgent()
 
     except TypeError:
         print('The program can not proceed without an agent.')
@@ -30,20 +32,7 @@ def getAgent():
         print('Start the program over once you have an agent ID.')
         shutDown()
 
-    return agent, agentId
-
-def login():
-    "Returns agent and location"
-    print("Login to continue. ")
-    t.sleep(1)
-
-    agent, agentId = getAgent()
-
-    locationId, location = getLocation()
-
-    print(f"Welcome {agent}.")
-    t.sleep(.5)
-    return agent, agentId, locationId, location
+    return agent, agentId, agentBarcode
 
 def getLocation():
     "Returns location"
@@ -80,6 +69,19 @@ def getLocation():
         t.sleep(1)
 
     return locationId, location
+
+def login():
+    "Returns agent"
+    print("Login to continue. ")
+    t.sleep(1)
+
+    locationId, locationName = getLocation()
+    location = Location(locationName, locationId)
+
+    agentName, agentId, agentBarcode = getAgent()
+    agent = Agent(agentName, agentId, agentBarcode, location)
+
+    return agent
 
 def storeData(itemData, locationId, agentId):
     "Stores scanned data into database"
