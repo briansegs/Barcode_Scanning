@@ -211,3 +211,12 @@ getItemScanlocation = '''
     item_scan.location_id = location.id
     WHERE location_id = ? 
     '''
+
+getAgentList = '''
+        SELECT
+            id,
+            first_name,
+            last_name
+        FROM 
+            agent
+        '''

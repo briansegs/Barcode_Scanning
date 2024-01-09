@@ -3,7 +3,8 @@ import time as t
 from functions import (
     showAllScans,
     showScansByLocation,
-    getCursorConnection
+    getCursorConnection,
+    getAgentFromList
     )
 from data import getItemScanAsc, getItemScanDesc
 from util import shutDown, optionError
@@ -59,46 +60,7 @@ while True:
                 optionError(opt)
 
     elif opt == "3":
-        getAgentList = '''
-        SELECT
-            id,
-            first_name,
-            last_name
-        FROM 
-            agent
-        '''
-        cur, conn = getCursorConnection()
-        res = cur.execute(getAgentList)
-        lst = res.fetchall()
-        conn.close()
-
-        agents = {}
-        for agent in lst:
-            agents[agent[0]] = [agent[1], agent[2]]
-
-        while True:
-            print("Enter the number of agent: \n")
-            t.sleep(1)
-            for num, name in agents.items():
-                print(f'    {num}. {name[0]} {name[1]}')
-            print("")
-            t.sleep(.5)
-
-            try:
-                opt = int(input(">>> "))
-                t.sleep(.5)
-                if opt in agents:
-                    agentId = opt
-                    name = agents[opt][0] + " " + agents[opt][1]
-                    break
-
-            except ValueError:
-                pass
-
-            optionError(opt)
-            t.sleep(1)
-
-        print(agentId, name)
+        agentId, agentName = getAgentFromList()
 
     elif opt == "4":
         showScansByLocation()

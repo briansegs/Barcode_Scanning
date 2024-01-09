@@ -2,9 +2,9 @@
 import time as t
 import pandas as pd
 from util import (
-    getCursorConnection, 
-    getDate, 
-    getTime, 
+    getCursorConnection,
+    getDate,
+    getTime,
     shutDown,
     optionError
     )
@@ -16,7 +16,8 @@ from data import (
     insertDropOffLog,
     clearPendingDropOff,
     getItemName,
-    getItemScanlocation
+    getItemScanlocation,
+    getAgentList
     )
 from agent_scanner import AgentScanner
 from agent import Agent
@@ -207,14 +208,6 @@ def showScansByLocation():
 
 def getAgentFromList():
     "Returns agent id and name"
-    getAgentList = '''
-        SELECT
-            id,
-            first_name,
-            last_name
-        FROM 
-            agent
-        '''
     cur, conn = getCursorConnection()
     res = cur.execute(getAgentList)
     lst = res.fetchall()
