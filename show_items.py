@@ -17,6 +17,7 @@ from util import shutDown, optionError
 # TODO: By location / asending and desending by date
 # TODO: Extract function for login
 # TODO: Find a better way to display data
+# TODO: Add newlines to cut down on print statments
 
 # Options
 while True:
