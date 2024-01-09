@@ -204,3 +204,46 @@ def showScansByLocation():
 
     else:
         print("No data found.")
+
+def getAgentFromList():
+    "Returns agent id and name"
+    getAgentList = '''
+        SELECT
+            id,
+            first_name,
+            last_name
+        FROM 
+            agent
+        '''
+    cur, conn = getCursorConnection()
+    res = cur.execute(getAgentList)
+    lst = res.fetchall()
+    conn.close()
+
+    agents = {}
+    for agent in lst:
+        agents[agent[0]] = [agent[1], agent[2]]
+
+    while True:
+        print("Enter the number of agent: \n")
+        t.sleep(1)
+        for num, name in agents.items():
+            print(f'    {num}. {name[0]} {name[1]}')
+        print("")
+        t.sleep(.5)
+
+        try:
+            opt = int(input(">>> "))
+            t.sleep(.5)
+            if opt in agents:
+                agentId = opt
+                agentName = agents[opt][0] + " " + agents[opt][1]
+                break
+
+        except ValueError:
+            pass
+
+        optionError(opt)
+        t.sleep(1)
+
+    return agentId, agentName
