@@ -3,8 +3,7 @@ import time as t
 from functions import (
     showAllScans,
     showScansByLocation,
-    getCursorConnection,
-    getAgentFromList
+    showScansByAgent
     )
 from data import getItemScanAsc, getItemScanDesc
 from util import shutDown, optionError
@@ -60,7 +59,7 @@ while True:
                 optionError(opt)
 
     elif opt == "3":
-        agentId, agentName = getAgentFromList()
+        showScansByAgent()
 
     elif opt == "4":
         showScansByLocation()
