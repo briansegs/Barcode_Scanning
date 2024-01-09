@@ -17,7 +17,8 @@ from data import (
     clearPendingDropOff,
     getItemName,
     getItemScanlocation,
-    getAgentList
+    getAgentList,
+    getItemScanAgent
     )
 from agent_scanner import AgentScanner
 from agent import Agent
@@ -247,27 +248,6 @@ def showScansByAgent():
     t.sleep(1)
     print("")
     t.sleep(.5)
-
-    getItemScanAgent = '''
-        SELECT 
-        item_scan.id,
-        date,
-        time,
-        quantity,
-        item.name,
-        agent.first_name,
-        agent.last_name,
-        location.name
-        FROM item_scan
-        JOIN item JOIN agent JOIN location
-        ON 
-        item_scan.item_id = item.id 
-        AND
-        item_scan.agent_id = agent.id 
-        AND
-        item_scan.location_id = location.id
-        WHERE agent_id = ? 
-        '''
 
     cur, conn = getCursorConnection()
     res = cur.execute(getItemScanAgent, (agentId,))
