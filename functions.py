@@ -30,7 +30,7 @@ def getAgent():
     t.sleep(1)
 
     try:
-        agent, agentId, agentBarcode = aScan.scanAgent()
+        agent, agentId = aScan.scanAgent()
 
     except TypeError:
         print('The program can not proceed without an agent.')
@@ -38,7 +38,7 @@ def getAgent():
         print('Start the program over once you have an agent ID.')
         shutDown()
 
-    return agent, agentId, agentBarcode
+    return agent, agentId
 
 def getLocation():
     "Returns location"
@@ -84,8 +84,8 @@ def login():
     locationId, locationName = getLocation()
     location = Location(locationName, locationId)
 
-    agentName, agentId, agentBarcode = getAgent()
-    agent = Agent(agentName, agentId, agentBarcode, location)
+    agentName, agentId = getAgent()
+    agent = Agent(agentName, agentId, location)
 
     print(f'Welcome {agent.name}. You are logged into the {agent.location.name} location.')
     t.sleep(1)

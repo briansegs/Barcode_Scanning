@@ -2,9 +2,8 @@
 
 class Agent:
     "Agent"
-    def __init__(self, name, agentId, barcode, location):
+    def __init__(self, name, agentId, location):
         self.name = name
         self.id = agentId
-        self.barcode = barcode
         self.location = location
         
