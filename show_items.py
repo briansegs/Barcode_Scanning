@@ -56,8 +56,6 @@ while True:
             else:
                 optionError(opt)
 
-    # TODO: Display all dates to pick from
-    # TODO: Display scans by selected date
     elif opt == "2":
         date = getScanDate()
         t.sleep(1)
