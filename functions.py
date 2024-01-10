@@ -177,9 +177,7 @@ def showAllScans(sql):
     if len(data) > 0:
         df = getScanDataFrame(data)
 
-        print("")
-        print(df)
-        print("")
+        print(df, "\n")
 
     else:
         print("No data found.")
@@ -199,10 +197,8 @@ def showScansByLocation():
     if len(data) > 0:
         df = getScanDataFrame(data)
 
-        print(f'Location: {location}')
-        print("")
-        print(df)
-        print("")
+        print(f'Location: {location} \n')
+        print(df, "\n")
 
     else:
         print("No data found.")

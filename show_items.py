@@ -21,7 +21,7 @@ while True:
     print("Options: ")
     t.sleep(.5)
     print('''
-    1. Show all dates
+    1. Show all
     2. Show by date
     3. Show by agent
     4. Show by location
@@ -34,12 +34,10 @@ while True:
 
     if opt == "1":
         while True:
-            print("Options:")
-            print("")
+            print("Options: \n")
             t.sleep(.5)
             print("    1. Show asending")
-            print("    2. Show desending")
-            print("")
+            print("    2. Show desending \n")
             t.sleep(.5)
             opt = input(">>> ")
             t.sleep(1)
