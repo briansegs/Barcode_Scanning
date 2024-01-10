@@ -15,8 +15,6 @@ from functions import login
 # TODO: Show items scanned / by date
 # TODO: Show items dropped off / by date
 # TODO: Spit out options into seperate files
-# TODO: Rethink if this app can be more object oriented
-# TODO: Make item class
 
 agent = login()
 

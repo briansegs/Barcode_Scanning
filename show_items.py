@@ -8,15 +8,12 @@ from functions import (
 from data import getItemScanAsc, getItemScanDesc
 from util import shutDown, optionError
 
-# TODO: Login agent
 # TODO: Show items scanned options:
 # TODO: All dates earliest to latest
 # TODO: All dates latest to earliest
 # TODO: Pick from dates / asending and desending by time
 # TODO: By agent / asending and desending by date
 # TODO: By location / asending and desending by date
-# TODO: Extract function for login
-# TODO: Find a better way to display data
 # TODO: Add newlines to cut down on print statments
 
 # Options
