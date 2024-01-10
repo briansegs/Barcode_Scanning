@@ -316,3 +316,30 @@ def showScansByDate():
 
     else:
         print("No data found.")
+
+# TODO: See if showScans functions can be reduced into one function
+# Example of generic function
+
+# date = getScanDate()
+
+# def showScans(subject, query, para):
+#     "Prints a history of scans"
+#     t.sleep(1)
+#     print("")
+#     t.sleep(.5)
+
+#     cur, conn = getCursorConnection()
+#     res = cur.execute(query, (para,))
+#     data = res.fetchall()
+#     conn.close()
+
+#     if len(data) > 0:
+#         df = getScanDataFrame(data)
+
+#         print(f'{subject}: {date} \n')
+#         print(df, "\n")
+
+#     else:
+#         print("No data found.")
+
+# showScans("Date", getItemScanDate, date)
