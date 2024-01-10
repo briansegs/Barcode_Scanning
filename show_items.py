@@ -5,6 +5,7 @@ from functions import (
     showScansByLocation,
     showScansByAgent,
     getCursorConnection,
+    getScanDataFrame,
     getScanDate
     )
 from data import getItemScanAsc, getItemScanDesc
@@ -59,6 +60,44 @@ while True:
     # TODO: Display scans by selected date
     elif opt == "2":
         date = getScanDate()
+        t.sleep(1)
+        print("")
+        t.sleep(.5)
+
+        getItemScanDate = '''
+            SELECT 
+            item_scan.id,
+            date,
+            time,
+            quantity,
+            item.name,
+            agent.first_name,
+            agent.last_name,
+            location.name
+            FROM item_scan
+            JOIN item JOIN agent JOIN location
+            ON 
+            item_scan.item_id = item.id 
+            AND
+            item_scan.agent_id = agent.id 
+            AND
+            item_scan.location_id = location.id
+            WHERE date = ? 
+            '''
+
+        cur, conn = getCursorConnection()
+        res = cur.execute(getItemScanDate, (date,))
+        data = res.fetchall()
+        conn.close()
+
+        if len(data) > 0:
+            df = getScanDataFrame(data)
+
+            print(f'Date: {date} \n')
+            print(df, "\n")
+
+        else:
+            print("No data found.")
 
     elif opt == "3":
         showScansByAgent()
