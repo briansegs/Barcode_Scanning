@@ -18,7 +18,8 @@ from data import (
     getItemName,
     getItemScanlocation,
     getAgentList,
-    getItemScanAgent
+    getItemScanAgent,
+    getScanDates
     )
 from agent_scanner import AgentScanner
 from agent import Agent
@@ -259,12 +260,6 @@ def showScansByAgent():
 
 def getScanDate():
     "returns selected date"
-    getScanDates = '''
-    SELECT
-        date
-    FROM
-        item_scan
-    '''
     cur, conn = getCursorConnection()
     res = cur.execute(getScanDates)
     lst = res.fetchall()
