@@ -32,8 +32,8 @@ while True:
     print('''
     1. Scan items for pickup
     2. Drop off items
-    4. Show items scanned
-    3. Show items pending drop off
+    3. Show items scanned
+    4. Show items pending drop off
     5. Show items drop off log
     6. Quit
     ''')
