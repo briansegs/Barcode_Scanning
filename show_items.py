@@ -3,7 +3,8 @@ import time as t
 from functions import (
     showAllScans,
     showScansByLocation,
-    showScansByAgent
+    showScansByAgent,
+    getCursorConnection
     )
 from data import getItemScanAsc, getItemScanDesc
 from util import shutDown, optionError
@@ -12,8 +13,6 @@ from util import shutDown, optionError
 # TODO: All dates earliest to latest
 # TODO: All dates latest to earliest
 # TODO: Pick from dates / asending and desending by time
-# TODO: Display all dates to pick from
-# TODO: Display scans by selected date
 # TODO: By agent / asending and desending by date
 # TODO: By location / asending and desending by date
 
@@ -54,6 +53,50 @@ while True:
 
             else:
                 optionError(opt)
+
+    # TODO: Display all dates to pick from
+    # TODO: Display scans by selected date
+    elif opt == "2":
+        getScanDates = '''
+        SELECT
+            date
+        FROM
+            item_scan
+        '''
+        cur, conn = getCursorConnection()
+        res = cur.execute(getScanDates)
+        lst = res.fetchall()
+        conn.close()
+
+        dates = {}
+        count = 0
+        for item in lst:
+            if item[0] not in dates.values():
+                count += 1
+                dates[count] = item[0]
+
+        while True:
+            print("Enter the number of date: \n")
+            t.sleep(1)
+            for num, date in dates.items():
+                print(f'    {num}. {date}')
+            print("")
+            t.sleep(.5)
+
+            try:
+                opt = int(input(">>> "))
+                t.sleep(.5)
+                if opt in dates:
+                    date = dates[opt]
+                    break
+
+            except ValueError:
+                pass
+
+            optionError(opt)
+            t.sleep(1)
+
+        print(date)
 
     elif opt == "3":
         showScansByAgent()
