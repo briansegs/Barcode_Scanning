@@ -14,7 +14,6 @@ from util import shutDown, optionError
 # TODO: Pick from dates / asending and desending by time
 # TODO: By agent / asending and desending by date
 # TODO: By location / asending and desending by date
-# TODO: Add newlines to cut down on print statments
 
 # Options
 while True:
