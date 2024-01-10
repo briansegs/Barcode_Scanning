@@ -54,8 +54,7 @@ def getLocation():
         locations[item[0]] = item[1]
 
     while True:
-        print("Enter the number of your Location: ")
-        print("")
+        print("Enter the number of your Location: \n")
         t.sleep(1)
         for num, location in locations.items():
             print(f'    {num}. {location}')
@@ -126,8 +125,7 @@ def updateDropOffLog(agentId):
 
     if len(lst) > 0:
         t.sleep(1)
-        print("Items dropped off: ")
-        print("")
+        print("Items dropped off: \n")
 
         for i in lst:
             itemId = i[0]
@@ -258,3 +256,46 @@ def showScansByAgent():
 
     else:
         print("No data found")
+
+def getScanDate():
+    "returns selected date"
+    getScanDates = '''
+    SELECT
+        date
+    FROM
+        item_scan
+    '''
+    cur, conn = getCursorConnection()
+    res = cur.execute(getScanDates)
+    lst = res.fetchall()
+    conn.close()
+
+    dates = {}
+    count = 0
+    for item in lst:
+        if item[0] not in dates.values():
+            count += 1
+            dates[count] = item[0]
+
+    while True:
+        print("Enter the number of date: \n")
+        t.sleep(1)
+        for num, date in dates.items():
+            print(f'    {num}. {date}')
+        print("")
+        t.sleep(.5)
+
+        try:
+            opt = int(input(">>> "))
+            t.sleep(.5)
+            if opt in dates:
+                date = dates[opt]
+                break
+
+        except ValueError:
+            pass
+
+        optionError(opt)
+        t.sleep(1)
+
+    return date
