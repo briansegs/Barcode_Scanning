@@ -17,6 +17,7 @@ from functions import login
 # TODO: Spit out options into seperate files
 # TODO: Add spacing when items are being scanned and printed
 # TODO: See if showScans functions can be reduced into one function
+# TODO: See if getScan functions can be reduced into one function
 
 agent = login()
 
