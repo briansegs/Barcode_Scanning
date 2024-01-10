@@ -12,6 +12,8 @@ from util import shutDown, optionError
 # TODO: All dates earliest to latest
 # TODO: All dates latest to earliest
 # TODO: Pick from dates / asending and desending by time
+# TODO: Display all dates to pick from
+# TODO: Display scans by selected date
 # TODO: By agent / asending and desending by date
 # TODO: By location / asending and desending by date
 
