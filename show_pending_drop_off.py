@@ -1,6 +1,6 @@
 "Show pending drop off"
 import pandas as pd
-from util import getCursorConnection
+from functions import getData
 
 def showPendingDropOff():
     "Prints pending_drop_off table as dataFrame"
@@ -15,11 +15,7 @@ def showPendingDropOff():
         ON
             pending_drop_off.item_id = item.id
     '''
-
-    cur, conn = getCursorConnection()
-    res = cur.execute(getPendingDropOff)
-    data = res.fetchall()
-    conn.close()
+    data = getData(getPendingDropOff)
 
     columns = ["Name", "Quantity"]
     df = pd.DataFrame(data=data, columns=columns)

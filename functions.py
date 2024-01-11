@@ -154,10 +154,7 @@ def showScans(topic, query, param, value):
 
 def getFromList(topic, query):
     "Returns selection from List"
-    cur, conn = getCursorConnection()
-    res = cur.execute(query)
-    data = res.fetchall()
-    conn.close()
+    data = getData(query)
 
     if len(data[0]) == 1:
         dic = {}
@@ -200,3 +197,12 @@ def getFromList(topic, query):
         t.sleep(1)
 
     return value, param
+
+def getData(query):
+    "Returns data from query"
+    cur, conn = getCursorConnection()
+    res = cur.execute(query)
+    data = res.fetchall()
+    conn.close()
+
+    return data
