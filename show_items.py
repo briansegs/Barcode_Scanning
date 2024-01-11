@@ -1,9 +1,6 @@
 "Show items scanned"
 import time as t
-from functions import (
-    showScans,
-    getFromList
-    )
+from functions import showScans, getFromList
 from data import (
     getItemScansAsc,
     getItemScansDesc,
@@ -15,13 +12,6 @@ from data import (
     getLocations
     )
 from util import shutDown, optionError
-
-# TODO: Show items scanned options:
-# TODO: All dates earliest to latest
-# TODO: All dates latest to earliest
-# TODO: Pick from dates / asending and desending by time
-# TODO: By agent / asending and desending by date
-# TODO: By location / asending and desending by date
 
 def showItemsScanned():
     "Prints recorded items from the database"
