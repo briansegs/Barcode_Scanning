@@ -16,8 +16,6 @@ from data import (
     insertDropOffLog,
     clearPendingDropOff,
     getItemName,
-    getAgentList,
-    getScanDates,
     )
 from agent_scanner import AgentScanner
 from agent import Agent
@@ -41,47 +39,12 @@ def getAgent():
 
     return agent, agentId
 
-def getLocation():
-    "Returns location"
-    cur, conn = getCursorConnection()
-    res = cur.execute(getLocations)
-    lst = res.fetchall()
-    conn.close()
-
-    locations = {}
-    for item in lst:
-        locations[item[0]] = item[1]
-
-    while True:
-        print("Enter the number of your Location: \n")
-        t.sleep(1)
-        for num, location in locations.items():
-            print(f'    {num}. {location}')
-        print("")
-        t.sleep(.5)
-
-        try:
-            opt = int(input(">>> "))
-            t.sleep(.5)
-            if opt in locations:
-                locationId = opt
-                location = locations[opt]
-                break
-
-        except ValueError:
-            pass
-
-        optionError(opt)
-        t.sleep(1)
-
-    return locationId, location
-
 def login():
     "Returns agent"
     print("Login to continue. ")
     t.sleep(1)
 
-    locationId, locationName = getLocation()
+    locationId, locationName = getFromList("Location", getLocations)
     location = Location(locationName, locationId)
 
     agentName, agentId = getAgent()
@@ -164,78 +127,6 @@ def getScanDataFrame(data):
 
     return df
 
-def getAgentFromList():
-    "Returns agent id and name"
-    cur, conn = getCursorConnection()
-    res = cur.execute(getAgentList)
-    lst = res.fetchall()
-    conn.close()
-
-    agents = {}
-    for agent in lst:
-        agents[agent[0]] = [agent[1], agent[2]]
-
-    while True:
-        print("Enter the number of agent: \n")
-        t.sleep(1)
-        for num, name in agents.items():
-            print(f'    {num}. {name[0]} {name[1]}')
-        print("")
-        t.sleep(.5)
-
-        try:
-            opt = int(input(">>> "))
-            t.sleep(.5)
-            if opt in agents:
-                agentId = opt
-                agentName = agents[opt][0] + " " + agents[opt][1]
-                break
-
-        except ValueError:
-            pass
-
-        optionError(opt)
-        t.sleep(1)
-
-    return agentId, agentName
-
-def getScanDate():
-    "returns selected date"
-    cur, conn = getCursorConnection()
-    res = cur.execute(getScanDates)
-    lst = res.fetchall()
-    conn.close()
-
-    dates = {}
-    count = 0
-    for item in lst:
-        if item[0] not in dates.values():
-            count += 1
-            dates[count] = item[0]
-
-    while True:
-        print("Enter the number of date: \n")
-        t.sleep(1)
-        for num, date in dates.items():
-            print(f'    {num}. {date}')
-        print("")
-        t.sleep(.5)
-
-        try:
-            opt = int(input(">>> "))
-            t.sleep(.5)
-            if opt in dates:
-                date = dates[opt]
-                break
-
-        except ValueError:
-            pass
-
-        optionError(opt)
-        t.sleep(1)
-
-    return date
-
 def showScans(subject, query, para, value):
     "Prints a history of scans"
     t.sleep(1)
@@ -261,7 +152,7 @@ def showScans(subject, query, para, value):
     else:
         print("No data found. \n")
 
-def getParamFromList(subject, query):
+def getFromList(subject, query):
     "Returns selection from List"
     cur, conn = getCursorConnection()
     res = cur.execute(query)
@@ -275,6 +166,16 @@ def getParamFromList(subject, query):
             if item[0] not in obj.values():
                 count += 1
                 obj[count] = item[0]
+
+    elif len(lst[0]) == 2:
+        obj = {}
+        for item in lst:
+            obj[item[0]] = item[1]
+
+    elif len(lst[0]) == 3:
+        obj = {}
+        for item in lst:
+            obj[item[0]] = item[1] + " " + item[2]
 
     while True:
         print(f'Enter the number of {subject}: \n')
@@ -297,4 +198,4 @@ def getParamFromList(subject, query):
         optionError(opt)
         t.sleep(1)
 
-    return param
+    return param, opt

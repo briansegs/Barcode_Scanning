@@ -2,9 +2,7 @@
 import time as t
 from functions import (
     showScans,
-    getAgentFromList,
-    getLocation,
-    getParamFromList
+    getFromList
     )
 from data import (
     getItemScanAsc,
@@ -12,7 +10,9 @@ from data import (
     getItemScanDate,
     getItemScanAgent,
     getItemScanlocation,
-    getScanDates
+    getScanDates,
+    getAgentList,
+    getLocations
     )
 from util import shutDown, optionError
 
@@ -62,15 +62,15 @@ while True:
                 optionError(opt)
 
     elif opt == "2":
-        date = getParamFromList(getScanDates, "Date")
+        date, _ = getFromList("Date", getScanDates)
         showScans("Date", getItemScanDate, date, date)
 
     elif opt == "3":
-        agentId, agentName = getAgentFromList()
+        agentName, agentId = getFromList("Agent", getAgentList)
         showScans("Agent",getItemScanAgent, agentId, agentName)
 
     elif opt == "4":
-        locationId, locationName = getLocation()
+        locationName, locationId = getFromList("Location", getLocations)
         showScans("Location", getItemScanlocation, locationId, locationName)
 
     elif opt == "5":
