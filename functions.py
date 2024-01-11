@@ -156,25 +156,25 @@ def getFromList(topic, query):
     "Returns selection from List"
     cur, conn = getCursorConnection()
     res = cur.execute(query)
-    lst = res.fetchall()
+    data = res.fetchall()
     conn.close()
 
-    if len(lst[0]) == 1:
+    if len(data[0]) == 1:
         dic = {}
         count = 0
-        for item in lst:
+        for item in data:
             if item[0] not in dic.values():
                 count += 1
                 dic[count] = item[0]
 
-    elif len(lst[0]) == 2:
+    elif len(data[0]) == 2:
         dic = {}
-        for item in lst:
+        for item in data:
             dic[item[0]] = item[1]
 
-    elif len(lst[0]) == 3:
+    elif len(data[0]) == 3:
         dic = {}
-        for item in lst:
+        for item in data:
             dic[item[0]] = item[1] + " " + item[2]
 
     while True:
