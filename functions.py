@@ -260,3 +260,41 @@ def showScans(subject, query, para, value):
 
     else:
         print("No data found. \n")
+
+def getParamFromList(subject, query):
+    "Returns selection from List"
+    cur, conn = getCursorConnection()
+    res = cur.execute(query)
+    lst = res.fetchall()
+    conn.close()
+
+    if len(lst[0]) == 1:
+        obj = {}
+        count = 0
+        for item in lst:
+            if item[0] not in obj.values():
+                count += 1
+                obj[count] = item[0]
+
+    while True:
+        print(f'Enter the number of {subject}: \n')
+        t.sleep(1)
+        for num, value in obj.items():
+            print(f'    {num}. {value}')
+        print("")
+        t.sleep(.5)
+
+        try:
+            opt = int(input(">>> "))
+            t.sleep(.5)
+            if opt in obj:
+                param = obj[opt]
+                break
+
+        except ValueError:
+            pass
+
+        optionError(opt)
+        t.sleep(1)
+
+    return param

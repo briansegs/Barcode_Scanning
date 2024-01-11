@@ -1,18 +1,18 @@
 "Show items scanned"
 import time as t
 from functions import (
-    showAllScans,
-    getScanDate,
     showScans,
     getAgentFromList,
-    getLocation
+    getLocation,
+    getParamFromList
     )
 from data import (
     getItemScanAsc,
     getItemScanDesc,
     getItemScanDate,
     getItemScanAgent,
-    getItemScanlocation
+    getItemScanlocation,
+    getScanDates
     )
 from util import shutDown, optionError
 
@@ -43,27 +43,26 @@ while True:
         while True:
             print("Options: \n")
             t.sleep(.5)
-            print("    1. Show asending")
-            print("    2. Show desending \n")
+            print("    1. Show ascending")
+            print("    2. Show descending \n")
             t.sleep(.5)
             opt = input(">>> ")
             t.sleep(1)
             print("")
 
             if opt == "1":
-                # showAllScans(getItemScanAsc)
-                showScans("All", getItemScanAsc, None, "Asending")
+                showScans("All", getItemScanAsc, None, "Ascending")
                 break
 
             elif opt == "2":
-                showAllScans(getItemScanDesc)
+                showScans("All", getItemScanDesc, None, "Descending")
                 break
 
             else:
                 optionError(opt)
 
     elif opt == "2":
-        date = getScanDate()
+        date = getParamFromList(getScanDates, "Date")
         showScans("Date", getItemScanDate, date, date)
 
     elif opt == "3":
