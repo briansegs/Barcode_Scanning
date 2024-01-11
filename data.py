@@ -269,3 +269,15 @@ getScansByDate = '''
         item_scan.location_id = location.id
         WHERE date = ? 
         '''
+
+getPendingDropOff = '''
+        SELECT
+            item.name,
+            quantity
+        FROM 
+            pending_drop_off
+        JOIN 
+            item
+        ON
+            pending_drop_off.item_id = item.id
+    '''

@@ -1,20 +1,11 @@
 "Show pending drop off"
 import pandas as pd
 from functions import getData
+from data import getPendingDropOff
+
 
 def showPendingDropOff():
     "Prints pending_drop_off table as dataFrame"
-    getPendingDropOff = '''
-        SELECT
-            item.name,
-            quantity
-        FROM 
-            pending_drop_off
-        JOIN 
-            item
-        ON
-            pending_drop_off.item_id = item.id
-    '''
     data = getData(getPendingDropOff)
 
     columns = ["Name", "Quantity"]
