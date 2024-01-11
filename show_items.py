@@ -18,7 +18,7 @@ def showItemsScanned():
 
     # Options
     while True:
-        print("Options: ")
+        print("Scanned items options: ")
         t.sleep(.5)
         print('''
         1. Show all

@@ -29,7 +29,7 @@ isNotStorage = locationName != "Storage Facility"
 isStorage = locationName == "Storage Facility"
 
 while True:
-    print("Options: ")
+    print(" Main options: ")
     t.sleep(.5)
     print('''
     1. Scan items for pickup

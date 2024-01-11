@@ -8,11 +8,10 @@ def dropOffItems(agent):
     Handles item drop off 
     Returns nothing 
     '''
-    print("Were all items delivered successfully?")
-    t.sleep(.5)
-
     # Options
     while True:
+        print("Were all items delivered successfully? \n")
+        t.sleep(.5)
         print("Options: ")
         t.sleep(.5)
         print('''
@@ -22,6 +21,7 @@ def dropOffItems(agent):
         ''')
         t.sleep(.5)
         opt = input(">>> ")
+        print("")
 
         if opt == "1":
             updateDropOffLog(agent.id)
