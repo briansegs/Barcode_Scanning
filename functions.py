@@ -127,7 +127,7 @@ def getScanDataFrame(data):
 
     return df
 
-def showScans(subject, query, para, value):
+def showScans(topic, query, param, value):
     "Prints a history of scans"
     t.sleep(1)
     print("")
@@ -135,10 +135,10 @@ def showScans(subject, query, para, value):
 
     cur, conn = getCursorConnection()
 
-    if para is None:
+    if param is None:
         res = cur.execute(query)
     else:
-        res = cur.execute(query, (para,))
+        res = cur.execute(query, (param,))
 
     data = res.fetchall()
     conn.close()
@@ -146,13 +146,13 @@ def showScans(subject, query, para, value):
     if len(data) > 0:
         df = getScanDataFrame(data)
 
-        print(f'{subject}: {value} \n')
+        print(f'{topic}: {value} \n')
         print(df, "\n")
 
     else:
         print("No data found. \n")
 
-def getFromList(subject, query):
+def getFromList(topic, query):
     "Returns selection from List"
     cur, conn = getCursorConnection()
     res = cur.execute(query)
@@ -160,27 +160,27 @@ def getFromList(subject, query):
     conn.close()
 
     if len(lst[0]) == 1:
-        obj = {}
+        dic = {}
         count = 0
         for item in lst:
-            if item[0] not in obj.values():
+            if item[0] not in dic.values():
                 count += 1
-                obj[count] = item[0]
+                dic[count] = item[0]
 
     elif len(lst[0]) == 2:
-        obj = {}
+        dic = {}
         for item in lst:
-            obj[item[0]] = item[1]
+            dic[item[0]] = item[1]
 
     elif len(lst[0]) == 3:
-        obj = {}
+        dic = {}
         for item in lst:
-            obj[item[0]] = item[1] + " " + item[2]
+            dic[item[0]] = item[1] + " " + item[2]
 
     while True:
-        print(f'Enter the number of {subject}: \n')
+        print(f'Enter the number of {topic}: \n')
         t.sleep(1)
-        for num, value in obj.items():
+        for num, value in dic.items():
             print(f'    {num}. {value}')
         print("")
         t.sleep(.5)
@@ -188,8 +188,9 @@ def getFromList(subject, query):
         try:
             opt = int(input(">>> "))
             t.sleep(.5)
-            if opt in obj:
-                param = obj[opt]
+            if opt in dic:
+                param = opt
+                value = dic[opt]
                 break
 
         except ValueError:
@@ -198,4 +199,4 @@ def getFromList(subject, query):
         optionError(opt)
         t.sleep(1)
 
-    return param, opt
+    return value, param
