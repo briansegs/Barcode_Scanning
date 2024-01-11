@@ -166,7 +166,7 @@ getItemScansAsc = '''
     AND
     item_scan.location_id = location.id
     ORDER BY 
-    date, time ASC
+    date ASC, time ASC
     '''
 
 getItemScansDesc = '''
@@ -188,7 +188,7 @@ getItemScansDesc = '''
     AND
     item_scan.location_id = location.id
     ORDER BY 
-    date, time DESC
+    date DESC, time DESC
     '''
 
 getScansBylocationId = '''
