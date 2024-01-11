@@ -25,7 +25,8 @@ def showItemsScanned():
         2. Show by date
         3. Show by agent
         4. Show by location
-        5. Quit
+        5. Go back
+        6. Quit
         ''')
         t.sleep(.5)
         opt = input(">>> ")
@@ -67,6 +68,9 @@ def showItemsScanned():
             showScans("Location", getScansBylocationId, locationId, locationName)
 
         elif opt == "5":
+            break
+
+        elif opt == "6":
             shutDown()
 
         else:
