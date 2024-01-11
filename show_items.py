@@ -2,11 +2,18 @@
 import time as t
 from functions import (
     showAllScans,
-    showScansByLocation,
-    showScansByAgent,
-    showScansByDate
+    getScanDate,
+    showScans,
+    getAgentFromList,
+    getLocation
     )
-from data import getItemScanAsc, getItemScanDesc
+from data import (
+    getItemScanAsc,
+    getItemScanDesc,
+    getItemScanDate,
+    getItemScanAgent,
+    getItemScanlocation
+    )
 from util import shutDown, optionError
 
 # TODO: Show items scanned options:
@@ -44,7 +51,8 @@ while True:
             print("")
 
             if opt == "1":
-                showAllScans(getItemScanAsc)
+                # showAllScans(getItemScanAsc)
+                showScans("All", getItemScanAsc, None, "Asending")
                 break
 
             elif opt == "2":
@@ -55,13 +63,16 @@ while True:
                 optionError(opt)
 
     elif opt == "2":
-        showScansByDate()
+        date = getScanDate()
+        showScans("Date", getItemScanDate, date, date)
 
     elif opt == "3":
-        showScansByAgent()
+        agentId, agentName = getAgentFromList()
+        showScans("Agent",getItemScanAgent, agentId, agentName)
 
     elif opt == "4":
-        showScansByLocation()
+        locationId, locationName = getLocation()
+        showScans("Location", getItemScanlocation, locationId, locationName)
 
     elif opt == "5":
         shutDown()

@@ -16,11 +16,8 @@ from data import (
     insertDropOffLog,
     clearPendingDropOff,
     getItemName,
-    getItemScanlocation,
     getAgentList,
-    getItemScanAgent,
     getScanDates,
-    getItemScanDate
     )
 from agent_scanner import AgentScanner
 from agent import Agent
@@ -167,42 +164,6 @@ def getScanDataFrame(data):
 
     return df
 
-def showAllScans(sql):
-    "Prints a history of scans"
-    cur, conn = getCursorConnection()
-    res = cur.execute(sql)
-    data = res.fetchall()
-    conn.close()
-
-    if len(data) > 0:
-        df = getScanDataFrame(data)
-
-        print(df, "\n")
-
-    else:
-        print("No data found.")
-
-def showScansByLocation():
-    "Prints a history of scans by location"
-    locationId, location = getLocation()
-    t.sleep(1)
-    print("")
-    t.sleep(.5)
-
-    cur, conn = getCursorConnection()
-    res = cur.execute(getItemScanlocation, (locationId,))
-    data = res.fetchall()
-    conn.close()
-
-    if len(data) > 0:
-        df = getScanDataFrame(data)
-
-        print(f'Location: {location} \n')
-        print(df, "\n")
-
-    else:
-        print("No data found.")
-
 def getAgentFromList():
     "Returns agent id and name"
     cur, conn = getCursorConnection()
@@ -237,27 +198,6 @@ def getAgentFromList():
         t.sleep(1)
 
     return agentId, agentName
-
-def showScansByAgent():
-    "Prints a history of scans by Agent"
-    agentId, agentName = getAgentFromList()
-    t.sleep(1)
-    print("")
-    t.sleep(.5)
-
-    cur, conn = getCursorConnection()
-    res = cur.execute(getItemScanAgent, (agentId,))
-    data = res.fetchall()
-    conn.close()
-
-    if len(data) > 0:
-        df = getScanDataFrame(data)
-
-        print(f'Agent: {agentName} \n')
-        print(df, "\n")
-
-    else:
-        print("No data found")
 
 def getScanDate():
     "returns selected date"
@@ -296,50 +236,29 @@ def getScanDate():
 
     return date
 
-def showScansByDate():
-    "Prints a history of scans by Agent"
-    date = getScanDate()
+# TODO: See if showScans functions can be reduced into one function
+
+def showScans(subject, query, para, value):
+    "Prints a history of scans"
     t.sleep(1)
     print("")
     t.sleep(.5)
 
     cur, conn = getCursorConnection()
-    res = cur.execute(getItemScanDate, (date,))
+
+    if para is None:
+        res = cur.execute(query)
+    else:
+        res = cur.execute(query, (para,))
+
     data = res.fetchall()
     conn.close()
 
     if len(data) > 0:
         df = getScanDataFrame(data)
 
-        print(f'Date: {date} \n')
+        print(f'{subject}: {value} \n')
         print(df, "\n")
 
     else:
-        print("No data found.")
-
-# TODO: See if showScans functions can be reduced into one function
-# Example of generic function
-
-# date = getScanDate()
-
-# def showScans(subject, query, para):
-#     "Prints a history of scans"
-#     t.sleep(1)
-#     print("")
-#     t.sleep(.5)
-
-#     cur, conn = getCursorConnection()
-#     res = cur.execute(query, (para,))
-#     data = res.fetchall()
-#     conn.close()
-
-#     if len(data) > 0:
-#         df = getScanDataFrame(data)
-
-#         print(f'{subject}: {date} \n')
-#         print(df, "\n")
-
-#     else:
-#         print("No data found.")
-
-# showScans("Date", getItemScanDate, date)
+        print("No data found. \n")
