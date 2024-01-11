@@ -5,13 +5,13 @@ from functions import (
     getFromList
     )
 from data import (
-    getItemScanAsc,
-    getItemScanDesc,
-    getItemScanDate,
-    getItemScanAgent,
-    getItemScanlocation,
+    getItemScansAsc,
+    getItemScansDesc,
+    getScansByDate,
+    getScansByAgentId,
+    getScansBylocationId,
     getScanDates,
-    getAgentList,
+    getAgents,
     getLocations
     )
 from util import shutDown, optionError
@@ -51,11 +51,11 @@ while True:
             print("")
 
             if opt == "1":
-                showScans("All", getItemScanAsc, None, "Ascending")
+                showScans("All", getItemScansAsc, None, "Ascending")
                 break
 
             elif opt == "2":
-                showScans("All", getItemScanDesc, None, "Descending")
+                showScans("All", getItemScansDesc, None, "Descending")
                 break
 
             else:
@@ -63,15 +63,15 @@ while True:
 
     elif opt == "2":
         date, _ = getFromList("Date", getScanDates)
-        showScans("Date", getItemScanDate, date, date)
+        showScans("Date", getScansByDate, date, date)
 
     elif opt == "3":
-        agentName, agentId = getFromList("Agent", getAgentList)
-        showScans("Agent",getItemScanAgent, agentId, agentName)
+        agentName, agentId = getFromList("Agent", getAgents)
+        showScans("Agent",getScansByAgentId, agentId, agentName)
 
     elif opt == "4":
         locationName, locationId = getFromList("Location", getLocations)
-        showScans("Location", getItemScanlocation, locationId, locationName)
+        showScans("Location", getScansBylocationId, locationId, locationName)
 
     elif opt == "5":
         shutDown()

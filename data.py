@@ -147,7 +147,7 @@ getItemName = '''
     SELECT name FROM item WHERE id = ?
     '''
 
-getItemScanAsc = '''
+getItemScansAsc = '''
     SELECT 
     item_scan.id,
     date,
@@ -169,7 +169,7 @@ getItemScanAsc = '''
     date, time ASC
     '''
 
-getItemScanDesc = '''
+getItemScansDesc = '''
     SELECT 
     item_scan.id,
     date,
@@ -191,7 +191,7 @@ getItemScanDesc = '''
     date, time DESC
     '''
 
-getItemScanlocation = '''
+getScansBylocationId = '''
     SELECT 
     item_scan.id,
     date,
@@ -212,7 +212,7 @@ getItemScanlocation = '''
     WHERE location_id = ? 
     '''
 
-getAgentList = '''
+getAgents = '''
     SELECT
         id,
         first_name,
@@ -221,7 +221,7 @@ getAgentList = '''
         agent
     '''
 
-getItemScanAgent = '''
+getScansByAgentId = '''
     SELECT 
     item_scan.id,
     date,
@@ -249,7 +249,7 @@ getScanDates = '''
         item_scan
     '''
 
-getItemScanDate = '''
+getScansByDate = '''
         SELECT 
         item_scan.id,
         date,
