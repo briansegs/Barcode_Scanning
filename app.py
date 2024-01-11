@@ -3,6 +3,7 @@ import time as t
 from scan_items import scanItems
 from drop_off_items import dropOffItems
 from show_items import showItemsScanned
+from show_pending_drop_off import showPendingDropOff
 from util import shutDown, optionError
 from functions import login
 
@@ -27,7 +28,7 @@ isNotStorage = locationName != "Storage Facility"
 isStorage = locationName == "Storage Facility"
 
 while True:
-    print(" Main options: ")
+    print("Main options: ")
     t.sleep(.5)
     print('''
     1. Scan items for pickup
@@ -52,6 +53,9 @@ while True:
 
     elif opt == "3":
         showItemsScanned()
+
+    elif opt == "4":
+        showPendingDropOff()
 
     elif opt == "6":
         shutDown()

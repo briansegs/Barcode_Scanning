@@ -1,4 +1,5 @@
 "Show pending drop off"
+import time as t
 from functions import getData, getDataFrame
 from data import getPendingDropOff, pendingDropOffColumns
 
@@ -8,5 +9,7 @@ def showPendingDropOff():
     data = getData(getPendingDropOff)
     df = getDataFrame(data, pendingDropOffColumns)
 
-    print("")
+    t.sleep(1)
+    print("   Items pending drop off: \n")
     print(df, "\n")
+    t.sleep(1)
