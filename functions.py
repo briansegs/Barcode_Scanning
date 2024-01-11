@@ -16,6 +16,7 @@ from data import (
     insertDropOffLog,
     clearPendingDropOff,
     getItemName,
+    itemColumns
     )
 from agent_scanner import AgentScanner
 from agent import Agent
@@ -116,13 +117,9 @@ def updateDropOffLog(agentId):
     else:
         print("No Items to drop off.")
 
-def getScanDataFrame(data):
-    "Returns scan data frame"
-    columns = ["ID", "Date", "Time", "Quantity",
-                "Item", "Agent", "Name", "location"]
-
+def getDataFrame(data, columns):
+    "Returns data frame with centered column names"
     df = pd.DataFrame(data=data, columns=columns)
-
     pd.set_option('display.colheader_justify', 'center')
 
     return df
@@ -144,7 +141,7 @@ def showScans(topic, query, param, value):
     conn.close()
 
     if len(data) > 0:
-        df = getScanDataFrame(data)
+        df = getDataFrame(data, itemColumns)
 
         print(f'{topic}: {value} \n')
         print(df, "\n")

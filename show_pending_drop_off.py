@@ -1,15 +1,12 @@
 "Show pending drop off"
-import pandas as pd
-from functions import getData
-from data import getPendingDropOff
+from functions import getData, getDataFrame
+from data import getPendingDropOff, pendingDropOffColumns
 
 
 def showPendingDropOff():
     "Prints pending_drop_off table as dataFrame"
     data = getData(getPendingDropOff)
+    df = getDataFrame(data, pendingDropOffColumns)
 
-    columns = ["Name", "Quantity"]
-    df = pd.DataFrame(data=data, columns=columns)
-    pd.set_option('display.colheader_justify', 'center')
-
-    print(df)
+    print("")
+    print(df, "\n")

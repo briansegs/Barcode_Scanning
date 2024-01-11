@@ -281,3 +281,8 @@ getPendingDropOff = '''
         ON
             pending_drop_off.item_id = item.id
     '''
+
+itemColumns = ["ID", "Date", "Time", "Quantity",
+                "Item", "Agent", "Name", "location"]
+
+pendingDropOffColumns = ["Name", "Quantity"]
