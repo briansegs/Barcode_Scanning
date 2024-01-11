@@ -2,6 +2,7 @@
 import time as t
 from scan_items import scanItems
 from drop_off_items import dropOffItems
+from show_items import showItemsScanned
 from util import shutDown, optionError
 from functions import login
 
@@ -50,6 +51,9 @@ while True:
     elif opt == "2" and isStorage:
         dropOffItems(agent)
         break
+
+    elif opt == "3":
+        showItemsScanned()
 
     elif opt == "6":
         shutDown()
