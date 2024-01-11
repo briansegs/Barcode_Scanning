@@ -236,8 +236,6 @@ def getScanDate():
 
     return date
 
-# TODO: See if showScans functions can be reduced into one function
-
 def showScans(subject, query, para, value):
     "Prints a history of scans"
     t.sleep(1)
