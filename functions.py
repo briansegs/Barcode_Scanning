@@ -15,8 +15,7 @@ from data import (
     getPendingDropOff,
     insertDropOffLog,
     clearPendingDropOff,
-    getItemName,
-    itemColumns
+    getItemName
     )
 from agent_scanner import AgentScanner
 from agent import Agent
@@ -124,7 +123,7 @@ def getDataFrame(data, columns):
 
     return df
 
-def showScans(topic, query, param, value):
+def showDataFrame(topic, query, param, value, columns):
     "Prints a history of scans"
     t.sleep(1)
     print("")
@@ -141,7 +140,7 @@ def showScans(topic, query, param, value):
     conn.close()
 
     if len(data) > 0:
-        df = getDataFrame(data, itemColumns)
+        df = getDataFrame(data, columns)
 
         print(f'{topic}: {value} \n')
         print(df, "\n")
