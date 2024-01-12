@@ -11,7 +11,7 @@ class AgentScanner(Scanner):
     def scanAgent(self):
         "Scans Agent barcodes"
         cur, conn = getCursorConnection()
-        print(f'Hit the ({self.closeKey}) key to quit scanning.')
+        print(f'Hit the ({self.closeKey}) key to quit scanning. \n')
         t.sleep(1)
 
         cam = cv.VideoCapture(0)
@@ -26,7 +26,8 @@ class AgentScanner(Scanner):
 
             for code in decode(frame):
                 bCode = str(code.data.decode('utf-8'))
-                print(bCode)
+                print("")
+                print(bCode, "\n")
 
                 res = cur.execute(getAgent, (bCode,))
                 agentData = res.fetchone()
