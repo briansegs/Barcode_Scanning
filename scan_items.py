@@ -2,7 +2,6 @@
 import time as t
 from items_scanner import ItemScanner
 from functions import storeData
-from util import shutDown
 
 def scanItems(agent):
     '''
@@ -21,11 +20,11 @@ def scanItems(agent):
     iScan.scanItems()
     itemData = iScan.getScanData()
 
-    if len(itemData) == 0:
-        print('No Items were scanned.')
-        shutDown()
+    if len(itemData) > 0:
+        # Stores scanned data into database
+        storeData(itemData, agent.location.id, agent.id)
+        t.sleep(1)
+        print('*Data stored*')
 
-    # Stores scanned data into database
-    storeData(itemData, agent.location.id, agent.id)
-    t.sleep(1)
-    print('*Data stored*')
+    else:
+        print('No Items were scanned.')
