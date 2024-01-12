@@ -29,6 +29,7 @@ isNotStorage = locationName != "Storage Facility"
 isStorage = locationName == "Storage Facility"
 
 while True:
+    print("")
     opt = getOption("Main menue options: ", mainMenueOptions)
 
     if opt == "1" and isNotStorage:

@@ -295,3 +295,17 @@ mainMenueOptions = {
     "5" : "Show drop off log",
     "6" : "Quit"
 }
+
+scannedItemsOptions = {
+    "1" : "Show all",
+    "2" : "Show by date",
+    "3" : "Show by agent",
+    "4" : "Show by location",
+    "5" : "Go back",
+    "6" : "Quit"
+}
+
+ascOrDescOptions = {
+    "1" : "Show ascending",
+    "2" : "Show descending"
+}

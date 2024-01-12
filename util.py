@@ -38,7 +38,7 @@ def getOption(title, options):
     prints list of options
     Returns selected option
     '''
-    print("\n", title, "\n")
+    print(title, "\n")
     t.sleep(.5)
 
     for num, option in options.items():

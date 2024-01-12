@@ -9,40 +9,22 @@ from data import (
     getScansBylocationId,
     getScanDates,
     getAgents,
-    getLocations
+    getLocations,
+    scannedItemsOptions,
+    ascOrDescOptions
     )
-from util import shutDown, optionError
+from util import shutDown, optionError, getOption
 
 def showItemsScanned():
     "Prints recorded items from the database"
 
     # Options
     while True:
-        print("Scanned items options: ")
-        t.sleep(.5)
-        print('''
-        1. Show all
-        2. Show by date
-        3. Show by agent
-        4. Show by location
-        5. Go back
-        6. Quit
-        ''')
-        t.sleep(.5)
-        opt = input(">>> ")
-        t.sleep(1)
-        print("")
+        opt = getOption("Scanned items options: ", scannedItemsOptions)
 
         if opt == "1":
             while True:
-                print("Options: \n")
-                t.sleep(.5)
-                print("    1. Show ascending")
-                print("    2. Show descending \n")
-                t.sleep(.5)
-                opt = input(">>> ")
-                t.sleep(1)
-                print("")
+                opt = getOption("Options: ", ascOrDescOptions)
 
                 if opt == "1":
                     showScans("All", getItemScansAsc, None, "Ascending")
