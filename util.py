@@ -33,12 +33,12 @@ def optionError(opt):
     print(f'Error: "{opt}" is not an option.')
     t.sleep(1)
 
-def getOptionFromList(title, options):
+def getOption(title, options):
     '''
     prints list of options
     Returns selected option
     '''
-    print(title)
+    print("\n", title, "\n")
     t.sleep(.5)
 
     for num, option in options.items():

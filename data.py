@@ -286,3 +286,12 @@ itemColumns = ["ID", "Date", "Time", "Quantity",
                 "Item", "Agent", "Name", "location"]
 
 pendingDropOffColumns = ["Name", "Quantity"]
+
+mainMenueOptions = {
+    "1" : "Scan items for pickup",
+    "2" : "Drop off items",
+    "3" : "Show items scanned",
+    "4" : "Show items pending drop off",
+    "5" : "Show drop off log",
+    "6" : "Quit"
+}

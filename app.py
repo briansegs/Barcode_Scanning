@@ -4,8 +4,9 @@ from scan_items import scanItems
 from drop_off_items import dropOffItems
 from show_items import showItemsScanned
 from show_pending_drop_off import showPendingDropOff
-from util import shutDown, optionError
+from util import shutDown, optionError, getOption
 from functions import login
+from data import mainMenueOptions
 
 # TODO: Item drop off / remove item from inventory after scan
 # TODO: Display Inventory
@@ -28,20 +29,7 @@ isNotStorage = locationName != "Storage Facility"
 isStorage = locationName == "Storage Facility"
 
 while True:
-    print("Main options: ")
-    t.sleep(.5)
-    print('''
-    1. Scan items for pickup
-    2. Drop off items
-    3. Show items scanned
-    4. Show items pending drop off
-    5. Show drop off log
-    6. Quit
-    ''')
-    t.sleep(.5)
-    opt = input(">>> ")
-    print("")
-    t.sleep(1)
+    opt = getOption("Main menue options: ", mainMenueOptions)
 
     if opt == "1" and isNotStorage:
         scanItems(agent)
