@@ -4,6 +4,7 @@ from scan_items import scanItems
 from drop_off_items import dropOffItems
 from show_items import showItemsScanned
 from show_pending_drop_off import showPendingDropOff
+from show_drop_off_log import showDropOffLog
 from util import shutDown, optionError, getOption
 from functions import login
 from data import mainMenueOptions
@@ -45,6 +46,9 @@ while True:
 
     elif opt == "4":
         showPendingDropOff()
+
+    elif opt == "5":
+        showDropOffLog()
 
     elif opt == "6":
         shutDown()
