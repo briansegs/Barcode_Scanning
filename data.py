@@ -309,3 +309,9 @@ ascOrDescOptions = {
     "1" : "Show ascending",
     "2" : "Show descending"
 }
+
+dropOffOptions = {
+    "1" : "Yes",
+    "2" : "No",
+    "3" : "Quit"
+}

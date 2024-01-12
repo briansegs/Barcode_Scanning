@@ -17,8 +17,6 @@ from util import shutDown, optionError, getOption
 
 def showItemsScanned():
     "Prints recorded items from the database"
-
-    # Options
     while True:
         opt = getOption("Scanned items options: ", scannedItemsOptions)
 

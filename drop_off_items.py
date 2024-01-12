@@ -1,27 +1,18 @@
 "Drop off items"
 import time as t
 from functions import updateDropOffLog
-from util import shutDown, optionError
+from util import shutDown, optionError, getOption
+from data import dropOffOptions
 
 def dropOffItems(agent):
     '''
     Handles item drop off 
     Returns nothing 
     '''
-    # Options
     while True:
         print("Were all items delivered successfully? \n")
         t.sleep(.5)
-        print("Options: ")
-        t.sleep(.5)
-        print('''
-        1. Yes
-        2. No
-        3. Quit
-        ''')
-        t.sleep(.5)
-        opt = input(">>> ")
-        print("")
+        opt = getOption("Options: ", dropOffOptions)
 
         if opt == "1":
             updateDropOffLog(agent.id)
