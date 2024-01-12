@@ -45,7 +45,7 @@ def login():
     print("Login to continue. ")
     t.sleep(1)
 
-    locationId, locationName = getFromList("Location", getLocations)
+    locationName, locationId  = getFromList("Location", getLocations)
     location = Location(locationName, locationId)
 
     agentName, agentId = getAgent()
