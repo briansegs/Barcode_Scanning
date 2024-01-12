@@ -315,3 +315,11 @@ dropOffOptions = {
     "2" : "No",
     "3" : "Quit"
 }
+
+dropOffLogOptions = {
+    "1" : "Show all",
+    "2" : "Show by date",
+    "3" : "Show by agent",
+    "4" : "Go back",
+    "5" : "Quit"
+}
