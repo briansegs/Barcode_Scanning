@@ -6,7 +6,8 @@ from data import (
     dropOffLogOptions,
     ascOrDescOptions,
     getDropOffLogAsc,
-    dropOffLogColumns
+    dropOffLogColumns,
+    getDropOffLogDesc
 )
 
 while True:
@@ -27,6 +28,13 @@ while True:
                 break
 
             elif opt == "2":
+                showDataFrame(
+                    "All", 
+                    getDropOffLogDesc,
+                    None,
+                    "Descending",
+                    dropOffLogColumns
+                )
                 break
 
     elif opt == "2":
