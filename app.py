@@ -35,7 +35,7 @@ while True:
     2. Drop off items
     3. Show items scanned
     4. Show items pending drop off
-    5. Show items drop off log
+    5. Show drop off log
     6. Quit
     ''')
     t.sleep(.5)
