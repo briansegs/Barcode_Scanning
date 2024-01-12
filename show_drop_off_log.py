@@ -9,7 +9,9 @@ from data import (
     dropOffLogColumns,
     getDropOffLogDesc,
     getdropOffLogDates,
-    getDropOffLogsByDate
+    getDropOffLogsByDate,
+    getAgents,
+    getDropOffLogsByAgent
 )
 
 while True:
@@ -50,7 +52,14 @@ while True:
         )
 
     elif opt == "3":
-        pass
+        agentName, agentId = getFromList("Agent", getAgents)
+        showDataFrame(
+            "Agent",
+            getDropOffLogsByAgent,
+            agentId,
+            agentName,
+            dropOffLogColumns
+        )
 
     elif opt == "4":
         break
