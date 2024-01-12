@@ -1,13 +1,15 @@
 "Shows drop off log"
 import time as t
 from util import getOption, shutDown, optionError
-from functions import showDataFrame
+from functions import showDataFrame, getFromList
 from data import (
     dropOffLogOptions,
     ascOrDescOptions,
     getDropOffLogAsc,
     dropOffLogColumns,
-    getDropOffLogDesc
+    getDropOffLogDesc,
+    getdropOffLogDates,
+    getDropOffLogsByDate
 )
 
 while True:
@@ -38,7 +40,14 @@ while True:
                 break
 
     elif opt == "2":
-        pass
+        date, _ = getFromList("Date", getdropOffLogDates)
+        showDataFrame(
+            "Date",
+            getDropOffLogsByDate,
+            date,
+            date,
+            dropOffLogColumns
+        )
 
     elif opt == "3":
         pass

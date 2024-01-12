@@ -328,6 +328,36 @@ getDropOffLogDesc = '''
             date DESC, time DESC
         '''
 
+getdropOffLogDates = '''
+    SELECT
+        date
+    FROM
+        drop_off_log
+    '''
+
+getDropOffLogsByDate = '''
+        SELECT 
+            drop_off_log.id,
+            date,
+            time,
+            quantity,
+            item.name,
+            agent.first_name,
+            agent.last_name
+        FROM 
+            drop_off_log
+        JOIN 
+            item 
+        JOIN 
+            agent 
+        ON 
+            drop_off_log.item_id = item.id 
+        AND
+            drop_off_log.agent_id = agent.id
+        WHERE date = ? 
+        '''
+
+
 itemColumns = ["ID", "Date", "Time", "Quantity",
                 "Item", "Agent", "Name", "location"]
 
