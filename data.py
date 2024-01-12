@@ -281,11 +281,37 @@ getPendingDropOff = '''
         ON
             pending_drop_off.item_id = item.id
     '''
+    
+getDropOffLogAsc = '''
+        SELECT 
+            drop_off_log.id,
+            date,
+            time,
+            quantity,
+            item.name,
+            agent.first_name,
+            agent.last_name
+        FROM 
+            drop_off_log
+        JOIN 
+            item 
+        JOIN 
+            agent 
+        ON 
+            drop_off_log.item_id = item.id 
+        AND
+            drop_off_log.agent_id = agent.id
+        ORDER BY 
+            date ASC, time ASC
+        '''
 
 itemColumns = ["ID", "Date", "Time", "Quantity",
                 "Item", "Agent", "Name", "location"]
 
 pendingDropOffColumns = ["Name", "Quantity"]
+
+dropOffLogColumns = ["ID", "Date", "Time", "Quantity",
+                "Item", "Agent", "Name"]
 
 mainMenueOptions = {
     "1" : "Scan items for pickup",
