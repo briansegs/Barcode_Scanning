@@ -5,10 +5,8 @@ from functions import storeData
 
 def scanItems(agent):
     '''
-    Logs in an Agent
     Scans items by barcode
     Stores data into a database
-    Returns nothing
     '''
     # Create scanners
     iScan = ItemScanner()
