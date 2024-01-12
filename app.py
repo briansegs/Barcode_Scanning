@@ -9,15 +9,6 @@ from util import shutDown, optionError, getOption
 from functions import login
 from data import mainMenueOptions
 
-# TODO: Item drop off / remove item from inventory after scan
-# TODO: Display Inventory
-# TODO: Display scans / history
-# TODO: Options:
-# TODO: Scan items for pickup
-# TODO: Drop off items
-# TODO: Show items pending drop off
-# TODO: Show items scanned / by date
-# TODO: Show items dropped off / by date
 # TODO: Spit out options into seperate files
 # TODO: Add spacing when items are being scanned and printed
 
