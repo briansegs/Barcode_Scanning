@@ -1,6 +1,6 @@
 "Show items scanned"
 import time as t
-from functions import showScans, getFromList
+from functions import showDataFrame, getFromList
 from data import (
     getItemScansAsc,
     getItemScansDesc,
@@ -11,7 +11,8 @@ from data import (
     getAgents,
     getLocations,
     scannedItemsOptions,
-    ascOrDescOptions
+    ascOrDescOptions,
+    itemColumns
     )
 from util import shutDown, optionError, getOption
 
@@ -25,11 +26,23 @@ def showItemsScanned():
                 opt = getOption("Options: ", ascOrDescOptions)
 
                 if opt == "1":
-                    showScans("All", getItemScansAsc, None, "Ascending")
+                    showDataFrame(
+                        "All",
+                        getItemScansAsc,
+                        None,
+                        "Ascending",
+                        itemColumns
+                    )
                     break
 
                 elif opt == "2":
-                    showScans("All", getItemScansDesc, None, "Descending")
+                    showDataFrame(
+                        "All",
+                        getItemScansDesc,
+                        None,
+                        "Descending",
+                        itemColumns
+                    )
                     break
 
                 else:
@@ -37,15 +50,30 @@ def showItemsScanned():
 
         elif opt == "2":
             date, _ = getFromList("Date", getScanDates)
-            showScans("Date", getScansByDate, date, date)
+            showDataFrame("Date", getScansByDate, date, date, itemColumns)
 
         elif opt == "3":
             agentName, agentId = getFromList("Agent", getAgents)
-            showScans("Agent",getScansByAgentId, agentId, agentName)
+            showDataFrame(
+                "Agent",
+                getScansByAgentId,
+                agentId,
+                agentName,
+                itemColumns
+            )
 
         elif opt == "4":
-            locationName, locationId = getFromList("Location", getLocations)
-            showScans("Location", getScansBylocationId, locationId, locationName)
+            locationName, locationId = getFromList(
+                "Location", 
+                getLocations
+            )
+            showDataFrame(
+                "Location", 
+                getScansBylocationId,
+                locationId,
+                locationName,
+                itemColumns
+            )
 
         elif opt == "5":
             break
