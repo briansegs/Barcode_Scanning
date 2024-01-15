@@ -10,7 +10,6 @@ from functions import login
 from data import mainMenueOptions
 
 # TODO: Spit out options into seperate files
-# TODO: Add spacing when items are being scanned and printed
 
 agent = login()
 
