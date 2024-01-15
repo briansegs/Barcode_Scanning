@@ -22,6 +22,7 @@ def scanItems(agent):
         # Stores scanned data into database
         storeData(itemData, agent.location.id, agent.id)
         t.sleep(1)
+        print("")
         print('*Data stored*')
 
     else:

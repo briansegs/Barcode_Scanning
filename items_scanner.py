@@ -11,7 +11,7 @@ class ItemScanner(Scanner):
     def scanItems(self):
         "Scans item barcodes and stores them"
         cur, conn = getCursorConnection()
-        print(f'Hit the ({self.closeKey}) key to quit scanning.')
+        print(f'Hit the ({self.closeKey}) key to quit scanning. \n')
         t.sleep(1)
 
         cam = cv.VideoCapture(0)
@@ -26,7 +26,8 @@ class ItemScanner(Scanner):
 
             for code in decode(frame):
                 bCode = str(code.data.decode('utf-8'))
-                print(bCode)
+                print("")
+                print(bCode, "\n")
                 res = cur.execute("SELECT id, name FROM item WHERE barcode = ?", (bCode,))
                 inventoryData = res.fetchone()
 
@@ -38,7 +39,7 @@ class ItemScanner(Scanner):
                     name = self.itemData[bCode]["name"]
                     print("Item already scanned.")
                     print(f'Would you like to update the quantity of {name}?')
-                    ans = input("Enter y to update: ")
+                    ans = input("Enter y to update or any other key to continue: ")
 
                     if ans == "y":
                         oldQty = self.itemData[bCode]["quantity"]
@@ -81,6 +82,7 @@ class ItemScanner(Scanner):
                             t.sleep(1)
 
                     self.itemData[bCode] = {
+                        "name" : item.name,
                         "item_id" : item.id,
                         "quantity" : qty,
                         "scan_date" : getDate(),
