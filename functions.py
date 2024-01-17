@@ -32,6 +32,7 @@ def getAgent():
         agent, agentId = aScan.scanAgent()
 
     except TypeError:
+        print("")
         print('The program can not proceed without an agent.')
         t.sleep(1)
         print('Start the program over once you have an agent ID.')
@@ -178,8 +179,9 @@ def getFromList(topic, query):
         print("")
         t.sleep(.5)
 
+        opt = input(">>> ")
         try:
-            opt = int(input(">>> "))
+            int(opt)
             print("")
             t.sleep(.5)
             if opt in dic:
