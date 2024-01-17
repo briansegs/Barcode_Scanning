@@ -25,6 +25,7 @@ def getTime():
 def shutDown():
     "Exits the application"
     t.sleep(1)
+    print("")
     print("*Application shutting down...*")
     quit()
 
