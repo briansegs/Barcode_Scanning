@@ -181,7 +181,7 @@ def getFromList(topic, query):
 
         opt = input(">>> ")
         try:
-            int(opt)
+            opt = int(opt)
             print("")
             t.sleep(.5)
             if opt in dic:
