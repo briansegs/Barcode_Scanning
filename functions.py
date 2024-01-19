@@ -180,9 +180,9 @@ def getFromList(topic, query):
         t.sleep(.5)
 
         opt = input(">>> ")
+        print("")
         try:
             opt = int(opt)
-            print("")
             t.sleep(.5)
             if opt in dic:
                 param = opt
