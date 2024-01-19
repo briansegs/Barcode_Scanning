@@ -270,7 +270,7 @@ getScansByDate = '''
         WHERE date = ? 
         '''
 
-getPendingDropOff = '''
+getPendingDropOffName = '''
         SELECT
             item.name,
             quantity

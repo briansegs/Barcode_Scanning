@@ -13,6 +13,8 @@ from data import mainMenueOptions
 # TODO: Test features of app
 # TODO: Figure out how to give structure to newlines
 # TODO: Address Items Drop Off being broken
+# TODO: Switch order of login / scan Id first
+# TODO: Dont quit after "No" or "Yes" when dropping off items 
 
 agent = login()
 
