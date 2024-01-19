@@ -34,7 +34,6 @@ while True:
 
     elif opt == "2" and isStorage:
         dropOffItems(agent)
-        break
 
     elif opt == "3":
         showItemsScanned()

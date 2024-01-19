@@ -24,6 +24,9 @@ def dropOffItems(agent):
             print("")
 
         elif opt == "3":
+            break
+
+        elif opt == "4":
             shutDown()
 
         else:

@@ -413,7 +413,8 @@ ascOrDescOptions = {
 dropOffOptions = {
     "1" : "Yes",
     "2" : "No",
-    "3" : "Quit"
+    "3" : "Go back",
+    "4" : "Quit"
 }
 
 dropOffLogOptions = {
