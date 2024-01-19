@@ -16,12 +16,12 @@ def dropOffItems(agent):
 
         if opt == "1":
             updateDropOffLog(agent.id)
-            shutDown()
+            print("")
 
         elif opt == "2":
             t.sleep(1)
             print("please contact HQ for futher steps.")
-            shutDown()
+            print("")
 
         elif opt == "3":
             shutDown()
