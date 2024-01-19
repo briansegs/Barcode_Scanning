@@ -52,4 +52,7 @@ def getOption(title, options):
     t.sleep(1)
 
     return opt
-    
+
+def newLine():
+    "Prints a new line"
+    print("")
