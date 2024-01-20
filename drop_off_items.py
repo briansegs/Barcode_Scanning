@@ -1,7 +1,7 @@
 "Drop off items"
 import time as t
 from functions import updateDropOffLog
-from util import shutDown, optionError, getOption
+from util import shutDown, optionError, getOption, newLine
 from data import dropOffOptions
 
 def dropOffItems(agent):
@@ -16,12 +16,12 @@ def dropOffItems(agent):
 
         if opt == "1":
             updateDropOffLog(agent.id)
-            print("")
+            newLine()
 
         elif opt == "2":
             t.sleep(1)
             print("please contact HQ for futher steps.")
-            print("")
+            newLine()
 
         elif opt == "3":
             break
