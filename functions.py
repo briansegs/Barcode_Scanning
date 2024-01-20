@@ -15,8 +15,7 @@ from data import (
     getPendingDropOff,
     pendingDropOffColumns,
     insertDropOffLog,
-    clearPendingDropOff,
-    getItemName
+    clearPendingDropOff
     )
 from agent_scanner import AgentScanner
 from agent import Agent
