@@ -13,6 +13,7 @@ from data import (
     getLocations,
     updatePendingDropOff,
     getPendingDropOff,
+    pendingDropOffColumns,
     insertDropOffLog,
     clearPendingDropOff,
     getItemName
@@ -88,11 +89,13 @@ def updateDropOffLog(agentId):
 
     if len(lst) > 0:
         t.sleep(1)
-        print("Items dropped off: \n")
+
+        data = []
 
         for i in lst:
-            itemId = i[0]
+            itemId = i[2]
             quantity = i[1]
+            name = i[0]
             date = getDate()
             time = getTime()
 
@@ -101,16 +104,15 @@ def updateDropOffLog(agentId):
 
             cur.execute(clearPendingDropOff, (itemId,))
 
-            res = cur.execute(getItemName,(itemId,))
-            tup = res.fetchone()
-            name = tup[0]
-
-            print(f'    {quantity}  {name}')
+            data.append((name, quantity))
 
         conn.commit()
         conn.close()
 
-        print("")
+        df = getDataFrame(data, pendingDropOffColumns)
+
+        print("Items dropped off:\n", df, "\n")
+
         t.sleep(1)
         print("Items added to drop off log.")
 

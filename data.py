@@ -123,7 +123,18 @@ updatePendingDropOff = '''
     '''
 
 getPendingDropOff = '''
-    SELECT item_id, quantity FROM pending_drop_off WHERE quantity > 0
+        SELECT
+            item.name,
+            quantity,
+            item_id
+        FROM 
+            pending_drop_off
+        JOIN 
+            item
+        ON
+            pending_drop_off.item_id = item.id
+        WHERE 
+            quantity > 0
     '''
 
 insertDropOffLog = '''
@@ -269,18 +280,6 @@ getScansByDate = '''
         item_scan.location_id = location.id
         WHERE date = ? 
         '''
-
-getPendingDropOffName = '''
-        SELECT
-            item.name,
-            quantity
-        FROM 
-            pending_drop_off
-        JOIN 
-            item
-        ON
-            pending_drop_off.item_id = item.id
-    '''
 
 getDropOffLogAsc = '''
         SELECT 
