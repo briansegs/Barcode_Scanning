@@ -89,7 +89,6 @@ def updateDropOffLog(agentId):
 
     if len(lst) > 0:
         t.sleep(1)
-
         data = []
 
         for i in lst:
@@ -122,6 +121,7 @@ def updateDropOffLog(agentId):
 def getDataFrame(data, columns):
     "Returns data frame with centered column names"
     df = pd.DataFrame(data=data, columns=columns)
+    df.index = [" "] * len(df)
     pd.set_option('display.colheader_justify', 'center')
 
     return df
