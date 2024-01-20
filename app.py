@@ -12,7 +12,6 @@ from data import mainMenueOptions
 # TODO: Spit out options into seperate files
 # TODO: Test features of app
 # TODO: Figure out how to give structure to newlines
-# TODO: Switch order of login / scan Id first
 
 agent = login()
 
