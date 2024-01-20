@@ -110,7 +110,8 @@ def updateDropOffLog(agentId):
 
         df = getDataFrame(data, pendingDropOffColumns)
 
-        print("Items dropped off:\n", df, "\n")
+        print("Items dropped off: \n")
+        print(df, "\n")
 
         t.sleep(1)
         print("Items added to drop off log.")
