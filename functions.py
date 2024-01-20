@@ -46,10 +46,11 @@ def login():
     print("Login to continue. ")
     t.sleep(1)
 
-    locationName, locationId  = getFromList("Location", getLocations)
-    location = Location(locationName, locationId)
-
     agentName, agentId = getAgent()
+
+    locationName, locationId  = getFromList("Location", getLocations)
+
+    location = Location(locationName, locationId)
     agent = Agent(agentName, agentId, location)
 
     print(f'Welcome {agent.name}. You are logged into the {agent.location.name} location.')
