@@ -78,7 +78,7 @@ class ItemScanner(Scanner):
                             elif qty > 0:
                                 break
                         except ValueError:
-                            print("Error: Not a number.")
+                            print("Error: Not a number. \n")
                             t.sleep(1)
 
                     self.itemData[bCode] = {

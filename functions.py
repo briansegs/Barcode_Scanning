@@ -53,7 +53,7 @@ def login():
     location = Location(locationName, locationId)
     agent = Agent(agentName, agentId, location)
 
-    print(f'Welcome {agent.name}. You are logged into the {agent.location.name} location.')
+    print(f'Welcome {agent.name}. You are logged into the {agent.location.name} location. \n')
     t.sleep(1)
 
     return agent
@@ -115,7 +115,7 @@ def updateDropOffLog(agentId):
         print(df, "\n")
 
         t.sleep(1)
-        print("Items added to drop off log.")
+        print("Items added to drop off log. \n")
 
     else:
         print("No Items to drop off.")
@@ -131,8 +131,6 @@ def getDataFrame(data, columns):
 def showDataFrame(topic, query, param, value, columns):
     "Prints a history of scans"
     t.sleep(1)
-    newLine()
-    t.sleep(.5)
 
     cur, conn = getCursorConnection()
 
@@ -148,7 +146,7 @@ def showDataFrame(topic, query, param, value, columns):
         df = getDataFrame(data, columns)
 
         print(f'{topic}: {value} \n')
-        print(df, "\n")
+        print(df, "\n \n")
 
     else:
         print("No data found. \n")
