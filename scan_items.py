@@ -1,7 +1,7 @@
 "Scan items"
 import time as t
 from items_scanner import ItemScanner
-from functions import storeData, newLine
+from functions import storeData
 
 def scanItems(agent):
     '''
@@ -22,8 +22,7 @@ def scanItems(agent):
         # Stores scanned data into database
         storeData(itemData, agent.location.id, agent.id)
         t.sleep(1)
-        newLine()
-        print('*Data stored*')
+        print('\n*Data stored*\n')
 
     else:
         print('No Items were scanned.')
