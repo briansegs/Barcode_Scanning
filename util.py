@@ -25,7 +25,7 @@ def getTime():
 def shutDown():
     "Exits the application"
     t.sleep(1)
-    print("")
+    newLine()
     print("*Application shutting down...*")
     quit()
 
@@ -44,11 +44,11 @@ def getOption(title, options):
 
     for num, option in options.items():
         print(f'    {num}. {option}')
-    print("")
+    newLine()
 
     t.sleep(.5)
     opt = input(">>> ")
-    print("")
+    newLine()
     t.sleep(1)
 
     return opt

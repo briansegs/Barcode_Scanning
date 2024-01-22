@@ -6,7 +6,8 @@ from util import (
     getDate,
     getTime,
     shutDown,
-    optionError
+    optionError,
+    newLine
     )
 from data import (
     insertItemScan,
@@ -32,7 +33,7 @@ def getAgent():
         agent, agentId = aScan.scanAgent()
 
     except TypeError:
-        print("")
+        newLine()
         print('The program can not proceed without an agent.')
         t.sleep(1)
         print('Start the program over once you have an agent ID.')
@@ -130,7 +131,7 @@ def getDataFrame(data, columns):
 def showDataFrame(topic, query, param, value, columns):
     "Prints a history of scans"
     t.sleep(1)
-    print("")
+    newLine()
     t.sleep(.5)
 
     cur, conn = getCursorConnection()
@@ -179,11 +180,11 @@ def getFromList(topic, query):
         t.sleep(1)
         for num, value in dic.items():
             print(f'    {num}. {value}')
-        print("")
+        newLine()
         t.sleep(.5)
 
         opt = input(">>> ")
-        print("")
+        newLine()
         try:
             opt = int(opt)
             t.sleep(.5)

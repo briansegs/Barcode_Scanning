@@ -3,7 +3,7 @@ import time as t
 import cv2 as cv
 from pyzbar.pyzbar import decode
 from scanner import Scanner
-from util import getDate, getTime, getCursorConnection
+from util import getDate, getTime, getCursorConnection, newLine
 from item import Item
 
 class ItemScanner(Scanner):
@@ -26,7 +26,7 @@ class ItemScanner(Scanner):
 
             for code in decode(frame):
                 bCode = str(code.data.decode('utf-8'))
-                print("")
+                newLine()
                 print(bCode, "\n")
                 res = cur.execute("SELECT id, name FROM item WHERE barcode = ?", (bCode,))
                 inventoryData = res.fetchone()

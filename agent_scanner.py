@@ -3,7 +3,7 @@ import time as t
 import cv2 as cv
 from pyzbar.pyzbar import decode
 from scanner import Scanner
-from util import getCursorConnection
+from util import getCursorConnection, newLine
 from data import getAgent
 
 class AgentScanner(Scanner):
@@ -26,7 +26,7 @@ class AgentScanner(Scanner):
 
             for code in decode(frame):
                 bCode = str(code.data.decode('utf-8'))
-                print("")
+                newLine()
                 print(bCode, "\n")
 
                 res = cur.execute(getAgent, (bCode,))

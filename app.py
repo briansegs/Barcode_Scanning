@@ -5,7 +5,7 @@ from drop_off_items import dropOffItems
 from show_items import showItemsScanned
 from show_pending_drop_off import showPendingDropOff
 from show_drop_off_log import showDropOffLog
-from util import shutDown, optionError, getOption
+from util import shutDown, optionError, getOption, newLine
 from functions import login
 from data import mainMenueOptions
 
@@ -22,7 +22,7 @@ isNotStorage = locationName != "Storage Facility"
 isStorage = locationName == "Storage Facility"
 
 while True:
-    print("")
+    newLine()
     opt = getOption("Main menue options: ", mainMenueOptions)
 
     if opt == "1" and isNotStorage:
