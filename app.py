@@ -26,7 +26,6 @@ while True:
 
     if opt == "1" and isNotStorage:
         scanItems(agent)
-        break
 
     elif opt == "2" and isStorage:
         dropOffItems(agent)
