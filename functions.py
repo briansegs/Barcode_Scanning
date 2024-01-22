@@ -114,11 +114,13 @@ def updateDropOffLog(agentId):
         print("Items dropped off: \n")
         print(df, "\n")
 
-        t.sleep(1)
+        t.sleep(.5)
         print("Items added to drop off log. \n")
+        t.sleep(1)
 
     else:
-        print("No Items to drop off.")
+        print("No Items to drop off. \n")
+        t.sleep(1)
 
 def getDataFrame(data, columns):
     "Returns data frame with centered column names"

@@ -18,8 +18,9 @@ def dropOffItems(agent):
             updateDropOffLog(agent.id)
 
         elif opt == "2":
-            t.sleep(1)
+            t.sleep(.5)
             print("please contact HQ for futher steps. \n")
+            t.sleep(1)
 
         elif opt == "3":
             break
