@@ -115,7 +115,7 @@ def updateDropOffLog(agentId):
         print(df, "\n")
 
         t.sleep(.5)
-        print("Items added to drop off log. \n")
+        print("*Items added to drop off log.* \n")
         t.sleep(1)
 
     else:
