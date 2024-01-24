@@ -104,7 +104,7 @@ def updateDropOffLog(agentId):
 
             cur.execute(clearPendingDropOff, (itemId,))
 
-            data.append((name, quantity))
+            data.append((name, quantity, itemId))
 
         conn.commit()
         conn.close()
@@ -146,6 +146,11 @@ def showDataFrame(topic, query, param, value, columns):
 
     if len(data) > 0:
         df = getDataFrame(data, columns)
+
+        if len(df.columns) == 3:
+            # Hides the "Item_ID" column when -
+            # showing Items pending dropped off
+            df = df.iloc[:, [0, 1]]
 
         print(f'{topic}: {value} \n')
         print(df, "\n \n")
