@@ -47,6 +47,7 @@ class ItemScanner(Scanner):
                         try:
                             newQty = int(input("Enter Quantity: "))
                             t.sleep(.5)
+
                             if newQty == 0:
                                 del self.itemData[bCode]
                                 print(f'{name} quantity updated from {oldQty} to {newQty}.')
@@ -54,6 +55,7 @@ class ItemScanner(Scanner):
                             elif newQty < 0:
                                 print("Error: Number can not be less than 0.")
                                 print("Could not update the quantity.")
+
                             elif newQty > 0:
                                 self.itemData[bCode]["quantity"] = newQty
                                 print(f'{name} quantity updated from {oldQty} to {newQty}.')
