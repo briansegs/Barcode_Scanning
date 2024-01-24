@@ -128,6 +128,11 @@ def getDataFrame(data, columns):
     df.index = [" "] * len(df)
     pd.set_option('display.colheader_justify', 'center')
 
+    if len(df.columns) == 3:
+        # Hides the "Item_ID" column when -
+        # showing Items pending dropped off
+        df = df.iloc[:, [0, 1]]
+
     return df
 
 def showDataFrame(topic, query, param, value, columns):
@@ -146,11 +151,6 @@ def showDataFrame(topic, query, param, value, columns):
 
     if len(data) > 0:
         df = getDataFrame(data, columns)
-
-        if len(df.columns) == 3:
-            # Hides the "Item_ID" column when -
-            # showing Items pending dropped off
-            df = df.iloc[:, [0, 1]]
 
         print(f'{topic}: {value} \n')
         print(df, "\n \n")
