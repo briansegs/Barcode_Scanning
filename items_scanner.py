@@ -39,7 +39,7 @@ class ItemScanner(Scanner):
                     name = self.itemData[bCode]["name"]
                     print("Item already scanned.")
                     print(f'Would you like to update the quantity of {name}?')
-                    ans = input("Enter y to update or any other key to continue: ")
+                    ans = input("Enter y to update or n to continue: ")
 
                     if ans == "y":
                         oldQty = self.itemData[bCode]["quantity"]
