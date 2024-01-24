@@ -36,7 +36,7 @@ def getAgent():
         newLine()
         print('The program can not proceed without an agent.')
         t.sleep(1)
-        print('Start the program over once you have an agent ID.')
+        print('Start the program over once you have an agent ID. \n')
         shutDown()
 
     return agent, agentId

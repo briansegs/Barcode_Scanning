@@ -25,4 +25,6 @@ def scanItems(agent):
         print('\n*Data stored*\n')
 
     else:
-        print('No Items were scanned.')
+        t.sleep(.5)
+        print('\nNo Items were scanned.\n')
+        t.sleep(1)

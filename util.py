@@ -30,7 +30,7 @@ def shutDown():
 
 def optionError(opt):
     "Option error message"
-    print(f'Error: "{opt}" is not an option.')
+    print(f'Error: "{opt}" is not an option. \n')
     t.sleep(1)
 
 def getOption(title, options):
