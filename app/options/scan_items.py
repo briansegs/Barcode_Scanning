@@ -1,6 +1,6 @@
 "Scan items"
 import time as t
-from items_scanner import ItemScanner
+from classes.items_scanner import ItemScanner
 from functions import storeData
 
 def scanItems(agent):
