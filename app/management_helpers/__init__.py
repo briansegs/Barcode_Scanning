@@ -1,11 +1,11 @@
 "init"
-from manage_tables.table_data import (
+from management_helpers.table_data import (
     agents,
     items,
     locations,
     pendingDropOff
 )
-from manage_tables.manage_data import (
+from management_helpers.manage_data import (
     insertAgents,
     insertItems,
     insertLocations,
