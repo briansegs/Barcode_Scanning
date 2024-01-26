@@ -1,4 +1,17 @@
 "init"
+
+from management_helpers.queries import (
+    createAgentTable,
+    addAgents,
+    createItemsTable,
+    addItems,
+    createLocationsTable,
+    addLocations,
+    createPendingDropOffTable,
+    addPendingDropOff,
+    createDropOffLogTable,
+    createItemScanTable
+)
 from management_helpers.table_data import (
     agents,
     items,
@@ -12,17 +25,4 @@ from management_helpers.manage_data import (
     insertPendingDropOff,
     dropCreateDropOffLog,
     dropCreateItemScan
-)
-
-from management_helpers.queries import (
-    createAgentTable,
-    addAgents,
-    createItemsTable,
-    addItems,
-    createLocationsTable,
-    addLocations,
-    createPendingDropOffTable,
-    addPendingDropOff,
-    createDropOffLogTable,
-    createItemScanTable
 )
