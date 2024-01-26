@@ -1,6 +1,5 @@
 "Main"
 import time as t
-from scan_items import scanItems
 from util import shutDown, optionError, getOption
 from functions import login
 from data import mainMenueOptions
@@ -8,7 +7,8 @@ from options import (
     showPendingDropOff,
     showDropOffLog,
     showItemsScanned,
-    dropOffItems
+    dropOffItems,
+    scanItems
 )
 
 # TODO: Spit out options into seperate files
