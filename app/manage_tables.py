@@ -9,11 +9,6 @@ from management_helpers import (
 )
 from util import getOption, optionError, shutDown
 
-# TODO: Rework manage_data.py
-# TODO: Make this the file that runs manage tables
-# TODO: Put menue into this file
-# TODO: Refactor
-
 options = {
     "1" : "Update agents table",
     "2" : "Update items table",
