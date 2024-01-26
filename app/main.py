@@ -11,13 +11,8 @@ from options import (
     scanItems
 )
 
-# TODO: Spit out options into seperate files
 # TODO: Test features of app
-# TODO: Split data into different files
 # TODO: Split functions into different files
-# TODO: Add classes to one folder
-# TODO: Put insert functions into folder
-# TODO: Split out queries
 
 def main():
     "main function"
