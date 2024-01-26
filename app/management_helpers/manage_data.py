@@ -18,47 +18,72 @@ from management_helpers import (
     createItemScanTable
 )
 from data import database as db
+from util import getCursorConnection
 
-try:
-    conn = sqlite3.connect(db)
-    cur = conn.cursor()
-    print(f'Connected to database: {db}')
-    t.sleep(1)
-except sqlite3.Error as error:
-    print(f'failed to connect to database: {db}')
-    print(error)
-    quit()
+def createTable(query1, query2, param):
+    "Creates tables"
+    try:
+        cur, conn = getCursorConnection()
+        print(f'Connected to database: {db} \n')
+        t.sleep(1)
+    except sqlite3.Error as error:
+        print(f'failed to connect to database: {db} \n')
+        print(error)
+        quit()
+
+    cur.executescript(query1)
+
+    if query2 is not None:
+        cur.executemany(query2, param)
+
+    conn.commit()
+    conn.close()
+
 
 def insertAgents():
-    "inserts agents from data into database" 
-    cur.executescript(createAgentTable)
-    cur.executemany(addAgents, agents)
-    conn.commit()
+    "inserts agents from data into database"
+    createTable(
+        createAgentTable,
+        addAgents,
+        agents
+    )
 
 def insertItems():
     "inserts items from data into database"
-    cur.executescript(createItemsTable)
-    cur.executemany(addItems, items)
-    conn.commit()
+    createTable(
+        createItemsTable,
+        addItems,
+        items
+    )
 
 def insertLocations():
     "inserts locations from data into database"
-    cur.executescript(createLocationsTable)
-    cur.executemany(addLocations, [(a,) for a in locations])
-    conn.commit()
+    createTable(
+        createLocationsTable,
+        addLocations,
+        [(a,) for a in locations]
+    )
 
 def insertPendingDropOff():
     "inserts pending drop off from data into database"
-    cur.executescript(createPendingDropOffTable)
-    cur.executemany(addPendingDropOff, pendingDropOff)
-    conn.commit()
+    createTable(
+        createPendingDropOffTable,
+        addPendingDropOff,
+        pendingDropOff
+    )
 
 def insertDropOffLog():
     "drops and adds drop_off_log table"
-    cur.executescript(createDropOffLogTable)
-    conn.commit()
+    createTable(
+        createDropOffLogTable,
+        None,
+        None
+    )
 
 def dropCreateItemScan():
     "drops and adds item_scan table"
-    cur.executescript(createItemScanTable)
-    conn.commit()
+    createTable(
+        createItemScanTable,
+        None,
+        None
+    )
