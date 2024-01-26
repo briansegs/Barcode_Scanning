@@ -14,9 +14,9 @@ from data import (
     getLocations,
     updatePendingDropOff,
     getPendingDropOff,
-    pendingDropOffColumns,
     insertDropOffLog,
-    clearPendingDropOff
+    clearPendingDropOff,
+    pendingDropOffColumns
     )
 from classes import Agent, Location
 from scanners import AgentScanner
