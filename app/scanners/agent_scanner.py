@@ -2,9 +2,9 @@
 import time as t
 import cv2 as cv
 from pyzbar.pyzbar import decode
-from scanner import Scanner
 from util import getCursorConnection, newLine
 from data import getAgent
+from classes import Scanner
 
 class AgentScanner(Scanner):
     "scans agent's barcodes"

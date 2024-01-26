@@ -18,9 +18,8 @@ from data import (
     insertDropOffLog,
     clearPendingDropOff
     )
-from agent_scanner import AgentScanner
-from agent import Agent
-from location import Location
+from classes import Agent, Location
+from scanners import AgentScanner
 
 def getAgent():
     "Returns: agent and agentId from database"

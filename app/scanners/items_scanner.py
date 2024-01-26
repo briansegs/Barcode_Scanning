@@ -2,9 +2,8 @@
 import time as t
 import cv2 as cv
 from pyzbar.pyzbar import decode
-from scanner import Scanner
 from util import getDate, getTime, getCursorConnection, newLine
-from classes import Item
+from classes import Item, Scanner
 
 class ItemScanner(Scanner):
     "scans item barcodes"
