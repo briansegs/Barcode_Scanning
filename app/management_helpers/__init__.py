@@ -13,3 +13,16 @@ from management_helpers.manage_data import (
     insertDropOffLog,
     dropCreateItemScan
 )
+
+from management_helpers.queries import (
+    createAgentTable,
+    addAgents,
+    createItemsTable,
+    addItems,
+    createLocationsTable,
+    addLocations,
+    createPendingDropOffTable,
+    addPendingDropOff,
+    createDropOffLogTable,
+    createItemScanTable
+)
