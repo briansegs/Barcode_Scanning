@@ -16,6 +16,7 @@ from options import (
 # TODO: Split data into different files
 # TODO: Split functions into different files
 # TODO: Add classes to one folder
+# TODO: Put insert functions into folder
 
 def main():
     "main function"
