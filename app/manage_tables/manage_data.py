@@ -1,7 +1,7 @@
 "Add data to database"
 import sqlite3
 import time as t
-from app.manage_tables import agents, items, locations, pendingDropOff
+from manage_tables import agents, items, locations, pendingDropOff
 
 db = 'testDb.sqlite'
 
