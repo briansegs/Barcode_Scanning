@@ -1,4 +1,4 @@
-"""App"""
+"Main"
 import time as t
 from scan_items import scanItems
 from drop_off_items import dropOffItems
