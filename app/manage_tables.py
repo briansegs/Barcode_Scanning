@@ -1,5 +1,4 @@
 "Manage tables"
-import time as t
 from management_helpers import (
     insertAgents,
     insertItems,
@@ -8,28 +7,27 @@ from management_helpers import (
     dropCreateDropOffLog,
     dropCreateItemScan
 )
+from util import getOption, optionError, shutDown
+
 # TODO: Rework manage_data.py
 # TODO: Make this the file that runs manage tables
 # TODO: Put menue into this file
 # TODO: Refactor
 
+options = {
+    "1" : "Update agents table",
+    "2" : "Update items table",
+    "3" : "Update locations table",
+    "4" : "Update Pending_drop_off",
+    "5" : "Drop / create Drop_off_log table",
+    "6" : "Drop / create Item_Scan table",
+    "7" : "Quit"
+}
+
 def manageData():
     "manage data"
     while True:
-        print("Options: ")
-        t.sleep(.5)
-        print('''
-        1. Update agents table
-        2. Update items table
-        3. Update locations table
-        4. Update Pending_drop_off
-        5. Drop / create Drop_off_log table 
-        6. Drop / create Item_Scan table
-        7. Quit
-        ''')
-        t.sleep(.5)
-        opt = input(">>> ")
-        t.sleep(.5)
+        opt = getOption("\nOptions: ", options)
 
         if opt == "1":
             insertAgents()
@@ -56,12 +54,9 @@ def manageData():
             print("Drop / Create item_scan table completed")
             break
         elif opt == "7":
-            print("*Quitting program...*")
-            quit()
+            shutDown()
 
-        print("Error: Enter either 1, 2, 3, 4, 5, 6, or 7")
-        t.sleep(1)
-
+        optionError(opt)
 
 if __name__ == "__main__":
     manageData()
