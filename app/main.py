@@ -12,7 +12,6 @@ from options import (
 )
 
 # TODO: Test features of app
-# TODO: Split functions into different files
 
 def main():
     "main function"
