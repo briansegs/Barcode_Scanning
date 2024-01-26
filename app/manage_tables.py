@@ -5,7 +5,7 @@ from management_helpers import (
     insertItems,
     insertLocations,
     insertPendingDropOff,
-    insertDropOffLog,
+    dropCreateDropOffLog,
     dropCreateItemScan
 )
 # TODO: Rework manage_data.py
@@ -48,7 +48,7 @@ def manageData():
             print("pending_drop_off update completed")
             break
         elif opt == "5":
-            insertDropOffLog()
+            dropCreateDropOffLog()
             print("Drop / Create drop_off_log table completed")
             break
         elif opt == "6":
