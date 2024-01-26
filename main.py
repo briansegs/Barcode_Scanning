@@ -56,6 +56,6 @@ def main():
 
         else:
             optionError(opt)
-            
+
 if __name__ == '__main__':
     main()
