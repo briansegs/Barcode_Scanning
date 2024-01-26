@@ -17,8 +17,7 @@ from management_helpers import (
     createDropOffLogTable,
     createItemScanTable
 )
-
-db = 'testDb.sqlite'
+from data import database as db
 
 try:
     conn = sqlite3.connect(db)
