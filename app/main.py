@@ -2,11 +2,14 @@
 import time as t
 from scan_items import scanItems
 from drop_off_items import dropOffItems
-from show_items import showItemsScanned
 from util import shutDown, optionError, getOption
 from functions import login
 from data import mainMenueOptions
-from options import showPendingDropOff, showDropOffLog
+from options import (
+    showPendingDropOff,
+    showDropOffLog,
+    showItemsScanned
+)
 
 # TODO: Spit out options into seperate files
 # TODO: Test features of app
