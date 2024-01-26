@@ -10,7 +10,7 @@ from management_helpers.manage_data import (
     insertItems,
     insertLocations,
     insertPendingDropOff,
-    insertDropOffLog,
+    dropCreateDropOffLog,
     dropCreateItemScan
 )
 

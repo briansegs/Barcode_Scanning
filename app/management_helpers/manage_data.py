@@ -72,7 +72,7 @@ def insertPendingDropOff():
         pendingDropOff
     )
 
-def insertDropOffLog():
+def dropCreateDropOffLog():
     "drops and adds drop_off_log table"
     createTable(
         createDropOffLogTable,
