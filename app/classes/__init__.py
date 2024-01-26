@@ -1,2 +1,2 @@
 "init"
-from classes.items_scanner import ItemScanner
+from classes.item import Item
