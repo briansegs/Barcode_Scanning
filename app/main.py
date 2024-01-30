@@ -12,6 +12,8 @@ from options import (
 )
 
 # TODO: Test features of app
+# TODO: Add more data
+# TODO: Update readme
 
 def main():
     "main function"
