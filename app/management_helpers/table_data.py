@@ -109,5 +109,25 @@ pendingDropOff = [
     {
         "item_id" : 6,
         "quantity" : 0
+    },
+    {
+        "item_id" : 7,
+        "quantity" : 0
+    },
+    {
+        "item_id" : 8,
+        "quantity" : 0
+    },
+    {
+        "item_id" : 9,
+        "quantity" : 0
+    },
+    {
+        "item_id" : 10,
+        "quantity" : 0
+    },
+    {
+        "item_id" : 11,
+        "quantity" : 0
     }
 ]
