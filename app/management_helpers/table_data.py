@@ -47,6 +47,26 @@ items = [
         {
             "barcode" : "0070330000025",
             "name" : "BIC Lighter Blk sm"
+        },
+        {
+            "barcode" : "0042187027425",
+            "name" : "Best Yet Sea Salt"
+        },
+        {
+            "barcode" : "0023249004363",
+            "name" : "SR Vitamin D3"
+        },
+        {
+            "barcode" : "X002FVAFYT",
+            "name" : "Naturelo One Daily Multivitamin For Men"
+        },
+        {
+            "barcode" : "0074312528057",
+            "name" : "Nature's Bounty B-12"
+        },
+        {
+            "barcode" : "0074312020605",
+            "name" : "Nature's Bounty Zinc"
         }
     ]
 
