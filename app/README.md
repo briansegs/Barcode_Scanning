@@ -27,6 +27,7 @@ Instructions for setting up your virual enviornment:\
 Setup virtual environment: 
 ```bash
 python3 -m venv .venv
+```
 
 Run virtual environment:
 ```bash
