@@ -75,6 +75,13 @@ locations = [
         "New Jersey",
         "Pennsylvinia",
         "Florida",
+        "North Carolina",
+        "Connecticut",
+        "Virginia",
+        "Rhode Island",
+        "Ohio",
+        "Kentucky",
+        "Georgia",
         "Storage Facility"
     ]
 
