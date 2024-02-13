@@ -11,7 +11,6 @@ from options import (
     scanItems
 )
 
-# TODO: Test features of app
 # TODO: Update readme
 
 def main():
