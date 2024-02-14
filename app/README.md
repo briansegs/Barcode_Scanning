@@ -39,4 +39,13 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-This will install all of the required packages listed in the `requirements.txt` file.
+This will install all of the required packages listed in the [requirements.txt](https://github.com/briansegs/Barcode_Scanning/blob/main/app/requirements.txt) file.
+
+#### Key Dependencies
+
+[Open CV](https://opencv.org/) is the world's biggest computer vision library.
+
+[Pandas](https://pandas.pydata.org/) is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool,
+built on top of the Python programming language.
+
+[Pyzbar](https://pypi.org/project/pyzbar/) Read one-dimensional barcodes and QR codes from Python 2 and 3 using the zbar library.
