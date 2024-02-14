@@ -49,3 +49,10 @@ This will install all of the required packages listed in the [requirements.txt](
 built on top of the Python programming language.
 
 [Pyzbar](https://pypi.org/project/pyzbar/) Read one-dimensional barcodes and QR codes from Python 2 and 3 using the zbar library.
+
+## Using the Application
+
+#### Running the app
+```bash
+python3 main.py
+```
