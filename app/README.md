@@ -51,8 +51,16 @@ built on top of the Python programming language.
 [Pyzbar](https://pypi.org/project/pyzbar/) Read one-dimensional barcodes and QR codes from Python 2 and 3 using the zbar library.
 
 ## Using the Application
+#### Setting up the database
+Change the database name (Or keep it the same) in the [data](https://github.com/briansegs/Barcode_Scanning/blob/f8604f37cac6d32549e59b683d283f7e9b494d62/app/data/data.py#L3) file.
 
 #### Running the app
 ```bash
 python3 main.py
 ```
+
+## Managing the data
+```bash
+python3 manage_tables.py
+```
+[manage_tables.py](https://github.com/briansegs/Barcode_Scanning/blob/main/app/manage_tables.py) is A script that manages the database and helps with testing. 
