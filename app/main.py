@@ -11,8 +11,6 @@ from options import (
     scanItems
 )
 
-# TODO: Update readme
-
 def main():
     "main function"
     agent = login()
