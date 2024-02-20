@@ -25,52 +25,21 @@ class ItemScanner(Scanner):
 
             for code in decode(frame):
                 bCode = str(code.data.decode('utf-8'))
-                newLine()
-                print(bCode, "\n")
                 res = cur.execute("SELECT id, name FROM item WHERE barcode = ?", (bCode,))
                 inventoryData = res.fetchone()
 
                 if inventoryData is None:
+                    newLine()
                     print("Item not found.")
                     t.sleep(1)
 
                 elif bCode in self.itemData:
-                    name = self.itemData[bCode]["name"]
-                    print("Item already scanned.")
-                    print(f'Would you like to update the quantity of {name}?')
-                    ans = input("Enter y to update or n to continue: ")
-
-                    if ans == "y":
-                        oldQty = self.itemData[bCode]["quantity"]
-
-                        try:
-                            newQty = int(input("Enter Quantity: "))
-                            t.sleep(.5)
-
-                            if newQty == 0:
-                                del self.itemData[bCode]
-                                print(f'{name} quantity updated from {oldQty} to {newQty}.')
-
-                            elif newQty < 0:
-                                print("Error: Number can not be less than 0.")
-                                print("Could not update the quantity.")
-
-                            elif newQty > 0:
-                                self.itemData[bCode]["quantity"] = newQty
-                                print(f'{name} quantity updated from {oldQty} to {newQty}.')
-
-                        except ValueError:
-                            print("Error: Not a number.")
-                            t.sleep(1)
-                            print("Could not update the quantity.")
-                            t.sleep(1)
-
-                    else:
-                        print("Continue scanning.")
-                        t.sleep(1)
+                    pass
 
                 else:
                     item = Item(inventoryData[1], inventoryData[0])
+                    newLine()
+                    print(bCode, "\n")
                     print(item.name)
                     t.sleep(.5)
                     while True:
